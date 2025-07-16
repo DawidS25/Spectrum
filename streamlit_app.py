@@ -311,7 +311,7 @@ elif st.session_state.step == "game":
                 if st.session_state.results_filename:
                     data_to_save = {
                         "r_pytania": current_question_number,
-                        "kategoria": q['categories'][0],
+                        "kategoria": q['categories'],
                         "pytanie": q['text'],
                         "odpowiada": responder,
                         "zgaduje": guesser,
