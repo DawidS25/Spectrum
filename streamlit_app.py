@@ -218,7 +218,8 @@ elif st.session_state.step == "game":
     if st.session_state.ask_continue:
         st.header("❓ Czy chcesz kontynuować grę?")
         rundy = st.session_state.questions_asked // 6
-        st.write(f"🥊 Rozegrane rundy: {rundy}")
+        total_questions = st.session_state.questions_asked
+        st.write(f"🥊 Rozegrane rundy: {rundy} -> {total_questions} pytań 🧠")
         col1, col2 = st.columns(2)
         with col1:
             if st.button("✅ Tak, kontynuuj"):
@@ -245,7 +246,7 @@ elif st.session_state.step == "game":
         st.markdown(f"### 🥊 Runda {current_round}")
         st.subheader(f"🧠 Pytanie {current_question_number} – kategoria: *{q['categories']}*")
         st.write(q["text"])
-        st.markdown(f"<small>🇮🇩: {q['id']}</small>", unsafe_allow_html=True)
+        st.markdown(f"<small>id: {q['id']}</small>", unsafe_allow_html=True)
 
         # 🔁 PRZYCISK ZMIANY PYTANIA
         if st.button("🔄 Zmień pytanie"):
