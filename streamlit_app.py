@@ -133,11 +133,11 @@ if st.session_state.step == "setup":
 
     player_names = []
     for i in range(3):
-        name = st.text_input(f"Gracz {i + 1}", value=st.session_state.players[i])
+        name = st.text_input(f"🙋‍♂️ Gracz {i + 1}", value=st.session_state.players[i])
         player_names.append(name.strip())
 
     if all(player_names):
-        if st.button("Dalej"):
+        if st.button("✅ Dalej"):
             # Zapisz graczy do sesji
             st.session_state.players = player_names
             st.session_state.all_players = player_names.copy()
@@ -174,7 +174,7 @@ elif st.session_state.step == "categories":
     st.markdown(f"**Wybrane kategorie:** {', '.join(st.session_state.category_selection) or 'Brak'}")
 
     if st.session_state.category_selection:
-        if st.button("Rozpocznij grę"):
+        if st.button("🎯 Rozpocznij grę"):
             st.session_state.chosen_categories = list(st.session_state.category_selection)
             st.session_state.step = "game"
             st.rerun()
@@ -216,7 +216,9 @@ elif st.session_state.step == "game":
     players = [responder, guesser, direction_guesser]
 
     if st.session_state.ask_continue:
-        st.header("🔄 Czy chcesz kontynuować grę?")
+        st.header("❓ Czy chcesz kontynuować grę?")
+        rundy = st.session_state.questions_asked // 6
+        st.write(f"🥊 Rozegrane rundy: {rundy}")
         col1, col2 = st.columns(2)
         with col1:
             if st.button("✅ Tak, kontynuuj"):
@@ -224,7 +226,7 @@ elif st.session_state.step == "game":
                 st.session_state.current_question = draw_question()
                 st.rerun()
         with col2:
-            if st.button("⏹️ Zakończ i pokaż wyniki"):
+            if st.button("❌ Zakończ i pokaż wyniki"):
                 st.session_state.step = "end"
                 st.rerun()
 
@@ -240,10 +242,10 @@ elif st.session_state.step == "game":
         current_round = (st.session_state.questions_asked // 6) + 1
         current_question_number = st.session_state.questions_asked + 1
 
-        st.markdown(f"### 🌀 Runda {current_round}")
+        st.markdown(f"### 🥊 Runda {current_round}")
         st.subheader(f"🧠 Pytanie {current_question_number} – kategoria: *{q['categories']}*")
         st.write(q["text"])
-        st.markdown(f"<small>ID pytania: {q['id']}</small>", unsafe_allow_html=True)
+        st.markdown(f"<small>🇮🇩: {q['id']}</small>", unsafe_allow_html=True)
 
         # 🔁 PRZYCISK ZMIANY PYTANIA
         if st.button("🔄 Zmień pytanie"):
@@ -338,11 +340,13 @@ elif st.session_state.step == "game":
 elif st.session_state.step == "end":
     total_questions = st.session_state.questions_asked
     total_rounds = total_questions // 6
-    st.success(f"🎉 Gra zakończona! Oto wyniki końcowe:\n\nLiczba rund: **{total_rounds}** → **{total_questions}** pytań")
+    st.success(f"🎉 Gra zakończona! Oto wyniki końcowe:\n\n🥊 Liczba rund: **{total_rounds}** → **{total_questions}** pytań 🧠")
 
     sorted_scores = sorted(st.session_state.scores.items(), key=lambda x: x[1], reverse=True)
-    for name, score in sorted_scores:
-        st.write(f"**{name}:** {score} punktów")
+    medale = ["🏆", "🥈", "🥉"]
+    for i, (name, score) in enumerate(sorted_scores):
+        medal = medale[i] if i < 3 else ""
+        st.write(f"{medal} **{name}:** {score} punktów")
 
     st.markdown("---")
     col1, col2 = st.columns(2)
@@ -378,7 +382,7 @@ elif st.session_state.step == "end":
         data = output.getvalue()
 
         st.download_button(
-            label="⬇️ Pobierz wyniki gry (XLSX)",
+            label="💾 Pobierz wyniki gry (XLSX)",
             data=data,
             file_name=st.session_state.results_filename.replace('.csv', '.xlsx'),
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
