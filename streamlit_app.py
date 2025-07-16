@@ -7,15 +7,18 @@ import io
 # ------------------------------
 # PYTANIA
 # ------------------------------
-df = pd.read_csv('questions.csv')
-df['categories'] = df['categories'].apply(lambda x: x.split(','))
+import pandas as pd
 
+# Uwaga: uwzględnij separator ';'
+df = pd.read_csv('questions.csv', sep=';')
+
+# Kategoria to pojedyncza wartość, więc nie trzeba splitować po przecinku
 def filter_by_category(cat):
-    return df[df['categories'].apply(lambda cats: cat in cats)].to_dict(orient='records')
+    return df[df['categories'] == cat].to_dict(orient='records')
 
 funny_questions = filter_by_category('Śmieszne')
 worldview_questions = filter_by_category('Światopoglądowe')
-relationship_questions = filter_by_category('Związki')
+relationship_questions = filter_by_category('Związkowe')
 spicy_questions = filter_by_category('Pikantne')
 casual_questions = filter_by_category('Luźne')
 past_questions = filter_by_category('Przeszłość')
@@ -32,6 +35,7 @@ CATEGORIES = {
     "Wolisz": would_you_rather_questions,
     "Dylematy": dylema_questions
 }
+
 
 # ------------------------------
 # SESJA
@@ -125,7 +129,7 @@ if st.session_state.step in ["setup", "categories", "end"]:
 
 
 if st.session_state.step == "setup":
-    st.header("🎭 Wprowadź imiona graczy (tylko 3)")
+    st.header("🎭 Wprowadź imiona graczy")
 
     player_names = []
     for i in range(3):
@@ -237,8 +241,16 @@ elif st.session_state.step == "game":
         current_question_number = st.session_state.questions_asked + 1
 
         st.markdown(f"### 🌀 Runda {current_round}")
-        st.subheader(f"🧠 Pytanie {current_question_number} – kategoria: *{q['categories'][0]}*")
+        st.subheader(f"🧠 Pytanie {current_question_number} – kategoria: *{q['categories']}*")
         st.write(q["text"])
+        st.markdown(f"<small>ID pytania: {q['id']}</small>", unsafe_allow_html=True)
+
+        # 🔁 PRZYCISK ZMIANY PYTANIA
+        if st.button("🔄 Zmień pytanie"):
+            new_q = draw_question()
+            if new_q:
+                st.session_state.current_question = new_q
+            st.rerun()
 
         st.markdown(f"Odpowiada: **{responder}** &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Zgaduje: **{guesser}**", unsafe_allow_html=True)
 

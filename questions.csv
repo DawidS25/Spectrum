@@ -1,721 +1,621 @@
-id,text,categories
-fun001,"Czy Twoje myśli odpływają w kosmos, gdy ktoś coś tłumaczy?",Śmieszne
-fun002,"Czy potrafisz zgubić coś, co trzymasz w ręce?",Śmieszne
-fun003,"Czy udajesz, że rozumiesz, o czym ktoś mówi?",Śmieszne
-fun004,Czy Twoja reakcja na niespodziankę to zwykle szok i zamieszanie?,Śmieszne
-fun005,"Czy Twoje życie to ciągłe szukanie okularów, które masz na głowie?",Śmieszne
-fun006,Czy jesteś specjalistą od przewracania się o nic?,Śmieszne
-fun007,Czy Twój śmiech rozśmiesza innych bardziej niż żart?,Śmieszne
-fun008,Czy próbujesz otworzyć drzwi pilotem od auta?,Śmieszne
-fun009,"Czy potrafisz zgubić się w sklepie, który znasz od lat?",Śmieszne
-fun010,Czy Twoje reakcje przypominają memy?,Śmieszne
-fun011,"Czy zdarza Ci się mówić do zwierząt, jak do ludzi?",Śmieszne
-fun012,"Czy potrafisz śpiewać pod prysznicem, nawet jeśli nie znasz słów?",Śmieszne
-fun013,"Czy zdarza Ci się gubić telefon, mając go w ręce?",Śmieszne
-fun014,"Czy potrafisz zapomnieć, co robiłeś dosłownie kilka sekund temu?",Śmieszne
-fun015,Czy kiedykolwiek próbowałeś zrobić coś zbyt skomplikowanego i skończyło się to katastrofą?,Śmieszne
-fun016,"Czy masz talent do zapominania, gdzie zostawiłeś klucze?",Śmieszne
-fun017,Czy zdarza Ci się śmiać w zupełnie nieodpowiednich momentach?,Śmieszne
-fun018,"Czy masz wrażenie, że Twój komputer działa wolniej, kiedy ktoś na Ciebie patrzy?",Śmieszne
-fun019,Czy zdarza Ci się mylić dni tygodnia?,Śmieszne
-fun020,Czy potrafisz wyobrazić sobie życie bez kawy (nawet na minutę)?,Śmieszne
-fun021,"Czy często zapominasz, co chciałeś powiedzieć w trakcie rozmowy?",Śmieszne
-fun022,Czy potrafisz naśladować dźwięki zwierząt?,Śmieszne
-fun023,Czy zdarza Ci się robić zakupy z pełnym brzuchem?,Śmieszne
-fun024,Czy często próbujesz wymawiać trudne słowa na głos i kończy się to śmiechem?,Śmieszne
-fun025,Czy masz talent do przypadkowego włączania mikrofonu w dziwnych momentach?,Śmieszne
-fun026,"Czy potrafisz zapamiętać tekst piosenki, ale zapominasz, gdzie zostawiłeś telefon?",Śmieszne
-fun027,"Czy zdarza Ci się zaczynać rozmowę i nagle zapomnieć, o czym mówisz?",Śmieszne
-fun028,"Czy potrafisz zapomnieć, dlaczego wszedłeś do innego pokoju?",Śmieszne
-fun029,Czy masz specjalną technikę na znalezienie zgubionych rzeczy (nawet jeśli to działa przez przypadek)?,Śmieszne
-fun030,"Czy Twoje zwierzęta czasem patrzą na Ciebie, jakbyś był dziwny?",Śmieszne
-fun031,"Czy potrafisz znaleźć coś, czego szukałeś dopiero wtedy, gdy już się poddasz?",Śmieszne
-fun032,"Czy zdarza Ci się śpiewać głośniej niż muzyka w słuchawkach?",Śmieszne
-fun033,"Czy Twój mózg czasem robi przerwę bez pytania?",Śmieszne
-fun034,"Czy masz talent do rozlewania napojów w najbardziej nieodpowiednich momentach?",Śmieszne
-fun035,"Czy potrafisz zapomnieć, co chciałeś kupić zaraz po wejściu do sklepu?",Śmieszne
-fun036,"Czy czasem mówisz coś głośno, a potem zastanawiasz się, czy ktoś to usłyszał?",Śmieszne
-fun037,"Czy zdarza Ci się być pewnym, że coś gdzieś położyłeś, a potem okazuje się, że masz to w ręce?",Śmieszne
-fun038,"Czy potrafisz zrobić z siebie burrito zawijając się w koc?",Śmieszne
-fun039,"Czy Twoja lodówka bywa otwierana bez powodu (tak po prostu)?",Śmieszne
-fun040,"Czy zdarza Ci się mówić 'gdzie mój telefon?!' – trzymając go w ręce?",Śmieszne
-fun041,"Czy zdarza Ci się mówić do siebie i udawać, że ktoś Ci odpowiada?",Śmieszne
-fun042,"Czy potrafisz zjeść coś bardzo ostrego i potem udawać, że nic się nie dzieje?",Śmieszne
-fun043,"Czy Twoja ulubiona czynność to przekładanie rzeczy z miejsca na miejsce bez powodu?",Śmieszne
-fun044,"Czy zdarza Ci się tak mocno skupić na grze, że zapominasz o całym świecie?",Śmieszne
-fun045,"Czy potrafisz przez przypadek kliknąć „wyślij”, zanim skończysz pisać wiadomość?",Śmieszne
-fun046,"Czy Twój umysł czasem idzie na wakacje, gdy ktoś coś tłumaczy?",Śmieszne
-fun047,"Czy zdarza Ci się włączyć czajnik, zapomnieć o nim i zrobić to jeszcze raz?",Śmieszne
-fun048,"Czy Twój pies lub kot czasem patrzy na Ciebie jak na dziwaka?",Śmieszne
-fun049,"Czy potrafisz przypadkiem zadzwonić do kogoś, klikając coś w kieszeni?",Śmieszne
-fun050,"Czy zdarza Ci się śmiać z czegoś, czego nikt inny nie rozumie?",Śmieszne
-fun051,"Czy potrafisz zjeść całą paczkę chipsów i udawać, że to nic takiego?",Śmieszne
-fun052,"Czy Twoja ulubiona pora dnia to ta, kiedy nikt Cię nie widzi?",Śmieszne
-fun053,"Czy zdarza Ci się ubrać coś na lewą stronę i zorientować się dopiero wieczorem?",Śmieszne
-fun054,"Czy potrafisz się potknąć o zupełnie nic?",Śmieszne
-fun055,"Czy Twoje myśli czasem jadą autobusem, a Ty zostajesz na przystanku?",Śmieszne
-fun056,"Czy zdarza Ci się zacząć coś robić i zapomnieć, po co to robiłeś?",Śmieszne
-fun057,"Czy potrafisz przez pomyłkę polubić stary post z 2013 roku?",Śmieszne
-fun058,"Czy Twoje ręce czasem nie wiedzą, co robią – np. wylewając sok na klawiaturę?",Śmieszne
-fun059,"Czy zdarza Ci się myśleć, że lodówka to najlepszy przyjaciel?",Śmieszne
-fun060,"Czy potrafisz przez przypadek otworzyć kalkulator, szukając wiadomości?",Śmieszne
-fun061,"Czy potrafisz zapomnieć, że masz okulary na nosie i szukać ich wszędzie?",Śmieszne
-fun062,"Czy zdarza Ci się tańczyć samemu w pokoju bez muzyki?",Śmieszne
-fun063,"Czy potrafisz przez przypadek zablokować telefon twarzą, próbując odebrać?",Śmieszne
-fun064,"Czy Twoje rozmowy z domowymi sprzętami są coraz bardziej zaawansowane?",Śmieszne
-fun065,"Czy zdarza Ci się kichnąć tak mocno, że wystraszysz nawet siebie?",Śmieszne
-fun066,"Czy potrafisz zapomnieć, czy już umyłeś zęby i zrobić to jeszcze raz?",Śmieszne
-fun067,"Czy Twoje zdjęcia w dowodzie wyglądają, jakbyś był w trakcie krzyku?",Śmieszne
-fun068,"Czy potrafisz upuścić coś na stopę dokładnie wtedy, gdy jesteś boso?",Śmieszne
-fun069,"Czy zdarza Ci się machać komuś, kto wcale nie machał do Ciebie?",Śmieszne
-fun070,"Czy Twój zegar biologiczny ma własne zasady (np. śpisz, gdy nie powinieneś)?",Śmieszne
-fun071,"Czy Twoje sny czasem są tak dziwne, że boisz się o własny mózg?",Śmieszne
-fun072,"Czy zdarza Ci się kliknąć 'odśwież' szybciej, niż strona ma szansę się załadować?",Śmieszne
-fun073,"Czy potrafisz zgubić się we własnym domu, idąc po coś w nocy?",Śmieszne
-fun074,"Czy zdarza Ci się odebrać telefon i zapomnieć, kto dzwonił, zanim się przedstawi?",Śmieszne
-fun075,"Czy potrafisz siedzieć godzinami w jednej pozycji, a potem wstać jak robot?",Śmieszne
-fun076,"Czy Twoje ręce czasem same coś przewracają i patrzysz na nie z niedowierzaniem?",Śmieszne
-fun077,"Czy zdarza Ci się napisać wiadomość i zapomnieć ją wysłać?",Śmieszne
-fun078,"Czy potrafisz pomylić ketchup z pastą do zębów (przez nieuwagę)?",Śmieszne
-fun079,"Czy Twoje rozmowy w windzie trwają wieki, mimo że jadą dwa piętra?",Śmieszne
-fun080,"Czy zdarza Ci się zapomnieć, że masz słuchawki i wyrwać je z laptopa głową?",Śmieszne
-fun081,"Czy Twoje oczy czasem otwierają się wcześniej niż reszta ciała?",Śmieszne
-fun082,"Czy potrafisz wcisnąć 'drzemkę' tyle razy, że spóźniasz się wszędzie?",Śmieszne
-fun083,"Czy Twoje ubrania czasem same znikają – a potem są w lodówce?",Śmieszne
-fun084,"Czy zdarza Ci się powiedzieć 'dzień dobry' o 22:00?",Śmieszne
-fun085,"Czy potrafisz myśleć o jedzeniu już 5 minut po zjedzeniu obiadu?",Śmieszne
-fun086,"Czy Twoje palce na klawiaturze działają jakby miały własne życie?",Śmieszne
-fun087,"Czy zdarza Ci się myśleć, że to czwartek, mimo że to poniedziałek?",Śmieszne
-fun088,"Czy potrafisz udawać powagę, gdy coś jest naprawdę głupie?",Śmieszne
-fun089,"Czy Twoja poduszka czasem wygląda bardziej kusząco niż cały dzień obowiązków?",Śmieszne
-fun090,"Czy zdarza Ci się zapomnieć, że coś gotujesz, aż kuchnia przypomni Ci zapachem?",Śmieszne
-swi001,"Czy uważasz, że panuje równość płci w społeczeństwie?",Światopoglądowe
-swi002,Jak bardzo religijny jesteś?,Światopoglądowe
-swi003,"Czy uważasz, że technologia przynosi więcej dobra niż zła?",Światopoglądowe
-swi004,Jak bardzo ważna jest dla Ciebie wolność słowa?,Światopoglądowe
-swi005,"Czy uważasz, że zmiany klimatu to poważny problem?",Światopoglądowe
-swi006,Jak bardzo zgadzasz się z zasadą ‘oko za oko’?,Światopoglądowe
-swi007,Czy wierzysz w przeznaczenie?,Światopoglądowe
-swi008,Jak ważna jest dla Ciebie tradycja?,Światopoglądowe
-swi009,"Czy uważasz, że edukacja powinna być darmowa dla wszystkich?",Światopoglądowe
-swi010,Jak bardzo ufasz mediom?,Światopoglądowe
-swi011,"Czy zgadzasz się z ideą, że pieniądze szczęścia nie dają?",Światopoglądowe
-swi012,Jak bardzo ważne są dla Ciebie prawa człowieka?,Światopoglądowe
-swi013,Czy wierzysz w życie po śmierci?,Światopoglądowe
-swi014,"Jak bardzo uważasz, że każdy powinien dbać o środowisko?",Światopoglądowe
-swi015,"Czy uważasz, że wojny są czasem konieczne?",Światopoglądowe
-swi016,Jak bardzo cenisz sobie tolerancję wobec innych kultur?,Światopoglądowe
-swi017,"Czy zgadzasz się z ideą, że każdy człowiek ma prawo do szczęścia?",Światopoglądowe
-swi018,Jak ważna jest dla Ciebie równość szans?,Światopoglądowe
-swi019,"Czy uważasz, że społeczeństwo powinno bardziej pomagać osobom potrzebującym?",Światopoglądowe
-swi020,"Jak bardzo uważasz, że nauka powinna dominować nad wiarą?",Światopoglądowe
-swi021,"Czy uważasz, że kara śmierci jest dopuszczalna?",Światopoglądowe
-swi022,Jak bardzo popierasz ideę wolności religijnej?,Światopoglądowe
-swi023,Czy zgadzasz się z koniecznością ograniczenia konsumpcji dla dobra planety?,Światopoglądowe
-swi024,Jak bardzo ważne są dla Ciebie wartości rodzinne?,Światopoglądowe
-swi025,"Czy uważasz, że media społecznościowe mają pozytywny wpływ na społeczeństwo?",Światopoglądowe
-swi026,"Jak bardzo zgadzasz się z ideą, że każdy powinien mieć prawo do edukacji?",Światopoglądowe
-swi027,"Czy uważasz, że praca powinna dawać przede wszystkim satysfakcję, a nie pieniądze?",Światopoglądowe
-swi028,Jak bardzo ufasz nauce i badaniom medycznym?,Światopoglądowe
-swi029,"Czy uważasz, że wolność słowa powinna mieć ograniczenia?",Światopoglądowe
-swi030,"Jak bardzo uważasz, że każdy powinien ponosić odpowiedzialność za swoje czyny?",Światopoglądowe
-swi031,"Czy uważasz, że każdy człowiek zasługuje na drugą szansę?",Światopoglądowe
-swi032,"Jak bardzo wierzysz, że dobro wraca?",Światopoglądowe
-swi033,"Czy uważasz, że granice między państwami powinny zostać otwarte?",Światopoglądowe
-swi034,"Jak bardzo zgadzasz się z tym, że zwierzęta mają takie same prawa do życia jak ludzie?",Światopoglądowe
-swi035,"Czy uważasz, że dzieci powinny mieć prawo współdecydować o swoim życiu?",Światopoglądowe
-swi036,"Jak bardzo wierzysz w postęp jako siłę napędową ludzkości?",Światopoglądowe
-swi037,"Czy uważasz, że bogatsi powinni płacić wyższe podatki?",Światopoglądowe
-swi038,"Jak bardzo jesteś za ograniczeniem sztucznej inteligencji w codziennym życiu?",Światopoglądowe
-swi039,"Czy wierzysz, że każdy człowiek ma w sobie coś dobrego?",Światopoglądowe
-swi040,"Jak bardzo zgadzasz się z tym, że system edukacji wymaga gruntownej reformy?",Światopoglądowe
-swi041,"Czy uważasz, że tradycja powinna ustępować postępowi?",Światopoglądowe
-swi042,"Na ile ważna jest dla Ciebie wolność wyboru stylu życia?",Światopoglądowe
-swi043,"Czy zgadzasz się z tym, że każda religia powinna być traktowana równo?",Światopoglądowe
-swi044,"Jak bardzo wierzysz w to, że jednostka może zmieniać świat?",Światopoglądowe
-swi045,"Czy uważasz, że ludzie mają obowiązek pomagać obcym?",Światopoglądowe
-swi046,"Jak bardzo uważasz, że rozwój cywilizacji wpływa negatywnie na naturę?",Światopoglądowe
-swi047,"Czy uważasz, że każdy powinien mieć prawo do posiadania broni?",Światopoglądowe
-swi048,"Jak bardzo popierasz pomysł dochodu podstawowego dla każdego obywatela?",Światopoglądowe
-swi049,"Czy zgadzasz się z tym, że technologia zbliża ludzi?",Światopoglądowe
-swi050,"Jak bardzo wierzysz, że przyszłość będzie lepsza niż teraźniejszość?",Światopoglądowe
-swi051,"Czy uważasz, że młodzież powinna mieć większy wpływ na politykę?",Światopoglądowe
-swi052,"Jak bardzo cenisz sobie różnorodność kulturową w społeczeństwie?",Światopoglądowe
-swi053,"Czy zgadzasz się, że człowiek jest odpowiedzialny za los planety?",Światopoglądowe
-swi054,"Na ile wierzysz w karmę?",Światopoglądowe
-swi055,"Jak bardzo uważasz, że internet powinien być wolny i nieograniczony?",Światopoglądowe
-swi056,"Czy uważasz, że społeczeństwo powinno akceptować każdy styl życia?",Światopoglądowe
-swi057,"Jak bardzo popierasz równe prawa dla osób LGBTQ+?",Światopoglądowe
-swi058,"Czy uważasz, że bogactwo powinno być bardziej równomiernie rozdzielone?",Światopoglądowe
-swi059,"Na ile zgadzasz się z tym, że empatia jest podstawą człowieczeństwa?",Światopoglądowe
-swi060,"Czy uważasz, że demokracja to najlepszy system polityczny?",Światopoglądowe
-swi061,"Jak bardzo wierzysz, że każdy zasługuje na szacunek – niezależnie od poglądów?",Światopoglądowe
-swi062,"Czy uważasz, że społeczeństwo jest zbyt uzależnione od technologii?",Światopoglądowe
-swi063,"Na ile jesteś otwarty na inne religie i światopoglądy?",Światopoglądowe
-swi064,"Jak bardzo uważasz, że edukacja powinna uwzględniać naukę empatii?",Światopoglądowe
-swi065,"Czy zgadzasz się z tym, że każdy człowiek powinien służyć społeczeństwu w jakiś sposób?",Światopoglądowe
-swi066,"Jak bardzo wierzysz w równość wszystkich ludzi, bez względu na pochodzenie?",Światopoglądowe
-swi067,"Czy uważasz, że wolność jednostki powinna mieć swoje granice?",Światopoglądowe
-swi068,"Na ile zgadzasz się z tym, że młodzi ludzie są niedoceniani?",Światopoglądowe
-swi069,"Jak bardzo uważasz, że patriotyzm jest nadal ważny?",Światopoglądowe
-swi070,"Czy Twoim zdaniem społeczeństwo powinno być bardziej oparte na współpracy niż rywalizacji?",Światopoglądowe
-swi071,"Na ile wierzysz, że każdy ma wpływ na swoją przyszłość?",Światopoglądowe
-swi072,"Czy uważasz, że sztuka ma realny wpływ na zmianę społeczną?",Światopoglądowe
-swi073,"Jak bardzo cenisz sobie prawo do prywatności?",Światopoglądowe
-swi074,"Czy zgadzasz się z tym, że rozwój gospodarczy jest ważniejszy niż ochrona środowiska?",Światopoglądowe
-swi075,"Na ile uważasz, że edukacja powinna rozwijać kreatywność, a nie tylko wiedzę?",Światopoglądowe
-swi076,"Czy uważasz, że każdy człowiek powinien mieć dostęp do opieki zdrowotnej bez względu na zarobki?",Światopoglądowe
-swi077,"Jak bardzo zgadzasz się z tym, że ludzie powinni mieć prawo do eutanazji?",Światopoglądowe
-swi078,"Na ile uważasz, że człowiek powinien dążyć do samodoskonalenia?",Światopoglądowe
-swi079,"Czy Twoim zdaniem państwo powinno mieć większy wpływ na wychowanie dzieci?",Światopoglądowe
-swi080,"Jak bardzo zgadzasz się z tym, że język kształtuje sposób myślenia?",Światopoglądowe
-swi081,"Czy uważasz, że dostęp do internetu powinien być prawem człowieka?",Światopoglądowe
-swi082,"Na ile ważna jest dla Ciebie solidarność społeczna?",Światopoglądowe
-swi083,"Czy zgadzasz się z tym, że niektóre granice kulturowe powinny być respektowane?",Światopoglądowe
-swi084,"Jak bardzo wierzysz w to, że ludzie są z natury dobrzy?",Światopoglądowe
-swi085,"Czy uważasz, że historia powinna być nauczana w sposób bardziej krytyczny?",Światopoglądowe
-swi086,"Na ile uważasz, że media kształtują nasze poglądy?",Światopoglądowe
-swi087,"Czy zgadzasz się z tym, że praca powinna być gwarantowana przez państwo?",Światopoglądowe
-swi088,"Jak bardzo wierzysz, że demokracja wymaga aktywnego udziału obywateli?",Światopoglądowe
-swi089,"Czy uważasz, że młodzi ludzie powinni częściej angażować się społecznie?",Światopoglądowe
-swi090,"Na ile zgadzasz się z tym, że granice wolności kończą się tam, gdzie zaczyna się krzywda drugiego człowieka?",Światopoglądowe
-zw001,Czy potrafisz zakochać się od pierwszego wejrzenia?,Związkowe
-zw002,Czy często rozczulasz się nad romantycznymi filmami?,Związkowe
-zw003,Czy potrafisz wybaczyć partnerowi dużą gafę?,Związkowe
-zw004,"Czy mówisz wprost, gdy coś Ci nie pasuje w relacji?",Związkowe
-zw005,Czy łatwo przywiązujesz się do drugiej osoby?,Związkowe
-zw006,Czy lubisz wspólne gotowanie jako forma spędzania czasu?,Związkowe
-zw007,Czy potrafisz spać spokojnie po kłótni z bliską osobą?,Związkowe
-zw008,Czy potrafisz przyznać się do błędu w relacji?,Związkowe
-zw009,Czy zazdrość to dla Ciebie naturalny element związku?,Związkowe
-zw010,Czy jesteś typem romantyka?,Związkowe
-zw011,Czy czułość w relacji jest dla Ciebie ważniejsza niż rozmowa?,Związkowe
-zw012,Czy pamiętasz ważne daty w związku?,Związkowe
-zw013,Czy łatwo się obrażasz w relacjach?,Związkowe
-zw014,Czy wolisz spędzać czas sam na sam niż w towarzystwie znajomych?,Związkowe
-zw015,Czy potrafisz utrzymać relację na odległość?,Związkowe
-zw016,Czy lubisz planować wspólną przyszłość?,Związkowe
-zw017,Czy ważne jest dla Ciebie poczucie humoru w związku?,Związkowe
-zw018,"Czy zdarza Ci się mówić coś, czego później żałujesz?",Związkowe
-zw019,Czy potrafisz rozpoznać emocje drugiej osoby bez słów?,Związkowe
-zw020,Czy lubisz robić niespodzianki partnerowi?,Związkowe
-zw021,Czy dla Ciebie ważniejsze są czyny niż słowa?,Związkowe
-zw022,Czy umiesz zostawić partnerowi przestrzeń dla siebie?,Związkowe
-zw023,Czy łatwo przyjmujesz krytykę od bliskiej osoby?,Związkowe
-zw024,Czy lubisz wspólne zdjęcia i pamiątki?,Związkowe
-zw025,Czy konflikty rozładowujesz żartem?,Związkowe
-zw026,Czy potrafisz uszczęśliwić drugą osobę drobiazgiem?,Związkowe
-zw027,Czy często wyrażasz uczucia słowami?,Związkowe
-zw028,Czy jesteś gotów pójść na kompromis?,Związkowe
-zw029,Czy potrafisz rozmawiać o trudnych tematach bez emocji?,Związkowe
-zw030,"Czy czujesz się bezpiecznie, będąc sobą przy partnerze?",Związkowe
-zw031,Czy często potrzebujesz zapewnień o uczuciach?,Związkowe
-zw032,Czy lubisz wspólne milczenie, które nie jest niezręczne?,Związkowe
-zw033,Czy potrafisz mówić o swoich potrzebach bez poczucia winy?,Związkowe
-zw034,Czy czujesz, że czasem dominujesz w relacji?,Związkowe
-zw035,Czy potrafisz zauważyć, że partnerowi coś przeszkadza – zanim o tym powie?,Związkowe
-zw036,Czy zazwyczaj robisz pierwszy krok w konflikcie, by się pogodzić?,Związkowe
-zw037,Czy drobne nawyki partnera potrafią Cię irytować?,Związkowe
-zw038,Czy czujesz się doceniany w relacji?,Związkowe
-zw039,Czy lubisz dzielić się codziennymi szczegółami ze swoim partnerem?,Związkowe
-zw040,Czy Twoim zdaniem w relacji powinno się mówić wszystko?,Związkowe
-zw041,Czy ufasz swojej intuicji w relacjach?,Związkowe
-zw042,Czy potrafisz powiedzieć „nie” bliskiej osobie bez wyrzutów sumienia?,Związkowe
-zw043,Czy czujesz się komfortowo pokazując swoje słabości w związku?,Związkowe
-zw044,Czy lubisz rytuały w relacji (np. wspólne śniadania, wiadomości rano)?,Związkowe
-zw045,Czy czasem boisz się stracić osobę, na której Ci zależy?,Związkowe
-zw046,Czy potrafisz zaakceptować, że ktoś kocha inaczej niż Ty?,Związkowe
-zw047,Czy wspólne marzenia cementują dla Ciebie relację?,Związkowe
-zw048,Czy czujesz się wysłuchany w związku?,Związkowe
-zw049,Czy lubisz wspólnie podejmować decyzje – nawet w błahych sprawach?,Związkowe
-zw050,Czy czujesz się odpowiedzialny za atmosferę w relacji?,Związkowe
-zw051,Czy starasz się unikać niepotrzebnych spięć?,Związkowe
-zw052,Czy potrzebujesz czasu tylko dla siebie, nawet będąc w związku?,Związkowe
-zw053,Czy masz potrzebę ciągłego kontaktu (np. wiadomości w ciągu dnia)?,Związkowe
-zw054,Czy wyrażanie wdzięczności jest dla Ciebie ważnym elementem relacji?,Związkowe
-zw055,Czy czujesz, że potrafisz się zmieniać dla dobra relacji – nie tracąc siebie?,Związkowe
-zw056,Czy lubisz planować wspólny czas z wyprzedzeniem?,Związkowe
-zw057,Czy emocje partnera wpływają silnie na Twój nastrój?,Związkowe
-zw058,Czy potrafisz mówić o swoich granicach w związku?,Związkowe
-zw059,Czy bywasz niepewny swoich uczuć w dłuższej relacji?,Związkowe
-zw060,Czy potrafisz wspierać partnera, nawet jeśli sam masz trudny dzień?,Związkowe
-zw061,Czy w związku czujesz się swobodnie mówiąc o swoich marzeniach?,Związkowe
-zw062,Czy wspólne poczucie humoru jest dla Ciebie kluczowe?,Związkowe
-zw063,Czy potrafisz rozmawiać o emocjach, zanim przerodzą się w problem?,Związkowe
-zw064,Czy dajesz partnerowi tyle wsparcia, ile sam potrzebujesz?,Związkowe
-zw065,Czy czujesz się ważny w relacji, nawet bez wielkich gestów?,Związkowe
-zw066,Czy lubisz analizować relację i rozmawiać o tym, „jak nam idzie”?,Związkowe
-zw067,Czy wolisz rozwiązywać konflikty od razu niż odkładać je na później?,Związkowe
-zw068,Czy potrafisz dostrzegać różnice między Wami jako coś wartościowego?,Związkowe
-zw069,Czy Twoim zdaniem szczerość powinna być absolutna – nawet jeśli rani?,Związkowe
-zw070,Czy lubisz wspólne planowanie codziennych obowiązków?,Związkowe
-zw071,Czy potrafisz oddzielić własne emocje od emocji partnera?,Związkowe
-zw072,Czy bywasz zaborczy, nawet jeśli tego nie pokazujesz?,Związkowe
-zw073,Czy czujesz się komfortowo rozmawiając o przeszłości partnera?,Związkowe
-zw074,Czy często analizujesz zachowania partnera, szukając ukrytych znaczeń?,Związkowe
-zw075,Czy w związku ważniejsze są dla Ciebie emocje niż logika?,Związkowe
-zw076,Czy potrafisz wycofać się z kłótni, żeby nie powiedzieć czegoś zbyt ostrego?,Związkowe
-zw077,Czy czujesz się doceniony za codzienne drobiazgi?,Związkowe
-zw078,Czy potrafisz zauważyć, że partner okazuje uczucia w inny sposób niż Ty?,Związkowe
-zw079,Czy czujesz się wystarczająco słuchany w rozmowach?,Związkowe
-zw080,Czy miewasz trudność z proszeniem o pomoc w związku?,Związkowe
-zw081,Czy lubisz wracać do wspomnień z początku relacji?,Związkowe
-zw082,Czy potrafisz dzielić się swoimi obawami bez poczucia słabości?,Związkowe
-zw083,Czy czujesz się komfortowo z tym, że partner ma własne pasje?,Związkowe
-zw084,Czy łatwo Ci rozpoznać, kiedy partner potrzebuje przestrzeni?,Związkowe
-zw085,Czy potrafisz zmieniać zdanie, słuchając argumentów bliskiej osoby?,Związkowe
-zw086,Czy wolisz rozmawiać o emocjach czy działać praktycznie?,Związkowe
-zw087,Czy czujesz, że jesteś równorzędnym partnerem w relacji?,Związkowe
-zw088,Czy potrafisz zaakceptować, że partner czasem ma inne potrzeby niż Ty?,Związkowe
-zw089,Czy uważasz, że intymność emocjonalna jest ważniejsza niż fizyczna?,Związkowe
-zw090,Czy czujesz, że relacja rozwija Cię jako osobę?,Związkowe
-pk001,"Czy często fantazjujesz o osobach, które znasz?",Pikantne
-pk002,Czy jesteś otwarty na próbowanie nowych rzeczy w łóżku?,Pikantne
-pk003,Czy czujesz się pewnie nago przy drugiej osobie?,Pikantne
-pk004,Czy ważna jest dla Ciebie chemia fizyczna w związku?,Pikantne
-pk005,Czy mówisz partnerowi o swoich fantazjach?,Pikantne
-pk006,Czy jesteś bardziej dominujący niż uległy?,Pikantne
-pk007,Czy potrafisz flirtować bez użycia słów?,Pikantne
-pk008,Czy lubisz budować napięcie zanim dojdzie do zbliżenia?,Pikantne
-pk009,Czy lubisz być zaskakiwany w sypialni?,Pikantne
-pk010,Czy inicjujesz zbliżenia częściej niż Twój partner?,Pikantne
-pk011,Czy lubisz rozmowy o seksie?,Pikantne
-pk012,Czy zdarza Ci się fantazjować w najmniej odpowiednim momencie?,Pikantne
-pk013,Czy lubisz grać rolę w zbliżeniach?,Pikantne
-pk014,Czy przywiązanie emocjonalne zwiększa Twoje pożądanie?,Pikantne
-pk015,Czy lubisz zaskakiwać partnera czymś pikantnym?,Pikantne
-pk016,Czy jesteś osobą bardziej zmysłową niż impulsywną?,Pikantne
-pk017,Czy ważna jest dla Ciebie estetyka w zbliżeniach?,Pikantne
-pk018,"Czy zdarza Ci się odgrywać fantazję, o której marzyłeś?",Pikantne
-pk019,"Czy uważasz, że rozmowa po wszystkim jest równie ważna jak samo zbliżenie?",Pikantne
-pk020,"Czy lubisz, gdy partner przejmuje inicjatywę?",Pikantne
-pk021,Czy czujesz się swobodnie mówiąc „nie” nawet w intymnej sytuacji?,Pikantne
-pk022,Czy Twoja wyobraźnia erotyczna bywa zaskakująca nawet dla Ciebie?,Pikantne
-pk023,Czy lubisz eksperymentować z miejscem i czasem zbliżenia?,Pikantne
-pk024,"Czy potrafisz szczerze powiedzieć partnerowi, co Ci się podoba?",Pikantne
-pk025,Czy jesteś otwarty na wspólne odkrywanie nowych fantazji?,Pikantne
-pk026,Czy potrafisz rozbudzić atmosferę jednym spojrzeniem?,Pikantne
-pk027,Czy lubisz pikantne żarty i aluzje w rozmowie?,Pikantne
-pk028,Czy bliskość fizyczna buduje dla Ciebie emocjonalną więź?,Pikantne
-pk029,"Czy lubisz zmieniać dynamikę — raz być aktywnym, raz pasywnym?",Pikantne
-pk030,Czy Twoje życie intymne to dla Ciebie temat do śmiechu i luzu?,Pikantne
-pk031,Czy czujesz się komfortowo przejmując pełną kontrolę w sypialni?,Pikantne
-pk032,Czy lubisz, gdy zbliżenie trwa długo i powoli buduje napięcie?,Pikantne
-pk033,Czy potrafisz otwarcie mówić o swoich granicach w intymności?,Pikantne
-pk034,Czy zdarzyło Ci się fantazjować o kimś zupełnie nieoczekiwanym?,Pikantne
-pk035,Czy namiętność jest dla Ciebie ważniejsza niż technika?,Pikantne
-pk036,Czy lubisz grę wstępną dłuższą niż samo zbliżenie?,Pikantne
-pk037,Czy potrafisz zbudować napięcie jednym gestem?,Pikantne
-pk038,Czy jesteś otwarty na niestandardowe formy intymności?,Pikantne
-pk039,Czy lubisz przełamywać rutynę w sypialni?,Pikantne
-pk040,Czy uważasz, że wspólne odkrywanie nowych doznań zbliża parę?,Pikantne
-pk041,Czy Twoje fantazje bywają bardziej emocjonalne niż fizyczne?,Pikantne
-pk042,Czy wolisz prowadzić czy być prowadzonym w sytuacjach intymnych?,Pikantne
-pk043,Czy Twoje poczucie humoru łączy się z seksualnością?,Pikantne
-pk044,Czy uważasz, że rozmowa o potrzebach intymnych wzmacnia relację?,Pikantne
-pk045,Czy lubisz zostawiać niedopowiedzenia, które rozpalają wyobraźnię?,Pikantne
-pk046,Czy odczuwasz większą przyjemność, gdy masz pełne zaufanie do partnera?,Pikantne
-pk047,Czy lubisz zmysłowe niespodzianki?,Pikantne
-pk048,Czy Twoje podejście do seksu zmienia się w zależności od emocji?,Pikantne
-pk049,Czy jesteś otwarty na dzielenie się swoimi fantazjami w trakcie zbliżenia?,Pikantne
-pk050,Czy potrafisz się całkowicie zatracić w chwili?,Pikantne
-pk051,Czy bardziej pociąga Cię delikatność niż intensywność?,Pikantne
-pk052,Czy często to Ty zaczynasz flirt?,Pikantne
-pk053,Czy dotyk w codziennych sytuacjach (np. kuchnia, spacer) ma dla Ciebie znaczenie?,Pikantne
-pk054,Czy lubisz, gdy napięcie buduje się przez cały dzień?,Pikantne
-pk055,Czy jesteś otwarty na zmysłowe gry i zabawy?,Pikantne
-pk056,Czy czujesz, że intymność zaczyna się długo przed zbliżeniem?,Pikantne
-pk057,Czy czasem prowokujesz partnera, by sprawdzić jego reakcję?,Pikantne
-pk058,Czy czujesz się pewnie inicjując rozmowy o seksie?,Pikantne
-pk059,Czy Twoja wyobraźnia erotyczna zmienia się z czasem?,Pikantne
-pk060,Czy uważasz, że seks bez emocji traci sens?,Pikantne
-pk061,Czy lubisz, gdy zmysłowość zaczyna się od spojrzeń i gestów?,Pikantne
-pk062,Czy kiedykolwiek czułeś pociąg do kogoś zupełnie „niedozwolonego”?,Pikantne
-pk063,Czy lubisz, gdy sytuacje codzienne przeradzają się w coś pikantnego?,Pikantne
-pk064,Czy masz w sobie ukrytą stronę, którą pokazujesz tylko w sypialni?,Pikantne
-pk065,Czy czujesz ekscytację, gdy coś jest „na granicy”?,Pikantne
-pk066,Czy gra w wyobraźni jest dla Ciebie równie ważna jak realna bliskość?,Pikantne
-pk067,Czy lubisz przesyłać pikantne wiadomości?,Pikantne
-pk068,Czy cisza w zbliżeniu może być dla Ciebie bardziej zmysłowa niż słowa?,Pikantne
-pk069,Czy przywiązanie emocjonalne wpływa na Twoją odwagę w łóżku?,Pikantne
-pk070,Czy lubisz, gdy partner celowo przeciąga napięcie?,Pikantne
-pk071,Czy eksperymentowanie sprawia, że czujesz się bardziej pożądany?,Pikantne
-pk072,Czy potrafisz wyczytać intencje z ciała drugiej osoby?,Pikantne
-pk073,Czy bycie zaskoczonym w sypialni sprawia Ci większą przyjemność niż planowanie?,Pikantne
-pk074,Czy Twoje fantazje są bardziej filmowe czy realistyczne?,Pikantne
-pk075,Czy potrafisz całkowicie się poddać drugiej osobie?,Pikantne
-pk076,Czy Twoje pragnienia są czasem trudne do wypowiedzenia?,Pikantne
-pk077,Czy flirtowanie w miejscu publicznym sprawia Ci dreszczyk emocji?,Pikantne
-pk078,Czy czujesz się atrakcyjniejszy, gdy widzisz pożądanie w oczach partnera?,Pikantne
-pk079,Czy gra w dominację i uległość Cię intryguje?,Pikantne
-pk080,Czy czasem masz ochotę złamać wszystkie reguły?,Pikantne
-pk081,Czy więcej przyjemności czerpiesz z dawania niż z otrzymywania?,Pikantne
-pk082,Czy lubisz odkrywać nowe rzeczy, nawet jeśli są poza Twoją strefą komfortu?,Pikantne
-pk083,Czy dotyk ma dla Ciebie większe znaczenie niż słowa w intymności?,Pikantne
-pk084,Czy Twoja zmysłowość jest bardziej subtelna niż odważna?,Pikantne
-pk085,Czy zdarza Ci się fantazjować o byciu całkowicie zdominowanym?,Pikantne
-pk086,Czy lubisz budować napięcie przez spojrzenia i niedopowiedzenia?,Pikantne
-pk087,Czy znasz swoje ciało na tyle, by prowadzić partnera?,Pikantne
-pk088,Czy wspólne przekraczanie granic sprawia, że czujesz się bliżej partnera?,Pikantne
-pk089,Czy sytuacje „zakazane” bywają dla Ciebie bardziej ekscytujące?,Pikantne
-pk090,Czy czujesz, że seksualność to coś, co się nieustannie rozwija?,Pikantne
-lz001,"Czy zdarza Ci się zasnąć podczas oglądania filmu, który sam wybrałeś?",Luźne
-lz002,"Czy myślisz, że poradziłbyś sobie w średniowieczu?",Luźne
-lz003,Czy zdarza Ci się rozmawiać z psem lub kotem jak z człowiekiem?,Luźne
-lz004,Czy byłbyś dobrym detektywem?,Luźne
-lz005,"Czy potrafisz wyjść z domu bez sprawdzenia trzy razy, czy masz klucze?",Luźne
-lz006,Czy byłbyś w stanie przeżyć tydzień bez internetu?,Luźne
-lz007,"Czy potrafisz zrobić obiad z tego, co akurat masz w lodówce?",Luźne
-lz008,Czy miałeś kiedyś fazę na kolekcjonowanie czegoś dziwnego?,Luźne
-lz009,"Czy zdarza Ci się zapomnieć, po co wszedłeś do pokoju?",Luźne
-lz010,Czy byłbyś dobrym kosmitą udającym człowieka?,Luźne
-lz011,"Czy lubisz planować rzeczy, których i tak nigdy nie zrealizujesz?",Luźne
-lz012,"Czy uważasz, że masz talent aktorski?",Luźne
-lz013,Czy często śpiewasz w samochodzie lub pod prysznicem?,Luźne
-lz014,"Czy kiedykolwiek udawałeś, że kogoś nie widzisz, żeby nie rozmawiać?",Luźne
-lz015,Czy masz na sumieniu coś dziwnego z dzieciństwa?,Luźne
-lz016,"Czy lubisz robić notatki, których nigdy nie czytasz?",Luźne
-lz017,Czy zdarza Ci się kiedyś zjeść coś z podłogi?,Luźne
-lz018,Czy mógłbyś mieszkać w domku na drzewie?,Luźne
-lz019,"Czy często gubisz rzeczy, które trzymasz w ręce?",Luźne
-lz020,"Czy lubisz rozwiązywać quizy, które niczego nie wnoszą?",Luźne
-lz021,Czy byłbyś dobrym prowadzącym teleturniej?,Luźne
-lz022,Czy kiedykolwiek miałeś poważną rozmowę z lustrem?,Luźne
-lz023,"Czy potrafisz się zgubić w miejscu, które dobrze znasz?",Luźne
-lz024,"Czy kiedyś uczyłeś się czegoś tylko po to, żeby zaimponować komuś?",Luźne
-lz025,Czy jesteś w stanie wstać rano bez 5 drzemek?,Luźne
-lz026,Czy miałeś kiedyś wymyślonego przyjaciela?,Luźne
-lz027,"Czy zdarza Ci się coś zepsuć i udawać, że to nie Ty?",Luźne
-lz028,Czy potrafisz wytrzymać cały dzień bez narzekania?,Luźne
-lz029,Czy byłbyś w stanie zamieszkać w małym domku na wsi bez technologii?,Luźne
-lz030,Czy kiedykolwiek chciałeś być bohaterem kreskówki?,Luźne
-lz031,Czy mógłbyś żyć w świecie, gdzie wszystkie jedzenie to tylko zupy?,Luźne
-lz032,Czy wierzysz, że mógłbyś zaprzyjaźnić się z robotem?,Luźne
-lz033,Czy Twoje sny czasem mają więcej sensu niż rzeczywistość?,Luźne
-lz034,Czy kiedykolwiek chciałeś mieć supermoc tylko po to, żeby uniknąć obowiązków?,Luźne
-lz035,Czy jesteś w stanie wytrzymać dzień bez użycia internetu… przypadkiem?,Luźne
-lz036,Czy potrafisz prowadzić logiczną rozmowę tuż po obudzeniu?,Luźne
-lz037,Czy byłbyś w stanie mieszkać w lodówce (jeśli miałaby WiFi)?,Luźne
-lz038,Czy często nadajesz imiona przedmiotom w swoim domu?,Luźne
-lz039,Czy lubisz udawać eksperta w dziedzinach, o których nie masz pojęcia?,Luźne
-lz040,Czy potrafisz poważnie potraktować quiz „Którą pizzą jesteś?”?,Luźne
-lz041,Czy kiedykolwiek myślałeś, że Twój kot/pies Cię ocenia?,Luźne
-lz042,Czy mógłbyś zostać samotnym wilkiem… ale z dostawą jedzenia?,Luźne
-lz043,Czy zdarzyło Ci się udawać, że jesteś w filmie, idąc ulicą?,Luźne
-lz044,Czy potrafisz bez skrępowania tańczyć sam w pokoju?,Luźne
-lz045,Czy kiedykolwiek przekonałeś siebie, że masz superintuicję?,Luźne
-lz046,Czy często gubisz się w myślach podczas najprostszych zadań?,Luźne
-lz047,Czy miałeś kiedyś ulubiony kubek, który traktowałeś jak relikwie?,Luźne
-lz048,Czy mógłbyś być szczęśliwy pracując jako tester łóżek?,Luźne
-lz049,Czy uważasz, że masz ukryty talent, który objawi się przypadkiem?,Luźne
-lz050,Czy potrafisz przez godzinę udawać, że telefon to Twój mikrofon?,Luźne
-lz051,Czy kiedyś myślałeś, że umiesz grać na instrumencie… bez instrumentu?,Luźne
-lz052,Czy zdarza Ci się śmiać sam do siebie, przypominając sobie coś głupiego?,Luźne
-lz053,Czy kiedykolwiek zjadłeś coś tylko dlatego, że „szkoda wyrzucić”?,Luźne
-lz054,Czy lubisz snuć wielkie plany tylko po to, żeby... o nich zapomnieć?,Luźne
-lz055,Czy czujesz, że w poprzednim życiu mogłeś być leniwcem?,Luźne
-lz056,Czy zdarza Ci się komentować filmy, jakbyś był recenzentem?,Luźne
-lz057,Czy potrafisz przez godzinę oglądać coś, co Cię kompletnie nie interesuje?,Luźne
-lz058,Czy byłbyś w stanie wygrać zawody w robieniu najbardziej absurdalnej miny?,Luźne
-lz059,Czy myślisz, że w alternatywnym wszechświecie jesteś sławnym tancerzem?,Luźne
-lz060,Czy potrafisz zasnąć w najdziwniejszym możliwym miejscu?,Luźne
-lz061,Czy potrafisz zrobić herbatę i zapomnieć, że ją zrobiłeś?,Luźne
-lz062,Czy kiedykolwiek byłeś przekonany, że coś zgubiłeś, a miałeś to w ręce?,Luźne
-lz063,Czy umiesz przewidzieć pogodę tylko patrząc przez okno?,Luźne
-lz064,Czy zdarza Ci się mówić „zaraz wracam” i wrócić za godzinę?,Luźne
-lz065,Czy masz w sobie coś z leniwca... nawet gdy próbujesz być produktywny?,Luźne
-lz066,Czy potrafisz z entuzjazmem planować coś, co i tak odwołasz?,Luźne
-lz067,Czy kiedykolwiek próbowałeś telepatycznie przyciągnąć autobus?,Luźne
-lz068,Czy masz ulubiony dźwięk powiadomienia, który Cię już nie rusza?,Luźne
-lz069,Czy lubisz sprawdzać lodówkę bez zamiaru niczego z niej wyjąć?,Luźne
-lz070,Czy potrafisz myśleć intensywnie o jednej rzeczy i zapomnieć o niej po minucie?,Luźne
-lz071,Czy zdarza Ci się mówić do siebie i potem udawać, że to było śpiewanie?,Luźne
-lz072,Czy jesteś typem osoby, która robi milion screenów i nigdy ich nie przegląda?,Luźne
-lz073,Czy masz specjalną „pozycję do scrollowania telefonu”?,Luźne
-lz074,Czy zdarzyło Ci się próbować zapisać coś ważnego i zapomnieć, gdzie to zapisałeś?,Luźne
-lz075,Czy lubisz myśleć o sobie jako o głównym bohaterze życia?,Luźne
-lz076,Czy potrafisz włączyć film i zasnąć przed końcem czołówki?,Luźne
-lz077,Czy w dzieciństwie próbowałeś używać siły woli jak Jedi?,Luźne
-lz078,Czy mógłbyś przetrwać w mieszkaniu bez krzeseł, tylko na podłodze?,Luźne
-lz079,Czy zdarza Ci się unikać maili tak, jakby to były listy z Hogwartu?,Luźne
-lz080,Czy jesteś w stanie zapamiętać trzy rzeczy... jeśli zapiszesz je w pięciu miejscach?,Luźne
-lz081,Czy masz nawyk tworzenia playlist na każdą możliwą okazję?,Luźne
-lz082,Czy potrafisz zorganizować cały dzień wokół przerwy na kawę?,Luźne
-lz083,Czy kiedykolwiek zacząłeś porządkować coś i skończyło się to wspominkami?,Luźne
-lz084,Czy masz ulubioną wymówkę, gdy nie chce Ci się wychodzić?,Luźne
-lz085,Czy mógłbyś żyć w świecie, gdzie wszystko pachnie watą cukrową?,Luźne
-lz086,Czy potrafisz zniknąć z imprezy bez pożegnania?,Luźne
-lz087,Czy kiedykolwiek rozważałeś zamieszkanie w Ikei?,Luźne
-lz088,Czy zdarzyło Ci się zamówić coś online i zapomnieć, że to zrobiłeś?,Luźne
-lz089,Czy masz ulubiony dźwięk... który właściwie Cię irytuje?,Luźne
-lz090,Czy zdarza Ci się rozmawiać z roślinami w mieszkaniu?,Luźne
-ps001,Czy lubiłeś odpowiadać przy tablicy w szkole?,Przeszłość
-ps002,Czy często chodziłeś na wagary?,Przeszłość
-ps003,Czy byłeś bardziej niejadkiem niż wszystkożercą jako dziecko?,Przeszłość
-ps004,"Czy miałeś kiedyś swojego ulubionego pluszaka, bez którego nie zasypiałeś?",Przeszłość
-ps005,Czy zdarza Ci się ukrywać słodycze przed rodzicami?,Przeszłość
-ps006,Czy często sięgałeś po pomoc rodziców przy odrabianiu lekcji?,Przeszłość
-ps007,"Czy miałeś w dzieciństwie przyjaciół, z którymi spędzałeś całe dnie?",Przeszłość
-ps008,"Czy byłeś typem dziecka, które bało się ciemności?",Przeszłość
-ps009,"Czy zdarzyło Ci się zrobić coś zakazanego, czego nie przyznałeś się rodzicom?",Przeszłość
-ps010,Czy często marzyłeś o byciu kimś wyjątkowym lub sławnym?,Przeszłość
-ps011,"Czy miałeś ulubioną grę lub zabawkę, z którą nie rozstawałeś się nigdy?",Przeszłość
-ps012,Czy lubiłeś brać udział w szkolnych przedstawieniach lub konkursach?,Przeszłość
-ps013,"Czy zdarza Ci się chować przed rodzicami coś, co chciałeś mieć tylko dla siebie?",Przeszłość
-ps014,Czy byłeś bardziej spokojnym czy rozbrykanym dzieckiem?,Przeszłość
-ps015,Czy często się śmiałeś z dowcipów kolegów w szkole?,Przeszłość
-ps016,"Czy miałeś swój sekret lub tajne miejsce, do którego chodziłeś?",Przeszłość
-ps017,Czy brałeś udział w jakimś szkolnym sporcie lub zajęciach dodatkowych?,Przeszłość
-ps018,Czy pamiętasz swoją pierwszą zakochaną osobę?,Przeszłość
-ps019,Czy często dostawałeś uwagę od nauczycieli za psoty?,Przeszłość
-ps020,Czy miałeś jakieś zwierzątko w dzieciństwie?,Przeszłość
-ps021,Czy lubiłeś spędzać wakacje na wsi lub u dziadków?,Przeszłość
-ps022,Czy pamiętasz swoją pierwszą wycieczkę szkolną?,Przeszłość
-ps023,"Czy miałeś ulubioną książkę lub bajkę, do której często wracałeś?",Przeszłość
-ps024,Czy miałeś kiedykolwiek problem z nauczycielem lub wychowawcą?,Przeszłość
-ps025,Czy potrafiłeś dobrze się bawić na szkolnych imprezach?,Przeszłość
-ps026,Czy często pomagałeś rodzicom w domu jako dziecko?,Przeszłość
-ps027,Czy miałeś kiedyś problem z wczesnym wstawaniem do szkoły?,Przeszłość
-ps028,Czy pamiętasz swój pierwszy dzień w nowej szkole?,Przeszłość
-ps029,"Czy byłeś osobą, która łatwo nawiązywała nowe znajomości?",Przeszłość
-ps030,Czy często słuchałeś muzyki lub oglądałeś filmy z dzieciństwa?,Przeszłość
-ps031,Jak często jako dziecko bawiłeś się na dworze?,Przeszłość
-ps032,Na ile lubiłeś chodzić do szkoły?,Przeszłość
-ps033,Jak bardzo pamiętasz swój pierwszy dzień w szkole?,Przeszłość
-ps034,Jak często zdarzało Ci się odrabiać lekcje na ostatnią chwilę?,Przeszłość
-ps035,Jak bardzo lubiłeś swoje ulubione zabawki?,Przeszłość
-ps036,Jak często miałeś okazję spotykać się z przyjaciółmi po szkole?,Przeszłość
-ps037,Jak bardzo pamiętasz szkolne wycieczki?,Przeszłość
-ps038,Na ile byłeś zadowolony ze swojego zachowania w dzieciństwie?,Przeszłość
-ps039,Jak często pomagałeś rodzicom w domu?,Przeszłość
-ps040,Jak bardzo lubiłeś swoje ulubione zajęcia pozalekcyjne?,Przeszłość
-ps041,Jak często się śmiałeś z kolegów lub koleżanek w szkole?,Przeszłość
-ps042,Jak bardzo pamiętasz swoje dziecięce marzenia?,Przeszłość
-ps043,Na ile często czułeś się pewnie podczas wystąpień publicznych?,Przeszłość
-ps044,Jak bardzo lubiłeś czytać książki jako dziecko?,Przeszłość
-ps045,Jak często miałeś problemy z wstawaniem do szkoły?,Przeszłość
-ps046,Jak bardzo lubiłeś spędzać czas na podwórku?,Przeszłość
-ps047,Na ile często brałeś udział w zabawach z rodzeństwem lub kuzynami?,Przeszłość
-ps048,Jak bardzo pamiętasz swoje ulubione smaki dzieciństwa?,Przeszłość
-ps049,Jak często zdarzało Ci się rozrabiać w szkole?,Przeszłość
-ps050,Na ile lubiłeś swoje pierwsze wakacje bez rodziców?,Przeszłość
-ps051,Jak często marzyłeś o dorosłym życiu?,Przeszłość
-ps052,Jak bardzo lubiłeś szkolne przerwy?,Przeszłość
-ps053,Na ile często czułeś się zmotywowany do nauki?,Przeszłość
-ps054,Jak bardzo bałeś się ciemności lub innych dziecięcych lęków?,Przeszłość
-ps055,Jak często zdarzało Ci się śpiewać lub tańczyć jako dziecko?,Przeszłość
-ps056,Na ile lubiłeś pomagać innym dzieciom?,Przeszłość
-ps057,Jak bardzo pamiętasz swoje ulubione zabawy z dzieciństwa?,Przeszłość
-ps058,Jak często chodziłeś na zajęcia dodatkowe?,Przeszłość
-ps059,Na ile byłeś zadowolony z relacji z kolegami lub koleżankami?,Przeszłość
-ps060,Jak bardzo lubiłeś oglądać kreskówki lub bajki?,Przeszłość
-ps061,Jak często jako dziecko sięgałeś po słodycze?,Przeszłość
-ps062,Jak bardzo lubiłeś zajęcia plastyczne w szkole?,Przeszłość
-ps063,Na ile pamiętasz swoje pierwsze przyjaźnie?,Przeszłość
-ps064,Jak często brałeś udział w zabawach zespołowych?,Przeszłość
-ps065,Jak bardzo byłeś samodzielny jako dziecko?,Przeszłość
-ps066,Na ile często pomagałeś w domu swoim rodzeństwu?,Przeszłość
-ps067,Jak bardzo lubiłeś oglądać filmy lub bajki?,Przeszłość
-ps068,Jak często sprawiałeś niespodzianki bliskim?,Przeszłość
-ps069,Na ile pamiętasz swoje dziecięce przygody na podwórku?,Przeszłość
-ps070,Jak bardzo ceniłeś sobie wolny czas bez obowiązków?,Przeszłość
-ps071,Jak często odwiedzałeś dziadków lub dalszą rodzinę?,Przeszłość
-ps072,Na ile lubiłeś pomagać nauczycielom w klasie?,Przeszłość
-ps073,Jak często zdarzało Ci się być kapitanem drużyny lub grupy?,Przeszłość
-ps074,Jak bardzo pamiętasz swoje dziecięce sukcesy?,Przeszłość
-ps075,Na ile byłeś zadowolony ze swoich wyników w nauce?,Przeszłość
-ps076,Jak często brałeś udział w zabawach ruchowych lub sportowych?,Przeszłość
-ps077,Jak bardzo lubiłeś pomagać innym dzieciom w nauce?,Przeszłość
-ps078,Na ile często rozwiązywałeś zadania lub łamigłówki?,Przeszłość
-ps079,Jak bardzo byłeś ciekawski wobec świata jako dziecko?,Przeszłość
-ps080,Jak często zdarzało Ci się śpiewać na głos w samotności?,Przeszłość
-ps081,Na ile lubiłeś spędzać czas z rodzeństwem?,Przeszłość
-ps082,Jak bardzo pamiętasz swoje dziecięce marzenia o przyszłości?,Przeszłość
-ps083,Jak często potrafiłeś pocieszyć kolegę lub koleżankę?,Przeszłość
-ps084,Na ile lubiłeś uczyć się nowych rzeczy poza szkołą?,Przeszłość
-ps085,Jak często miałeś ochotę na psoty i zabawy bez kontroli?,Przeszłość
-ps086,Jak bardzo pamiętasz swoje pierwsze wakacje nad morzem lub w górach?,Przeszłość
-ps087,Na ile często uczestniczyłeś w szkolnych wydarzeniach i imprezach?,Przeszłość
-ps088,Jak bardzo byłeś zadowolony z relacji z nauczycielami?,Przeszłość
-ps089,Jak często jako dziecko myślałeś o swoich ulubionych bohaterach z bajek?,Przeszłość
-ps090,Na ile lubiłeś uczyć się poprzez zabawę?,Przeszłość
-wol001,Wolisz chodzić wolno czy szybko?,Wolisz
-wol002,Wolisz pikantne czy łagodne jedzenie?,Wolisz
-wol003,Wolisz lato czy zimę?,Wolisz
-wol004,Wolisz kawę czy herbatę?,Wolisz
-wol005,Wolisz książkę czy film?,Wolisz
-wol006,Wolisz spędzać czas w mieście czy na wsi?,Wolisz
-wol007,Wolisz oglądać komedie czy thrillery?,Wolisz
-wol008,Wolisz plażę czy góry?,Wolisz
-wol009,Wolisz wstać bardzo wcześnie czy zostać do późna?,Wolisz
-wol010,Wolisz mieć dużo znajomych czy kilku bliskich przyjaciół?,Wolisz
-wol011,Wolisz słuchać muzyki głośno czy cicho?,Wolisz
-wol012,Wolisz spędzać wakacje aktywnie czy leniuchując?,Wolisz
-wol013,Wolisz oglądać seriale czy filmy?,Wolisz
-wol014,Wolisz poranki czy wieczory?,Wolisz
-wol015,Wolisz zwierzęta domowe czy egzotyczne?,Wolisz
-wol016,Wolisz słodkie czy słone przekąski?,Wolisz
-wol017,Wolisz czytać książki papierowe czy e-booki?,Wolisz
-wol018,Wolisz robić zdjęcia czy oglądać zdjęcia?,Wolisz
-wol019,Wolisz być kierowcą czy pasażerem?,Wolisz
-wol020,Wolisz rozmawiać przez telefon czy pisać wiadomości?,Wolisz
-wol021,Wolisz imprezę z dużą ilością ludzi czy kameralne spotkanie?,Wolisz
-wol022,Wolisz gotować sam czy jeść na mieście?,Wolisz
-wol023,Wolisz oglądać sport czy uprawiać sport?,Wolisz
-wol024,Wolisz słuchać muzyki klasycznej czy rockowej?,Wolisz
-wol025,Wolisz mieć 1 godzinę więcej snu czy 1 godzinę więcej wolnego czasu?,Wolisz
-wol026,Wolisz wziąć prysznic czy kąpiel?,Wolisz
-wol027,Wolisz prowadzić samochód czy podróżować pociągiem?,Wolisz
-wol028,Wolisz mieć super pamięć czy super szybkość?,Wolisz
-wol029,Wolisz rozwiązywać krzyżówki czy sudoku?,Wolisz
-wol030,Wolisz spędzać czas na zewnątrz czy w domu?,Wolisz
-wol031,Wolisz oglądać filmy w domu czy w kinie?,Wolisz
-wol032,Wolisz ciepłe dni czy chłodne wieczory?,Wolisz
-wol033,Wolisz weekendy pełne wydarzeń czy leniwe dni?,Wolisz
-wol034,Wolisz spacerować po lesie czy nad morzem?,Wolisz
-wol035,Wolisz mieć psa czy kota?,Wolisz
-wol036,Wolisz chodzić na siłownię czy biegać na świeżym powietrzu?,Wolisz
-wol037,Wolisz grać w gry planszowe czy komputerowe?,Wolisz
-wol038,Wolisz jeść na słodko czy na słono?,Wolisz
-wol039,Wolisz planować wszystko czy improwizować?,Wolisz
-wol040,Wolisz czytać książkę wieczorem czy rano?,Wolisz
-wol041,Wolisz oglądać filmy komediowe czy dramaty?,Wolisz
-wol042,Wolisz ubierać się kolorowo czy stonowanie?,Wolisz
-wol043,Wolisz rozmawiać z dużą grupą ludzi czy z jedną osobą?,Wolisz
-wol044,Wolisz długie rozmowy czy krótkie i treściwe?,Wolisz
-wol045,Wolisz wakacje w górach czy nad jeziorem?,Wolisz
-wol046,Wolisz używać telefonu czy komputera do pracy?,Wolisz
-wol047,Wolisz szybkie jedzenie czy powolne, celebrowane posiłki?,Wolisz
-wol048,Wolisz nosić ubrania casual czy eleganckie?,Wolisz
-wol049,Wolisz słuchać muzyki na żywo czy z nagrania?,Wolisz
-wol050,Wolisz wstawać bez budzika czy budzić się po alarmie?,Wolisz
-wol051,Wolisz grać na instrumencie czy śpiewać?,Wolisz
-wol052,Wolisz oglądać filmy z napisami czy dubbingiem?,Wolisz
-wol053,Wolisz spotkania w dużym gronie czy kameralne przyjęcia?,Wolisz
-wol054,Wolisz czytać kryminały czy fantastykę?,Wolisz
-wol055,Wolisz spędzać czas aktywnie na dworze czy w domu z książką?,Wolisz
-wol056,Wolisz mieć dużo znajomych czy kilku bliskich przyjaciół?,Wolisz
-wol057,Wolisz jeść śniadanie na słodko czy na słono?,Wolisz
-wol058,Wolisz pisać listy czy wiadomości SMS?,Wolisz
-wol059,Wolisz świętować urodziny w domu czy na wyjeździe?,Wolisz
-wol060,Wolisz oglądać seriale czy pojedyncze filmy?,Wolisz
-wol061,Wolisz spędzać wieczory przy grach planszowych czy oglądając filmy?,Wolisz
-wol062,Wolisz uczyć się nowych rzeczy samodzielnie czy w grupie?,Wolisz
-wol063,Wolisz pić wodę gazowaną czy niegazowaną?,Wolisz
-wol064,Wolisz lato pełne słońca czy lekki deszcz?,Wolisz
-wol065,Wolisz chodzić do kina na nowe premiery czy czekać na premierę w domu?,Wolisz
-wol066,Wolisz mieć stały plan dnia czy działać spontanicznie?,Wolisz
-wol067,Wolisz nosić jasne czy ciemne ubrania?,Wolisz
-wol068,Wolisz spędzać weekend w domu czy na wycieczce?,Wolisz
-wol069,Wolisz być mistrzem jednego czy mieć szeroką wiedzę o wielu rzeczach?,Wolisz
-wol070,Wolisz słuchać muzyki na słuchawkach czy na głośnikach?,Wolisz
-wol071,Wolisz robić zdjęcia czy być na nich fotografowanym?,Wolisz
-wol072,Wolisz jeść śniadanie w pośpiechu czy wolno i spokojnie?,Wolisz
-wol073,Wolisz mieć dużo energii rano czy wieczorem?,Wolisz
-wol074,Wolisz mieszkać blisko centrum miasta czy na jego obrzeżach?,Wolisz
-wol075,Wolisz spędzać czas z dużą rodziną czy z bliskimi przyjaciółmi?,Wolisz
-wol076,Wolisz oglądać filmy z przyjaciółmi czy samotnie?,Wolisz
-wol077,Wolisz spędzać wolny czas w ciszy czy w gwarze ludzi?,Wolisz
-wol078,Wolisz jeść fast food czy domowe posiłki?,Wolisz
-wol079,Wolisz biegać rano czy wieczorem?,Wolisz
-wol080,Wolisz pracować w zespole czy samodzielnie?,Wolisz
-wol081,Wolisz czytać książki papierowe czy słuchać audiobooków?,Wolisz
-wol082,Wolisz oglądać filmy science fiction czy fantasy?,Wolisz
-wol083,Wolisz podróżować samolotem czy samochodem?,Wolisz
-wol084,Wolisz słuchać muzyki pop czy rock?,Wolisz
-wol085,Wolisz mieć dużo obowiązków czy dużo wolnego czasu?,Wolisz
-wol086,Wolisz nosić okulary czy soczewki kontaktowe?,Wolisz
-wol087,Wolisz oglądać mecze piłki nożnej czy siatkówki?,Wolisz
-wol088,Wolisz jeść owoce czy warzywa?,Wolisz
-wol089,Wolisz spędzać święta w domu czy na wyjeździe?,Wolisz
-wol090,Wolisz czytać książki kryminalne czy romanse?,Wolisz
-dyl001,Wolisz mieć zawsze dziwne przebłyski geniuszu czy nigdy nie zapominać niczego ważnego?,Dylematy
-dyl002,Wolisz mówić tylko w rymach czy tylko śpiewać?,Dylematy
-dyl003,Wolisz mieć w kieszeni zawsze 10 groszy czy 5 cukierków?,Dylematy
-dyl004,Wolisz codziennie jeść pizzę czy lody przez miesiąc?,Dylematy
-dyl005,Wolisz chodzić do pracy w piżamie czy na spotkania w stroju kąpielowym?,Dylematy
-dyl006,Wolisz mieć głos jak kaczka czy chodzić jak pingwin?,Dylematy
-dyl007,"Wolisz, żeby każdy słyszał Twoje myśli czy żebyś Ty słyszał myśli wszystkich?",Dylematy
-dyl008,Wolisz mieć zawsze zakręcony kabel słuchawek czy nigdy nie móc znaleźć ładowarki?,Dylematy
-dyl009,Wolisz zostać bohaterem filmu akcji czy komedii romantycznej?,Dylematy
-dyl010,"Wolisz, żeby Twój telefon miał zawsze 1% baterii czy był zawsze wyciszony?",Dylematy
-dyl011,"Wolisz mieć super moc teleportacji, ale tylko do łazienki, czy umieć latać, ale tylko na 1 metr?",Dylematy
-dyl012,Wolisz jeść tylko słodkie przez tydzień czy tylko słone?,Dylematy
-dyl013,"Wolisz mówić z akcentem każdego, kto do Ciebie mówi, czy powtarzać wszystko, co ktoś powie?",Dylematy
-dyl014,Wolisz mieć gigantyczne stopy czy malutkie ręce?,Dylematy
-dyl015,Wolisz zawsze spóźniać się 5 minut czy zawsze przychodzić 5 minut za wcześnie?,Dylematy
-dyl016,Wolisz żyć bez muzyki czy bez filmów?,Dylematy
-dyl017,"Wolisz, żeby każdy znał Twoje hasło do telefonu czy wszystkie Twoje ulubione miejsca?",Dylematy
-dyl018,Wolisz nie móc kłamać czy nie móc mówić prawdy?,Dylematy
-dyl019,Wolisz mieć na stałe wąsy czy mieć włosy tylko na jednej stronie głowy?,Dylematy
-dyl020,Wolisz nigdy nie móc używać emotikonów czy nigdy nie móc używać memów?,Dylematy
-dyl021,Wolisz mieć super pamięć do liczb czy do twarzy?,Dylematy
-dyl022,Wolisz codziennie dostawać list od nieznajomego czy nigdy nie dostawać żadnej wiadomości?,Dylematy
-dyl023,Wolisz przez cały dzień mówić szeptem czy krzyczeć?,Dylematy
-dyl024,Wolisz być najzabawniejszą osobą w grupie czy najbardziej poważną?,Dylematy
-dyl025,Wolisz jeść tylko jedną potrawę przez resztę życia czy nigdy nie jeść swojego ulubionego dania?,Dylematy
-dyl026,Wolisz mieć zawsze idealnie ułożone włosy czy zawsze idealnie czyste buty?,Dylematy
-dyl027,Wolisz mieszkać na księżycu czy pod wodą?,Dylematy
-dyl028,"Wolisz mieć zwierzę, które mówi czy lata jak ptak?",Dylematy
-dyl029,"Wolisz mieć super siłę, ale być ślepy czy widzieć perfekcyjnie, ale być słaby?",Dylematy
-dyl030,Wolisz zawsze zapominać imiona czy twarze?,Dylematy
-dyl031,Wolisz mieć zdolność czytania w myślach, ale tylko podczas snu, czy nigdy nie zapominać żadnego snu?,Dylematy
-dyl032,Wolisz móc zmieniać swój wygląd codziennie czy zmieniać głos na dowolny?,Dylematy
-dyl033,Wolisz mieć możliwość cofania czasu o 5 minut raz dziennie czy przewidywania przyszłości na 10 sekund?,Dylematy
-dyl034,Wolisz zawsze być o 10 minut spóźniony czy o 10 minut za wcześnie?,Dylematy
-dyl035,Wolisz jeść tylko potrawy o jednej barwie czy o jednej konsystencji?,Dylematy
-dyl036,Wolisz nigdy nie odczuwać głodu czy nigdy nie odczuwać zmęczenia?,Dylematy
-dyl037,Wolisz móc rozmawiać ze zwierzętami, ale nie rozumieć ludzi, czy rozumieć ludzi, ale nie zwierzęta?,Dylematy
-dyl038,Wolisz zawsze mówić prawdę, ale ranić innych, czy kłamać, by ich chronić?,Dylematy
-dyl039,Wolisz mieć nieskończoną energię, ale nigdy nie móc usiąść, czy móc spać cały dzień, ale czuć się zawsze zmęczonym?,Dylematy
-dyl040,Wolisz mieć super moc niewidzialności, ale tylko gdy jesteś samotny, czy super siłę, ale tylko gdy jest ktoś obok?,Dylematy
-dyl041,Wolisz być mistrzem jednej dziedziny czy mieć ogólną wiedzę, ale bez specjalizacji?,Dylematy
-dyl042,Wolisz nigdy nie słyszeć muzyki czy nigdy nie widzieć filmów?,Dylematy
-dyl043,Wolisz mieć możliwość teleportacji, ale tylko do miejsc, które już znasz, czy podróżować wszędzie, ale bardzo wolno?,Dylematy
-dyl044,Wolisz zawsze mieć idealny dzień, ale być samemu, czy mieć różne dni, ale z bliskimi?,Dylematy
-dyl045,Wolisz być znany z jednej, ale bardzo dziwnej rzeczy, czy być zupełnie anonimowy?,Dylematy
-dyl046,Wolisz móc latać, ale tylko na wysokości 1 metra, czy pływać pod wodą, ale tylko przez 5 minut?,Dylematy
-dyl047,Wolisz mieć nieograniczony dostęp do książek czy do filmów?,Dylematy
-dyl048,Wolisz zawsze zapominać twarze znajomych czy ich imiona?,Dylematy
-dyl049,Wolisz umieć porozumieć się w każdym języku, ale nie mówić żadnym płynnie, czy mówić tylko jednym, ale doskonale?,Dylematy
-dyl050,Wolisz mieć wszystkie swoje wspomnienia w kolorze sepii czy czarno-białe?,Dylematy
-dyl051,Wolisz codziennie jeść swoje ulubione danie, ale nigdy więcej nic innego, czy próbować nowe potrawy, ale nigdy swojego ulubionego?,Dylematy
-dyl052,Wolisz mieć super szybkość, ale słabą pamięć, czy super pamięć, ale powolne ruchy?,Dylematy
-dyl053,Wolisz móc rozmawiać tylko za pomocą rysunków czy tylko za pomocą muzyki?,Dylematy
-dyl054,Wolisz mieć dom na drzewie w lesie czy na plaży?,Dylematy
-dyl055,Wolisz zawsze mówić to, co myślisz, czy nigdy nie mówić o swoich uczuciach?,Dylematy
-dyl056,Wolisz mieszkać w przyszłości czy w przeszłości?,Dylematy
-dyl057,Wolisz mieć możliwość zatrzymania czasu na 10 sekund raz dziennie, czy cofnąć jedną decyzję sprzed roku?,Dylematy
-dyl058,Wolisz żyć w świecie bez internetu czy bez książek?,Dylematy
-dyl059,Wolisz mieć talent do śpiewania czy do tańca?,Dylematy
-dyl060,Wolisz być niewidzialny, ale nikt Cię nie zauważa, czy widoczny, ale wszyscy Cię ignorują?,Dylematy
-dyl061,Wolisz mieć zdolność rozmawiania z roślinami czy z przedmiotami?,Dylematy
-dyl062,Wolisz codziennie budzić się w nowym mieście czy zawsze w tym samym miejscu?,Dylematy
-dyl063,Wolisz mieć super moc zmiany koloru włosów na życzenie czy zmiany koloru oczu?,Dylematy
-dyl064,Wolisz być bohaterem książki czy filmu?,Dylematy
-dyl065,Wolisz jeść tylko słodycze przez miesiąc czy tylko warzywa?,Dylematy
-dyl066,Wolisz nigdy nie zapomnieć dat urodzin czy imion osób?,Dylematy
-dyl067,Wolisz mieć zawsze idealnie posprzątany pokój czy idealnie ułożoną garderobę?,Dylematy
-dyl068,Wolisz móc cofnąć jedną rozmowę z przeszłości czy przewidzieć wynik jednej przyszłej rozmowy?,Dylematy
-dyl069,Wolisz mieć nieskończony dostęp do swojej ulubionej muzyki czy ulubionych filmów?,Dylematy
-dyl070,Wolisz zawsze trafiać do celu podczas rzutu czy mieć niesamowitą pamięć do twarzy?,Dylematy
-dyl071,Wolisz móc rozwiązać każdy problem matematyczny czy znać odpowiedź na każde pytanie dotyczące historii?,Dylematy
-dyl072,Wolisz mieć możliwość zmiany pogody na jeden dzień czy zmiany swojego wyglądu na ten dzień?,Dylematy
-dyl073,Wolisz być niewidzialny, ale nie móc dotykać niczego, czy móc dotykać, ale być widzialnym dla wszystkich?,Dylematy
-dyl074,Wolisz nigdy nie mieć kaca czy nigdy nie odczuwać zmęczenia?,Dylematy
-dyl075,Wolisz mówić wszystkie języki świata, ale tylko w szeptach czy mówić tylko swój język, ale bardzo głośno?,Dylematy
-dyl076,Wolisz mieć włosy, które zmieniają kolor w zależności od nastroju, czy oczy, które świecą w ciemności?,Dylematy
-dyl077,Wolisz codziennie spotykać nowe osoby czy spędzać czas tylko z bliskimi?,Dylematy
-dyl078,Wolisz mieć zawsze idealnie dopasowane ubrania czy zawsze modną fryzurę?,Dylematy
-dyl079,Wolisz móc jeździć na rowerze po wodzie czy latać na rowerze?,Dylematy
-dyl080,Wolisz mieć talent do gotowania czy do majsterkowania?,Dylematy
-dyl081,Wolisz, żeby wszyscy znali Twoje sekrety czy żebyś Ty znał sekrety wszystkich?,Dylematy
-dyl082,Wolisz mieć umiejętność czytania książek w sekundę czy nauki nowych języków w godzinę?,Dylematy
-dyl083,Wolisz mieć psa, który potrafi mówić, czy kota, który potrafi latać?,Dylematy
-dyl084,Wolisz codziennie jeść tylko jedną ulubioną potrawę czy każdego dnia próbować coś zupełnie nowego?,Dylematy
-dyl085,Wolisz mieć super słuch, ale słabe widzenie czy super widzenie, ale słaby słuch?,Dylematy
-dyl086,Wolisz być mistrzem gier komputerowych czy sportów drużynowych?,Dylematy
-dyl087,Wolisz zawsze zapominać, gdzie zostawiłeś klucze czy gdzie zaparkowałeś samochód?,Dylematy
-dyl088,Wolisz żyć w świecie bez kolorów czy bez dźwięków?,Dylematy
-dyl089,Wolisz mieć nieskończoną ilość baterii w telefonie czy darmowy dostęp do internetu gdziekolwiek?,Dylematy
-dyl090,Wolisz spędzić tydzień w całkowitej ciszy czy w ciągłym hałasie?,Dylematy
+id;text;categories
+fun001;Czy Twoje myśli odpływają w kosmos, gdy ktoś coś tłumaczy?;Śmieszne
+fun002;Czy potrafisz zgubić coś, co trzymasz w ręce?;Śmieszne
+fun003;Czy udajesz, że rozumiesz, o czym ktoś mówi?;Śmieszne
+fun004;Czy Twoja reakcja na niespodziankę to zwykle szok i zamieszanie?;Śmieszne
+fun005;Czy Twoje życie to ciągłe szukanie okularów, które masz na głowie?;Śmieszne
+fun006;Czy jesteś specjalistą od przewracania się o nic?;Śmieszne
+fun007;Czy Twój śmiech rozśmiesza innych bardziej niż żart?;Śmieszne
+fun008;Czy próbujesz otworzyć drzwi pilotem od auta?;Śmieszne
+fun009;Czy potrafisz zgubić się w sklepie, który znasz od lat?;Śmieszne
+fun010;Czy Twoje reakcje przypominają memy?;Śmieszne
+fun011;Czy zdarza Ci się mówić do zwierząt, jak do ludzi?;Śmieszne
+fun012;Czy potrafisz śpiewać pod prysznicem, nawet jeśli nie znasz słów?;Śmieszne
+fun013;Czy zdarza Ci się gubić telefon, mając go w ręce?;Śmieszne
+fun014;Czy potrafisz zapomnieć, co robiłeś dosłownie kilka sekund temu?;Śmieszne
+fun015;Czy kiedykolwiek próbowałeś zrobić coś zbyt skomplikowanego i skończyło się to katastrofą?;Śmieszne
+fun016;Czy masz talent do zapominania, gdzie zostawiłeś klucze?;Śmieszne
+fun017;Czy zdarza Ci się śmiać w zupełnie nieodpowiednich momentach?;Śmieszne
+fun018;Czy masz wrażenie, że Twój komputer działa wolniej, kiedy ktoś na Ciebie patrzy?;Śmieszne
+fun019;Czy zdarza Ci się mylić dni tygodnia?;Śmieszne
+fun020;Czy potrafisz wyobrazić sobie życie bez kawy (nawet na minutę)?;Śmieszne
+fun021;Czy często zapominasz, co chciałeś powiedzieć w trakcie rozmowy?;Śmieszne
+fun022;Czy potrafisz naśladować dźwięki zwierząt?;Śmieszne
+fun023;Czy zdarza Ci się robić zakupy z pełnym brzuchem?;Śmieszne
+fun024;Czy często próbujesz wymawiać trudne słowa na głos i kończy się to śmiechem?;Śmieszne
+fun025;Czy masz talent do przypadkowego włączania mikrofonu w dziwnych momentach?;Śmieszne
+fun026;Czy potrafisz zapamiętać tekst piosenki, ale zapominasz, gdzie zostawiłeś telefon?;Śmieszne
+fun027;Czy zdarza Ci się zaczynać rozmowę i nagle zapomnieć, o czym mówisz?;Śmieszne
+fun028;Czy potrafisz zapomnieć, dlaczego wszedłeś do innego pokoju?;Śmieszne
+fun029;Czy masz specjalną technikę na znalezienie zgubionych rzeczy (nawet jeśli to działa przez przypadek)?;Śmieszne
+fun030;Czy Twoje zwierzęta czasem patrzą na Ciebie, jakbyś był dziwny?;Śmieszne
+fun031;Czy potrafisz znaleźć coś, czego szukałeś dopiero wtedy, gdy już się poddasz?;Śmieszne
+fun032;Czy zdarza Ci się śpiewać głośniej niż muzyka w słuchawkach?;Śmieszne
+fun033;Czy Twój mózg czasem robi przerwę bez pytania?;Śmieszne
+fun034;Czy masz talent do rozlewania napojów w najbardziej nieodpowiednich momentach?;Śmieszne
+fun035;Czy potrafisz zapomnieć, co chciałeś kupić zaraz po wejściu do sklepu?;Śmieszne
+fun036;Czy czasem mówisz coś głośno, a potem zastanawiasz się, czy ktoś to usłyszał?;Śmieszne
+fun037;Czy zdarza Ci się być pewnym, że coś gdzieś położyłeś, a potem okazuje się, że masz to w ręce?;Śmieszne
+fun038;Czy potrafisz zrobić z siebie burrito zawijając się w koc?;Śmieszne
+fun039;Czy Twoja lodówka bywa otwierana bez powodu (tak po prostu)?;Śmieszne
+fun040;Czy zdarza Ci się mówić 'gdzie mój telefon?!' – trzymając go w ręce?;Śmieszne
+fun041;Czy zdarza Ci się mówić do siebie i udawać, że ktoś Ci odpowiada?;Śmieszne
+fun042;Czy potrafisz zjeść coś bardzo ostrego i potem udawać, że nic się nie dzieje?;Śmieszne
+fun043;Czy Twoja ulubiona czynność to przekładanie rzeczy z miejsca na miejsce bez powodu?;Śmieszne
+fun044;Czy zdarza Ci się tak mocno skupić na grze, że zapominasz o całym świecie?;Śmieszne
+fun045;Czy potrafisz przez przypadek kliknąć „wyślij”, zanim skończysz pisać wiadomość?;Śmieszne
+fun046;Czy Twój umysł czasem idzie na wakacje, gdy ktoś coś tłumaczy?;Śmieszne
+fun047;Czy zdarza Ci się włączyć czajnik, zapomnieć o nim i zrobić to jeszcze raz?;Śmieszne
+fun048;Czy Twój pies lub kot czasem patrzy na Ciebie jak na dziwaka?;Śmieszne
+fun049;Czy potrafisz przypadkiem zadzwonić do kogoś, klikając coś w kieszeni?;Śmieszne
+fun050;Czy zdarza Ci się śmiać z czegoś, czego nikt inny nie rozumie?;Śmieszne
+fun051;Czy potrafisz zjeść całą paczkę chipsów i udawać, że to nic takiego?;Śmieszne
+fun052;Czy Twoja ulubiona pora dnia to ta, kiedy nikt Cię nie widzi?;Śmieszne
+fun053;Czy zdarza Ci się ubrać coś na lewą stronę i zorientować się dopiero wieczorem?;Śmieszne
+fun054;Czy potrafisz się potknąć o zupełnie nic?;Śmieszne
+fun055;Czy Twoje myśli czasem jadą autobusem, a Ty zostajesz na przystanku?;Śmieszne
+fun056;Czy zdarza Ci się zacząć coś robić i zapomnieć, po co to robiłeś?;Śmieszne
+fun057;Czy potrafisz przez pomyłkę polubić stary post z 2013 roku?;Śmieszne
+fun058;Czy Twoje ręce czasem nie wiedzą, co robią – np. wylewając sok na klawiaturę?;Śmieszne
+fun059;Czy zdarza Ci się myśleć, że lodówka to najlepszy przyjaciel?;Śmieszne
+fun060;Czy potrafisz przez przypadek otworzyć kalkulator, szukając wiadomości?;Śmieszne
+fun061;Czy potrafisz zapomnieć, że masz okulary na nosie i szukać ich wszędzie?;Śmieszne
+fun062;Czy zdarza Ci się tańczyć samemu w pokoju bez muzyki?;Śmieszne
+fun063;Czy potrafisz przez przypadek zablokować telefon twarzą, próbując odebrać?;Śmieszne
+fun064;Czy Twoje rozmowy z domowymi sprzętami są coraz bardziej zaawansowane?;Śmieszne
+fun065;Czy zdarza Ci się kichnąć tak mocno, że wystraszysz nawet siebie?;Śmieszne
+fun066;Czy potrafisz zapomnieć, czy już umyłeś zęby i zrobić to jeszcze raz?;Śmieszne
+fun067;Czy Twoje zdjęcia w dowodzie wyglądają, jakbyś był w trakcie krzyku?;Śmieszne
+fun068;Czy potrafisz upuścić coś na stopę dokładnie wtedy, gdy jesteś boso?;Śmieszne
+fun069;Czy zdarza Ci się machać komuś, kto wcale nie machał do Ciebie?;Śmieszne
+fun070;Czy Twój zegar biologiczny ma własne zasady (np. śpisz, gdy nie powinieneś)?;Śmieszne
+fun071;Czy Twoje sny czasem są tak dziwne, że boisz się o własny mózg?;Śmieszne
+fun072;Czy zdarza Ci się kliknąć 'odśwież' szybciej, niż strona ma szansę się załadować?;Śmieszne
+fun073;Czy potrafisz zgubić się we własnym domu, idąc po coś w nocy?;Śmieszne
+fun074;Czy zdarza Ci się odebrać telefon i zapomnieć, kto dzwonił, zanim się przedstawi?;Śmieszne
+fun075;Czy potrafisz siedzieć godzinami w jednej pozycji, a potem wstać jak robot?;Śmieszne
+fun076;Czy Twoje ręce czasem same coś przewracają i patrzysz na nie z niedowierzaniem?;Śmieszne
+fun077;Czy zdarza Ci się napisać wiadomość i zapomnieć ją wysłać?;Śmieszne
+fun078;Czy potrafisz pomylić ketchup z pastą do zębów (przez nieuwagę)?;Śmieszne
+fun079;Czy Twoje rozmowy w windzie trwają wieki, mimo że jadą dwa piętra?;Śmieszne
+fun080;Czy zdarza Ci się zapomnieć, że masz słuchawki i wyrwać je z laptopa głową?;Śmieszne
+fun081;Czy Twoje oczy czasem otwierają się wcześniej niż reszta ciała?;Śmieszne
+fun082;Czy potrafisz wcisnąć 'drzemkę' tyle razy, że spóźniasz się wszędzie?;Śmieszne
+fun083;Czy Twoje ubrania czasem same znikają – a potem są w lodówce?;Śmieszne
+fun084;Czy zdarza Ci się powiedzieć 'dzień dobry' o 22:00?;Śmieszne
+fun085;Czy potrafisz myśleć o jedzeniu już 5 minut po zjedzeniu obiadu?;Śmieszne
+fun086;Czy Twoje palce na klawiaturze działają jakby miały własne życie?;Śmieszne
+fun087;Czy zdarza Ci się myśleć, że to czwartek, mimo że to poniedziałek?;Śmieszne
+fun088;Czy potrafisz udawać powagę, gdy coś jest naprawdę głupie?;Śmieszne
+fun089;Czy Twoja poduszka czasem wygląda bardziej kusząco niż cały dzień obowiązków?;Śmieszne
+fun090;Czy zdarza Ci się zapomnieć, że coś gotujesz, aż kuchnia przypomni Ci zapachem?;Śmieszne
+swi001;Czy uważasz, że panuje równość płci w społeczeństwie?;Światopoglądowe
+swi002;Jak bardzo religijny jesteś?;Światopoglądowe
+swi003;Czy uważasz, że technologia przynosi więcej dobra niż zła?;Światopoglądowe
+swi004;Jak bardzo ważna jest dla Ciebie wolność słowa?;Światopoglądowe
+swi005;Czy uważasz, że zmiany klimatu to poważny problem?;Światopoglądowe
+swi006;Jak bardzo zgadzasz się z zasadą ‘oko za oko’?;Światopoglądowe
+swi007;Czy wierzysz w przeznaczenie?;Światopoglądowe
+swi008;Jak ważna jest dla Ciebie tradycja?;Światopoglądowe
+swi009;Czy uważasz, że edukacja powinna być darmowa dla wszystkich?;Światopoglądowe
+swi010;Jak bardzo ufasz mediom?;Światopoglądowe
+swi011;Czy zgadzasz się z ideą, że pieniądze szczęścia nie dają?;Światopoglądowe
+swi012;Jak bardzo ważne są dla Ciebie prawa człowieka?;Światopoglądowe
+swi013;Czy wierzysz w życie po śmierci?;Światopoglądowe
+swi014;Jak bardzo uważasz, że każdy powinien dbać o środowisko?;Światopoglądowe
+swi015;Czy uważasz, że wojny są czasem konieczne?;Światopoglądowe
+swi016;Jak bardzo cenisz sobie tolerancję wobec innych kultur?;Światopoglądowe
+swi017;Czy zgadzasz się z ideą, że każdy człowiek ma prawo do szczęścia?;Światopoglądowe
+swi018;Jak ważna jest dla Ciebie równość szans?;Światopoglądowe
+swi019;Czy uważasz, że społeczeństwo powinno bardziej pomagać osobom potrzebującym?;Światopoglądowe
+swi020;Jak bardzo uważasz, że nauka powinna dominować nad wiarą?;Światopoglądowe
+swi021;Czy uważasz, że kara śmierci jest dopuszczalna?;Światopoglądowe
+swi022;Jak bardzo popierasz ideę wolności religijnej?;Światopoglądowe
+swi023;Czy zgadzasz się z koniecznością ograniczenia konsumpcji dla dobra planety?;Światopoglądowe
+swi024;Jak bardzo ważne są dla Ciebie wartości rodzinne?;Światopoglądowe
+swi025;Czy uważasz, że media społecznościowe mają pozytywny wpływ na społeczeństwo?;Światopoglądowe
+swi026;Jak bardzo zgadzasz się z ideą, że każdy powinien mieć prawo do edukacji?;Światopoglądowe
+swi027;Czy uważasz, że praca powinna dawać przede wszystkim satysfakcję, a nie pieniądze?;Światopoglądowe
+swi028;Jak bardzo ufasz nauce i badaniom medycznym?;Światopoglądowe
+swi029;Czy uważasz, że wolność słowa powinna mieć ograniczenia?;Światopoglądowe
+swi030;Jak bardzo uważasz, że każdy powinien ponosić odpowiedzialność za swoje czyny?;Światopoglądowe
+swi031;Czy uważasz, że każdy człowiek zasługuje na drugą szansę?;Światopoglądowe
+swi032;Jak bardzo wierzysz, że dobro wraca?;Światopoglądowe
+swi033;Czy uważasz, że granice między państwami powinny zostać otwarte?;Światopoglądowe
+swi034;Jak bardzo zgadzasz się z tym, że zwierzęta mają takie same prawa do życia jak ludzie?;Światopoglądowe
+swi035;Czy uważasz, że dzieci powinny mieć prawo współdecydować o swoim życiu?;Światopoglądowe
+swi036;Jak bardzo wierzysz w postęp jako siłę napędową ludzkości?;Światopoglądowe
+swi037;Czy uważasz, że bogatsi powinni płacić wyższe podatki?;Światopoglądowe
+swi038;Jak bardzo jesteś za ograniczeniem sztucznej inteligencji w codziennym życiu?;Światopoglądowe
+swi039;Czy wierzysz, że każdy człowiek ma w sobie coś dobrego?;Światopoglądowe
+swi040;Jak bardzo zgadzasz się z tym, że system edukacji wymaga gruntownej reformy?;Światopoglądowe
+swi041;Czy uważasz, że tradycja powinna ustępować postępowi?;Światopoglądowe
+swi042;Na ile ważna jest dla Ciebie wolność wyboru stylu życia?;Światopoglądowe
+swi043;Czy zgadzasz się z tym, że każda religia powinna być traktowana równo?;Światopoglądowe
+swi044;Jak bardzo wierzysz w to, że jednostka może zmieniać świat?;Światopoglądowe
+swi045;Czy uważasz, że ludzie mają obowiązek pomagać obcym?;Światopoglądowe
+swi046;Jak bardzo uważasz, że rozwój cywilizacji wpływa negatywnie na naturę?;Światopoglądowe
+swi047;Czy uważasz, że każdy powinien mieć prawo do posiadania broni?;Światopoglądowe
+swi048;Jak bardzo popierasz pomysł dochodu podstawowego dla każdego obywatela?;Światopoglądowe
+swi049;Czy zgadzasz się z tym, że technologia zbliża ludzi?;Światopoglądowe
+swi050;Jak bardzo wierzysz, że przyszłość będzie lepsza niż teraźniejszość?;Światopoglądowe
+swi051;Czy uważasz, że młodzież powinna mieć większy wpływ na politykę?;Światopoglądowe
+swi052;Jak bardzo cenisz sobie różnorodność kulturową w społeczeństwie?;Światopoglądowe
+swi053;Czy zgadzasz się, że człowiek jest odpowiedzialny za los planety?;Światopoglądowe
+swi054;Na ile wierzysz w karmę?;Światopoglądowe
+swi055;Jak bardzo uważasz, że internet powinien być wolny i nieograniczony?;Światopoglądowe
+swi056;Czy uważasz, że społeczeństwo powinno akceptować każdy styl życia?;Światopoglądowe
+swi057;Jak bardzo popierasz równe prawa dla osób LGBTQ+?;Światopoglądowe
+swi058;Czy uważasz, że bogactwo powinno być bardziej równomiernie rozdzielone?;Światopoglądowe
+swi059;Na ile zgadzasz się z tym, że empatia jest podstawą człowieczeństwa?;Światopoglądowe
+swi060;Czy uważasz, że demokracja to najlepszy system polityczny?;Światopoglądowe
+swi061;Jak bardzo wierzysz, że każdy zasługuje na szacunek – niezależnie od poglądów?;Światopoglądowe
+swi062;Czy uważasz, że społeczeństwo jest zbyt uzależnione od technologii?;Światopoglądowe
+swi063;Na ile jesteś otwarty na inne religie i światopoglądy?;Światopoglądowe
+swi064;Jak bardzo uważasz, że edukacja powinna uwzględniać naukę empatii?;Światopoglądowe
+swi065;Czy zgadzasz się z tym, że każdy człowiek powinien służyć społeczeństwu w jakiś sposób?;Światopoglądowe
+swi066;Jak bardzo wierzysz w równość wszystkich ludzi, bez względu na pochodzenie?;Światopoglądowe
+swi067;Czy uważasz, że wolność jednostki powinna mieć swoje granice?;Światopoglądowe
+swi068;Na ile zgadzasz się z tym, że młodzi ludzie są niedoceniani?;Światopoglądowe
+swi069;Jak bardzo uważasz, że patriotyzm jest nadal ważny?;Światopoglądowe
+swi070;Czy Twoim zdaniem społeczeństwo powinno być bardziej oparte na współpracy niż rywalizacji?;Światopoglądowe
+swi071;Na ile wierzysz, że każdy ma wpływ na swoją przyszłość?;Światopoglądowe
+swi072;Czy uważasz, że sztuka ma realny wpływ na zmianę społeczną?;Światopoglądowe
+swi073;Jak bardzo cenisz sobie prawo do prywatności?;Światopoglądowe
+swi074;Czy zgadzasz się z tym, że rozwój gospodarczy jest ważniejszy niż ochrona środowiska?;Światopoglądowe
+swi075;Na ile uważasz, że edukacja powinna rozwijać kreatywność, a nie tylko wiedzę?;Światopoglądowe
+swi076;Czy uważasz, że każdy człowiek powinien mieć dostęp do opieki zdrowotnej bez względu na zarobki?;Światopoglądowe
+swi077;Jak bardzo zgadzasz się z tym, że ludzie powinni mieć prawo do eutanazji?;Światopoglądowe
+swi078;Na ile uważasz, że człowiek powinien dążyć do samodoskonalenia?;Światopoglądowe
+swi079;Czy Twoim zdaniem państwo powinno mieć większy wpływ na wychowanie dzieci?;Światopoglądowe
+swi080;Jak bardzo zgadzasz się z tym, że język kształtuje sposób myślenia?;Światopoglądowe
+swi081;Czy uważasz, że dostęp do internetu powinien być prawem człowieka?;Światopoglądowe
+swi082;Na ile ważna jest dla Ciebie solidarność społeczna?;Światopoglądowe
+swi083;Czy zgadzasz się z tym, że niektóre granice kulturowe powinny być respektowane?;Światopoglądowe
+swi084;Jak bardzo wierzysz w to, że ludzie są z natury dobrzy?;Światopoglądowe
+swi085;Czy uważasz, że historia powinna być nauczana w sposób bardziej krytyczny?;Światopoglądowe
+swi086;Na ile uważasz, że media kształtują nasze poglądy?;Światopoglądowe
+swi087;Czy zgadzasz się z tym, że praca powinna być gwarantowana przez państwo?;Światopoglądowe
+swi088;Jak bardzo wierzysz, że demokracja wymaga aktywnego udziału obywateli?;Światopoglądowe
+swi089;Czy uważasz, że młodzi ludzie powinni częściej angażować się społecznie?;Światopoglądowe
+swi090;Na ile zgadzasz się z tym, że granice wolności kończą się tam, gdzie zaczyna się krzywda drugiego człowieka?;Światopoglądowe
+zw001;Czy potrafisz zakochać się od pierwszego wejrzenia?;Związkowe
+zw002;Czy często rozczulasz się nad romantycznymi filmami?;Związkowe
+zw003;Czy potrafisz wybaczyć partnerowi dużą gafę?;Związkowe
+zw004;Czy mówisz wprost, gdy coś Ci nie pasuje w relacji?;Związkowe
+zw005;Czy łatwo przywiązujesz się do drugiej osoby?;Związkowe
+zw006;Czy lubisz wspólne gotowanie jako forma spędzania czasu?;Związkowe
+zw007;Czy potrafisz spać spokojnie po kłótni z bliską osobą?;Związkowe
+zw008;Czy potrafisz przyznać się do błędu w relacji?;Związkowe
+zw009;Czy zazdrość to dla Ciebie naturalny element związku?;Związkowe
+zw010;Czy jesteś typem romantyka?;Związkowe
+zw011;Czy czułość w relacji jest dla Ciebie ważniejsza niż rozmowa?;Związkowe
+zw012;Czy pamiętasz ważne daty w związku?;Związkowe
+zw013;Czy łatwo się obrażasz w relacjach?;Związkowe
+zw014;Czy wolisz spędzać czas sam na sam niż w towarzystwie znajomych?;Związkowe
+zw015;Czy potrafisz utrzymać relację na odległość?;Związkowe
+zw016;Czy lubisz planować wspólną przyszłość?;Związkowe
+zw017;Czy ważne jest dla Ciebie poczucie humoru w związku?;Związkowe
+zw018;Czy zdarza Ci się mówić coś, czego później żałujesz?;Związkowe
+zw019;Czy potrafisz rozpoznać emocje drugiej osoby bez słów?;Związkowe
+zw020;Czy lubisz robić niespodzianki partnerowi?;Związkowe
+zw021;Czy dla Ciebie ważniejsze są czyny niż słowa?;Związkowe
+zw022;Czy umiesz zostawić partnerowi przestrzeń dla siebie?;Związkowe
+zw023;Czy łatwo przyjmujesz krytykę od bliskiej osoby?;Związkowe
+zw024;Czy lubisz wspólne zdjęcia i pamiątki?;Związkowe
+zw025;Czy konflikty rozładowujesz żartem?;Związkowe
+zw026;Czy potrafisz uszczęśliwić drugą osobę drobiazgiem?;Związkowe
+zw027;Czy często wyrażasz uczucia słowami?;Związkowe
+zw028;Czy jesteś gotów pójść na kompromis?;Związkowe
+zw029;Czy potrafisz rozmawiać o trudnych tematach bez emocji?;Związkowe
+zw030;Czy czujesz się bezpiecznie, będąc sobą przy partnerze?;Związkowe
+zw031;Czy często potrzebujesz zapewnień o uczuciach?;Związkowe
+zw033;Czy potrafisz mówić o swoich potrzebach bez poczucia winy?;Związkowe
+zw037;Czy drobne nawyki partnera potrafią Cię irytować?;Związkowe
+zw038;Czy czujesz się doceniany w relacji?;Związkowe
+zw039;Czy lubisz dzielić się codziennymi szczegółami ze swoim partnerem?;Związkowe
+zw040;Czy Twoim zdaniem w relacji powinno się mówić wszystko?;Związkowe
+zw041;Czy ufasz swojej intuicji w relacjach?;Związkowe
+zw042;Czy potrafisz powiedzieć „nie” bliskiej osobie bez wyrzutów sumienia?;Związkowe
+zw043;Czy czujesz się komfortowo pokazując swoje słabości w związku?;Związkowe
+zw047;Czy wspólne marzenia cementują dla Ciebie relację?;Związkowe
+zw048;Czy czujesz się wysłuchany w związku?;Związkowe
+zw049;Czy lubisz wspólnie podejmować decyzje – nawet w błahych sprawach?;Związkowe
+zw050;Czy czujesz się odpowiedzialny za atmosferę w relacji?;Związkowe
+zw051;Czy starasz się unikać niepotrzebnych spięć?;Związkowe
+zw053;Czy masz potrzebę ciągłego kontaktu (np. wiadomości w ciągu dnia)?;Związkowe
+zw054;Czy wyrażanie wdzięczności jest dla Ciebie ważnym elementem relacji?;Związkowe
+zw056;Czy lubisz planować wspólny czas z wyprzedzeniem?;Związkowe
+zw057;Czy emocje partnera wpływają silnie na Twój nastrój?;Związkowe
+zw058;Czy potrafisz mówić o swoich granicach w związku?;Związkowe
+zw059;Czy bywasz niepewny swoich uczuć w dłuższej relacji?;Związkowe
+zw061;Czy w związku czujesz się swobodnie mówiąc o swoich marzeniach?;Związkowe
+zw062;Czy wspólne poczucie humoru jest dla Ciebie kluczowe?;Związkowe
+zw067;Czy wolisz rozwiązywać konflikty od razu niż odkładać je na później?;Związkowe
+zw068;Czy potrafisz dostrzegać różnice między Wami jako coś wartościowego?;Związkowe
+zw069;Czy Twoim zdaniem szczerość powinna być absolutna – nawet jeśli rani?;Związkowe
+zw070;Czy lubisz wspólne planowanie codziennych obowiązków?;Związkowe
+zw071;Czy potrafisz oddzielić własne emocje od emocji partnera?;Związkowe
+zw073;Czy czujesz się komfortowo rozmawiając o przeszłości partnera?;Związkowe
+zw075;Czy w związku ważniejsze są dla Ciebie emocje niż logika?;Związkowe
+zw077;Czy czujesz się doceniony za codzienne drobiazgi?;Związkowe
+zw079;Czy czujesz się wystarczająco słuchany w rozmowach?;Związkowe
+zw080;Czy miewasz trudność z proszeniem o pomoc w związku?;Związkowe
+zw081;Czy lubisz wracać do wspomnień z początku relacji?;Związkowe
+zw082;Czy potrafisz dzielić się swoimi obawami bez poczucia słabości?;Związkowe
+zw086;Czy wolisz rozmawiać o emocjach czy działać praktycznie?;Związkowe
+pk001;Czy często fantazjujesz o osobach, które znasz?;Pikantne
+pk002;Czy jesteś otwarty na próbowanie nowych rzeczy w łóżku?;Pikantne
+pk003;Czy czujesz się pewnie nago przy drugiej osobie?;Pikantne
+pk004;Czy ważna jest dla Ciebie chemia fizyczna w związku?;Pikantne
+pk005;Czy mówisz partnerowi o swoich fantazjach?;Pikantne
+pk006;Czy jesteś bardziej dominujący niż uległy?;Pikantne
+pk007;Czy potrafisz flirtować bez użycia słów?;Pikantne
+pk008;Czy lubisz budować napięcie zanim dojdzie do zbliżenia?;Pikantne
+pk009;Czy lubisz być zaskakiwany w sypialni?;Pikantne
+pk010;Czy inicjujesz zbliżenia częściej niż Twój partner?;Pikantne
+pk011;Czy lubisz rozmowy o seksie?;Pikantne
+pk012;Czy zdarza Ci się fantazjować w najmniej odpowiednim momencie?;Pikantne
+pk013;Czy lubisz grać rolę w zbliżeniach?;Pikantne
+pk014;Czy przywiązanie emocjonalne zwiększa Twoje pożądanie?;Pikantne
+pk015;Czy lubisz zaskakiwać partnera czymś pikantnym?;Pikantne
+pk016;Czy jesteś osobą bardziej zmysłową niż impulsywną?;Pikantne
+pk017;Czy ważna jest dla Ciebie estetyka w zbliżeniach?;Pikantne
+pk018;Czy zdarza Ci się odgrywać fantazję, o której marzyłeś?;Pikantne
+pk019;Czy uważasz, że rozmowa po wszystkim jest równie ważna jak samo zbliżenie?;Pikantne
+pk020;Czy lubisz, gdy partner przejmuje inicjatywę?;Pikantne
+pk021;Czy czujesz się swobodnie mówiąc „nie” nawet w intymnej sytuacji?;Pikantne
+pk022;Czy Twoja wyobraźnia erotyczna bywa zaskakująca nawet dla Ciebie?;Pikantne
+pk023;Czy lubisz eksperymentować z miejscem i czasem zbliżenia?;Pikantne
+pk024;Czy potrafisz szczerze powiedzieć partnerowi, co Ci się podoba?;Pikantne
+pk025;Czy jesteś otwarty na wspólne odkrywanie nowych fantazji?;Pikantne
+pk026;Czy potrafisz rozbudzić atmosferę jednym spojrzeniem?;Pikantne
+pk027;Czy lubisz pikantne żarty i aluzje w rozmowie?;Pikantne
+pk028;Czy bliskość fizyczna buduje dla Ciebie emocjonalną więź?;Pikantne
+pk029;Czy lubisz zmieniać dynamikę — raz być aktywnym, raz pasywnym?;Pikantne
+pk030;Czy Twoje życie intymne to dla Ciebie temat do śmiechu i luzu?;Pikantne
+pk031;Czy czujesz się komfortowo przejmując pełną kontrolę w sypialni?;Pikantne
+pk033;Czy potrafisz otwarcie mówić o swoich granicach w intymności?;Pikantne
+pk034;Czy zdarzyło Ci się fantazjować o kimś zupełnie nieoczekiwanym?;Pikantne
+pk035;Czy namiętność jest dla Ciebie ważniejsza niż technika?;Pikantne
+pk036;Czy lubisz grę wstępną dłuższą niż samo zbliżenie?;Pikantne
+pk037;Czy potrafisz zbudować napięcie jednym gestem?;Pikantne
+pk038;Czy jesteś otwarty na niestandardowe formy intymności?;Pikantne
+pk039;Czy lubisz przełamywać rutynę w sypialni?;Pikantne
+pk041;Czy Twoje fantazje bywają bardziej emocjonalne niż fizyczne?;Pikantne
+pk042;Czy wolisz prowadzić czy być prowadzonym w sytuacjach intymnych?;Pikantne
+pk043;Czy Twoje poczucie humoru łączy się z seksualnością?;Pikantne
+pk047;Czy lubisz zmysłowe niespodzianki?;Pikantne
+pk048;Czy Twoje podejście do seksu zmienia się w zależności od emocji?;Pikantne
+pk049;Czy jesteś otwarty na dzielenie się swoimi fantazjami w trakcie zbliżenia?;Pikantne
+pk050;Czy potrafisz się całkowicie zatracić w chwili?;Pikantne
+pk051;Czy bardziej pociąga Cię delikatność niż intensywność?;Pikantne
+pk052;Czy często to Ty zaczynasz flirt?;Pikantne
+pk055;Czy jesteś otwarty na zmysłowe gry i zabawy?;Pikantne
+pk058;Czy czujesz się pewnie inicjując rozmowy o seksie?;Pikantne
+pk059;Czy Twoja wyobraźnia erotyczna zmienia się z czasem?;Pikantne
+pk062;Czy kiedykolwiek czułeś pociąg do kogoś zupełnie „niedozwolonego”?;Pikantne
+pk066;Czy gra w wyobraźni jest dla Ciebie równie ważna jak realna bliskość?;Pikantne
+pk067;Czy lubisz przesyłać pikantne wiadomości?;Pikantne
+pk068;Czy cisza w zbliżeniu może być dla Ciebie bardziej zmysłowa niż słowa?;Pikantne
+pk069;Czy przywiązanie emocjonalne wpływa na Twoją odwagę w łóżku?;Pikantne
+pk072;Czy potrafisz wyczytać intencje z ciała drugiej osoby?;Pikantne
+pk073;Czy bycie zaskoczonym w sypialni sprawia Ci większą przyjemność niż planowanie?;Pikantne
+pk074;Czy Twoje fantazje są bardziej filmowe czy realistyczne?;Pikantne
+pk075;Czy potrafisz całkowicie się poddać drugiej osobie?;Pikantne
+pk076;Czy Twoje pragnienia są czasem trudne do wypowiedzenia?;Pikantne
+pk077;Czy flirtowanie w miejscu publicznym sprawia Ci dreszczyk emocji?;Pikantne
+pk079;Czy gra w dominację i uległość Cię intryguje?;Pikantne
+pk080;Czy czasem masz ochotę złamać wszystkie reguły?;Pikantne
+pk081;Czy więcej przyjemności czerpiesz z dawania niż z otrzymywania?;Pikantne
+pk083;Czy dotyk ma dla Ciebie większe znaczenie niż słowa w intymności?;Pikantne
+pk084;Czy Twoja zmysłowość jest bardziej subtelna niż odważna?;Pikantne
+pk085;Czy zdarza Ci się fantazjować o byciu całkowicie zdominowanym?;Pikantne
+pk086;Czy lubisz budować napięcie przez spojrzenia i niedopowiedzenia?;Pikantne
+pk089;Czy sytuacje „zakazane” bywają dla Ciebie bardziej ekscytujące?;Pikantne
+lz001;Czy zdarza Ci się zasnąć podczas oglądania filmu, który sam wybrałeś?;Luźne
+lz002;Czy myślisz, że poradziłbyś sobie w średniowieczu?;Luźne
+lz003;Czy zdarza Ci się rozmawiać z psem lub kotem jak z człowiekiem?;Luźne
+lz004;Czy byłbyś dobrym detektywem?;Luźne
+lz005;Czy potrafisz wyjść z domu bez sprawdzenia trzy razy, czy masz klucze?;Luźne
+lz006;Czy byłbyś w stanie przeżyć tydzień bez internetu?;Luźne
+lz007;Czy potrafisz zrobić obiad z tego, co akurat masz w lodówce?;Luźne
+lz008;Czy miałeś kiedyś fazę na kolekcjonowanie czegoś dziwnego?;Luźne
+lz009;Czy zdarza Ci się zapomnieć, po co wszedłeś do pokoju?;Luźne
+lz010;Czy byłbyś dobrym kosmitą udającym człowieka?;Luźne
+lz011;Czy lubisz planować rzeczy, których i tak nigdy nie zrealizujesz?;Luźne
+lz012;Czy uważasz, że masz talent aktorski?;Luźne
+lz013;Czy często śpiewasz w samochodzie lub pod prysznicem?;Luźne
+lz014;Czy kiedykolwiek udawałeś, że kogoś nie widzisz, żeby nie rozmawiać?;Luźne
+lz015;Czy masz na sumieniu coś dziwnego z dzieciństwa?;Luźne
+lz016;Czy lubisz robić notatki, których nigdy nie czytasz?;Luźne
+lz017;Czy zdarza Ci się kiedyś zjeść coś z podłogi?;Luźne
+lz018;Czy mógłbyś mieszkać w domku na drzewie?;Luźne
+lz019;Czy często gubisz rzeczy, które trzymasz w ręce?;Luźne
+lz020;Czy lubisz rozwiązywać quizy, które niczego nie wnoszą?;Luźne
+lz021;Czy byłbyś dobrym prowadzącym teleturniej?;Luźne
+lz022;Czy kiedykolwiek miałeś poważną rozmowę z lustrem?;Luźne
+lz023;Czy potrafisz się zgubić w miejscu, które dobrze znasz?;Luźne
+lz024;Czy kiedyś uczyłeś się czegoś tylko po to, żeby zaimponować komuś?;Luźne
+lz025;Czy jesteś w stanie wstać rano bez 5 drzemek?;Luźne
+lz026;Czy miałeś kiedyś wymyślonego przyjaciela?;Luźne
+lz027;Czy zdarza Ci się coś zepsuć i udawać, że to nie Ty?;Luźne
+lz028;Czy potrafisz wytrzymać cały dzień bez narzekania?;Luźne
+lz029;Czy byłbyś w stanie zamieszkać w małym domku na wsi bez technologii?;Luźne
+lz030;Czy kiedykolwiek chciałeś być bohaterem kreskówki?;Luźne
+lz033;Czy Twoje sny czasem mają więcej sensu niż rzeczywistość?;Luźne
+lz035;Czy jesteś w stanie wytrzymać dzień bez użycia internetu… przypadkiem?;Luźne
+lz036;Czy potrafisz prowadzić logiczną rozmowę tuż po obudzeniu?;Luźne
+lz037;Czy byłbyś w stanie mieszkać w lodówce (jeśli miałaby WiFi)?;Luźne
+lz038;Czy często nadajesz imiona przedmiotom w swoim domu?;Luźne
+lz040;Czy potrafisz poważnie potraktować quiz „Którą pizzą jesteś?”?;Luźne
+lz042;Czy mógłbyś zostać samotnym wilkiem… ale z dostawą jedzenia?;Luźne
+lz044;Czy potrafisz bez skrępowania tańczyć sam w pokoju?;Luźne
+lz046;Czy często gubisz się w myślach podczas najprostszych zadań?;Luźne
+lz048;Czy mógłbyś być szczęśliwy pracując jako tester łóżek?;Luźne
+lz058;Czy byłbyś w stanie wygrać zawody w robieniu najbardziej absurdalnej miny?;Luźne
+lz060;Czy potrafisz zasnąć w najdziwniejszym możliwym miejscu?;Luźne
+lz063;Czy umiesz przewidzieć pogodę tylko patrząc przez okno?;Luźne
+lz064;Czy zdarza Ci się mówić „zaraz wracam” i wrócić za godzinę?;Luźne
+lz065;Czy masz w sobie coś z leniwca... nawet gdy próbujesz być produktywny?;Luźne
+lz067;Czy kiedykolwiek próbowałeś telepatycznie przyciągnąć autobus?;Luźne
+lz069;Czy lubisz sprawdzać lodówkę bez zamiaru niczego z niej wyjąć?;Luźne
+lz070;Czy potrafisz myśleć intensywnie o jednej rzeczy i zapomnieć o niej po minucie?;Luźne
+lz073;Czy masz specjalną „pozycję do scrollowania telefonu”?;Luźne
+lz075;Czy lubisz myśleć o sobie jako o głównym bohaterze życia?;Luźne
+lz076;Czy potrafisz włączyć film i zasnąć przed końcem czołówki?;Luźne
+lz077;Czy w dzieciństwie próbowałeś używać siły woli jak Jedi?;Luźne
+lz080;Czy jesteś w stanie zapamiętać trzy rzeczy... jeśli zapiszesz je w pięciu miejscach?;Luźne
+lz081;Czy masz nawyk tworzenia playlist na każdą możliwą okazję?;Luźne
+lz082;Czy potrafisz zorganizować cały dzień wokół przerwy na kawę?;Luźne
+lz083;Czy kiedykolwiek zacząłeś porządkować coś i skończyło się to wspominkami?;Luźne
+lz086;Czy potrafisz zniknąć z imprezy bez pożegnania?;Luźne
+lz087;Czy kiedykolwiek rozważałeś zamieszkanie w Ikei?;Luźne
+lz089;Czy masz ulubiony dźwięk... który właściwie Cię irytuje?;Luźne
+lz090;Czy zdarza Ci się rozmawiać z roślinami w mieszkaniu?;Luźne
+ps001;Czy lubiłeś odpowiadać przy tablicy w szkole?;Przeszłość
+ps002;Czy często chodziłeś na wagary?;Przeszłość
+ps003;Czy byłeś bardziej niejadkiem niż wszystkożercą jako dziecko?;Przeszłość
+ps004;Czy miałeś kiedyś swojego ulubionego pluszaka, bez którego nie zasypiałeś?;Przeszłość
+ps005;Czy zdarza Ci się ukrywać słodycze przed rodzicami?;Przeszłość
+ps006;Czy często sięgałeś po pomoc rodziców przy odrabianiu lekcji?;Przeszłość
+ps007;Czy miałeś w dzieciństwie przyjaciół, z którymi spędzałeś całe dnie?;Przeszłość
+ps008;Czy byłeś typem dziecka, które bało się ciemności?;Przeszłość
+ps009;Czy zdarzyło Ci się zrobić coś zakazanego, czego nie przyznałeś się rodzicom?;Przeszłość
+ps010;Czy często marzyłeś o byciu kimś wyjątkowym lub sławnym?;Przeszłość
+ps011;Czy miałeś ulubioną grę lub zabawkę, z którą nie rozstawałeś się nigdy?;Przeszłość
+ps012;Czy lubiłeś brać udział w szkolnych przedstawieniach lub konkursach?;Przeszłość
+ps013;Czy zdarza Ci się chować przed rodzicami coś, co chciałeś mieć tylko dla siebie?;Przeszłość
+ps014;Czy byłeś bardziej spokojnym czy rozbrykanym dzieckiem?;Przeszłość
+ps015;Czy często się śmiałeś z dowcipów kolegów w szkole?;Przeszłość
+ps016;Czy miałeś swój sekret lub tajne miejsce, do którego chodziłeś?;Przeszłość
+ps017;Czy brałeś udział w jakimś szkolnym sporcie lub zajęciach dodatkowych?;Przeszłość
+ps018;Czy pamiętasz swoją pierwszą zakochaną osobę?;Przeszłość
+ps019;Czy często dostawałeś uwagę od nauczycieli za psoty?;Przeszłość
+ps020;Czy miałeś jakieś zwierzątko w dzieciństwie?;Przeszłość
+ps021;Czy lubiłeś spędzać wakacje na wsi lub u dziadków?;Przeszłość
+ps022;Czy pamiętasz swoją pierwszą wycieczkę szkolną?;Przeszłość
+ps023;Czy miałeś ulubioną książkę lub bajkę, do której często wracałeś?;Przeszłość
+ps024;Czy miałeś kiedykolwiek problem z nauczycielem lub wychowawcą?;Przeszłość
+ps025;Czy potrafiłeś dobrze się bawić na szkolnych imprezach?;Przeszłość
+ps026;Czy często pomagałeś rodzicom w domu jako dziecko?;Przeszłość
+ps027;Czy miałeś kiedyś problem z wczesnym wstawaniem do szkoły?;Przeszłość
+ps028;Czy pamiętasz swój pierwszy dzień w nowej szkole?;Przeszłość
+ps029;Czy byłeś osobą, która łatwo nawiązywała nowe znajomości?;Przeszłość
+ps030;Czy często słuchałeś muzyki lub oglądałeś filmy z dzieciństwa?;Przeszłość
+ps031;Jak często jako dziecko bawiłeś się na dworze?;Przeszłość
+ps032;Na ile lubiłeś chodzić do szkoły?;Przeszłość
+ps033;Jak bardzo pamiętasz swój pierwszy dzień w szkole?;Przeszłość
+ps034;Jak często zdarzało Ci się odrabiać lekcje na ostatnią chwilę?;Przeszłość
+ps035;Jak bardzo lubiłeś swoje ulubione zabawki?;Przeszłość
+ps036;Jak często miałeś okazję spotykać się z przyjaciółmi po szkole?;Przeszłość
+ps037;Jak bardzo pamiętasz szkolne wycieczki?;Przeszłość
+ps038;Na ile byłeś zadowolony ze swojego zachowania w dzieciństwie?;Przeszłość
+ps039;Jak często pomagałeś rodzicom w domu?;Przeszłość
+ps040;Jak bardzo lubiłeś swoje ulubione zajęcia pozalekcyjne?;Przeszłość
+ps041;Jak często się śmiałeś z kolegów lub koleżanek w szkole?;Przeszłość
+ps042;Jak bardzo pamiętasz swoje dziecięce marzenia?;Przeszłość
+ps043;Na ile często czułeś się pewnie podczas wystąpień publicznych?;Przeszłość
+ps044;Jak bardzo lubiłeś czytać książki jako dziecko?;Przeszłość
+ps045;Jak często miałeś problemy z wstawaniem do szkoły?;Przeszłość
+ps046;Jak bardzo lubiłeś spędzać czas na podwórku?;Przeszłość
+ps047;Na ile często brałeś udział w zabawach z rodzeństwem lub kuzynami?;Przeszłość
+ps048;Jak bardzo pamiętasz swoje ulubione smaki dzieciństwa?;Przeszłość
+ps049;Jak często zdarzało Ci się rozrabiać w szkole?;Przeszłość
+ps050;Na ile lubiłeś swoje pierwsze wakacje bez rodziców?;Przeszłość
+ps051;Jak często marzyłeś o dorosłym życiu?;Przeszłość
+ps052;Jak bardzo lubiłeś szkolne przerwy?;Przeszłość
+ps053;Na ile często czułeś się zmotywowany do nauki?;Przeszłość
+ps054;Jak bardzo bałeś się ciemności lub innych dziecięcych lęków?;Przeszłość
+ps055;Jak często zdarzało Ci się śpiewać lub tańczyć jako dziecko?;Przeszłość
+ps056;Na ile lubiłeś pomagać innym dzieciom?;Przeszłość
+ps057;Jak bardzo pamiętasz swoje ulubione zabawy z dzieciństwa?;Przeszłość
+ps058;Jak często chodziłeś na zajęcia dodatkowe?;Przeszłość
+ps059;Na ile byłeś zadowolony z relacji z kolegami lub koleżankami?;Przeszłość
+ps060;Jak bardzo lubiłeś oglądać kreskówki lub bajki?;Przeszłość
+ps061;Jak często jako dziecko sięgałeś po słodycze?;Przeszłość
+ps062;Jak bardzo lubiłeś zajęcia plastyczne w szkole?;Przeszłość
+ps063;Na ile pamiętasz swoje pierwsze przyjaźnie?;Przeszłość
+ps064;Jak często brałeś udział w zabawach zespołowych?;Przeszłość
+ps065;Jak bardzo byłeś samodzielny jako dziecko?;Przeszłość
+ps066;Na ile często pomagałeś w domu swoim rodzeństwu?;Przeszłość
+ps067;Jak bardzo lubiłeś oglądać filmy lub bajki?;Przeszłość
+ps068;Jak często sprawiałeś niespodzianki bliskim?;Przeszłość
+ps069;Na ile pamiętasz swoje dziecięce przygody na podwórku?;Przeszłość
+ps070;Jak bardzo ceniłeś sobie wolny czas bez obowiązków?;Przeszłość
+ps071;Jak często odwiedzałeś dziadków lub dalszą rodzinę?;Przeszłość
+ps072;Na ile lubiłeś pomagać nauczycielom w klasie?;Przeszłość
+ps073;Jak często zdarzało Ci się być kapitanem drużyny lub grupy?;Przeszłość
+ps074;Jak bardzo pamiętasz swoje dziecięce sukcesy?;Przeszłość
+ps075;Na ile byłeś zadowolony ze swoich wyników w nauce?;Przeszłość
+ps076;Jak często brałeś udział w zabawach ruchowych lub sportowych?;Przeszłość
+ps077;Jak bardzo lubiłeś pomagać innym dzieciom w nauce?;Przeszłość
+ps078;Na ile często rozwiązywałeś zadania lub łamigłówki?;Przeszłość
+ps079;Jak bardzo byłeś ciekawski wobec świata jako dziecko?;Przeszłość
+ps080;Jak często zdarzało Ci się śpiewać na głos w samotności?;Przeszłość
+ps081;Na ile lubiłeś spędzać czas z rodzeństwem?;Przeszłość
+ps082;Jak bardzo pamiętasz swoje dziecięce marzenia o przyszłości?;Przeszłość
+ps083;Jak często potrafiłeś pocieszyć kolegę lub koleżankę?;Przeszłość
+ps084;Na ile lubiłeś uczyć się nowych rzeczy poza szkołą?;Przeszłość
+ps085;Jak często miałeś ochotę na psoty i zabawy bez kontroli?;Przeszłość
+ps086;Jak bardzo pamiętasz swoje pierwsze wakacje nad morzem lub w górach?;Przeszłość
+ps087;Na ile często uczestniczyłeś w szkolnych wydarzeniach i imprezach?;Przeszłość
+ps088;Jak bardzo byłeś zadowolony z relacji z nauczycielami?;Przeszłość
+ps089;Jak często jako dziecko myślałeś o swoich ulubionych bohaterach z bajek?;Przeszłość
+ps090;Na ile lubiłeś uczyć się poprzez zabawę?;Przeszłość
+wol001;Wolisz chodzić wolno czy szybko?;Wolisz
+wol002;Wolisz pikantne czy łagodne jedzenie?;Wolisz
+wol003;Wolisz lato czy zimę?;Wolisz
+wol004;Wolisz kawę czy herbatę?;Wolisz
+wol005;Wolisz książkę czy film?;Wolisz
+wol006;Wolisz spędzać czas w mieście czy na wsi?;Wolisz
+wol007;Wolisz oglądać komedie czy thrillery?;Wolisz
+wol008;Wolisz plażę czy góry?;Wolisz
+wol009;Wolisz wstać bardzo wcześnie czy zostać do późna?;Wolisz
+wol010;Wolisz mieć dużo znajomych czy kilku bliskich przyjaciół?;Wolisz
+wol011;Wolisz słuchać muzyki głośno czy cicho?;Wolisz
+wol012;Wolisz spędzać wakacje aktywnie czy leniuchując?;Wolisz
+wol013;Wolisz oglądać seriale czy filmy?;Wolisz
+wol014;Wolisz poranki czy wieczory?;Wolisz
+wol015;Wolisz zwierzęta domowe czy egzotyczne?;Wolisz
+wol016;Wolisz słodkie czy słone przekąski?;Wolisz
+wol017;Wolisz czytać książki papierowe czy e-booki?;Wolisz
+wol018;Wolisz robić zdjęcia czy oglądać zdjęcia?;Wolisz
+wol019;Wolisz być kierowcą czy pasażerem?;Wolisz
+wol020;Wolisz rozmawiać przez telefon czy pisać wiadomości?;Wolisz
+wol021;Wolisz imprezę z dużą ilością ludzi czy kameralne spotkanie?;Wolisz
+wol022;Wolisz gotować sam czy jeść na mieście?;Wolisz
+wol023;Wolisz oglądać sport czy uprawiać sport?;Wolisz
+wol024;Wolisz słuchać muzyki klasycznej czy rockowej?;Wolisz
+wol025;Wolisz mieć 1 godzinę więcej snu czy 1 godzinę więcej wolnego czasu?;Wolisz
+wol026;Wolisz wziąć prysznic czy kąpiel?;Wolisz
+wol027;Wolisz prowadzić samochód czy podróżować pociągiem?;Wolisz
+wol028;Wolisz mieć super pamięć czy super szybkość?;Wolisz
+wol029;Wolisz rozwiązywać krzyżówki czy sudoku?;Wolisz
+wol030;Wolisz spędzać czas na zewnątrz czy w domu?;Wolisz
+wol031;Wolisz oglądać filmy w domu czy w kinie?;Wolisz
+wol032;Wolisz ciepłe dni czy chłodne wieczory?;Wolisz
+wol033;Wolisz weekendy pełne wydarzeń czy leniwe dni?;Wolisz
+wol034;Wolisz spacerować po lesie czy nad morzem?;Wolisz
+wol035;Wolisz mieć psa czy kota?;Wolisz
+wol036;Wolisz chodzić na siłownię czy biegać na świeżym powietrzu?;Wolisz
+wol037;Wolisz grać w gry planszowe czy komputerowe?;Wolisz
+wol038;Wolisz jeść na słodko czy na słono?;Wolisz
+wol039;Wolisz planować wszystko czy improwizować?;Wolisz
+wol040;Wolisz czytać książkę wieczorem czy rano?;Wolisz
+wol041;Wolisz oglądać filmy komediowe czy dramaty?;Wolisz
+wol042;Wolisz ubierać się kolorowo czy stonowanie?;Wolisz
+wol043;Wolisz rozmawiać z dużą grupą ludzi czy z jedną osobą?;Wolisz
+wol044;Wolisz długie rozmowy czy krótkie i treściwe?;Wolisz
+wol045;Wolisz wakacje w górach czy nad jeziorem?;Wolisz
+wol046;Wolisz używać telefonu czy komputera do pracy?;Wolisz
+wol048;Wolisz nosić ubrania casual czy eleganckie?;Wolisz
+wol049;Wolisz słuchać muzyki na żywo czy z nagrania?;Wolisz
+wol050;Wolisz wstawać bez budzika czy budzić się po alarmie?;Wolisz
+wol051;Wolisz grać na instrumencie czy śpiewać?;Wolisz
+wol052;Wolisz oglądać filmy z napisami czy dubbingiem?;Wolisz
+wol053;Wolisz spotkania w dużym gronie czy kameralne przyjęcia?;Wolisz
+wol054;Wolisz czytać kryminały czy fantastykę?;Wolisz
+wol055;Wolisz spędzać czas aktywnie na dworze czy w domu z książką?;Wolisz
+wol056;Wolisz mieć dużo znajomych czy kilku bliskich przyjaciół?;Wolisz
+wol057;Wolisz jeść śniadanie na słodko czy na słono?;Wolisz
+wol058;Wolisz pisać listy czy wiadomości SMS?;Wolisz
+wol059;Wolisz świętować urodziny w domu czy na wyjeździe?;Wolisz
+wol060;Wolisz oglądać seriale czy pojedyncze filmy?;Wolisz
+wol061;Wolisz spędzać wieczory przy grach planszowych czy oglądając filmy?;Wolisz
+wol062;Wolisz uczyć się nowych rzeczy samodzielnie czy w grupie?;Wolisz
+wol063;Wolisz pić wodę gazowaną czy niegazowaną?;Wolisz
+wol064;Wolisz lato pełne słońca czy lekki deszcz?;Wolisz
+wol065;Wolisz chodzić do kina na nowe premiery czy czekać na premierę w domu?;Wolisz
+wol066;Wolisz mieć stały plan dnia czy działać spontanicznie?;Wolisz
+wol067;Wolisz nosić jasne czy ciemne ubrania?;Wolisz
+wol068;Wolisz spędzać weekend w domu czy na wycieczce?;Wolisz
+wol069;Wolisz być mistrzem jednego czy mieć szeroką wiedzę o wielu rzeczach?;Wolisz
+wol070;Wolisz słuchać muzyki na słuchawkach czy na głośnikach?;Wolisz
+wol071;Wolisz robić zdjęcia czy być na nich fotografowanym?;Wolisz
+wol072;Wolisz jeść śniadanie w pośpiechu czy wolno i spokojnie?;Wolisz
+wol073;Wolisz mieć dużo energii rano czy wieczorem?;Wolisz
+wol074;Wolisz mieszkać blisko centrum miasta czy na jego obrzeżach?;Wolisz
+wol075;Wolisz spędzać czas z dużą rodziną czy z bliskimi przyjaciółmi?;Wolisz
+wol076;Wolisz oglądać filmy z przyjaciółmi czy samotnie?;Wolisz
+wol077;Wolisz spędzać wolny czas w ciszy czy w gwarze ludzi?;Wolisz
+wol078;Wolisz jeść fast food czy domowe posiłki?;Wolisz
+wol079;Wolisz biegać rano czy wieczorem?;Wolisz
+wol080;Wolisz pracować w zespole czy samodzielnie?;Wolisz
+wol081;Wolisz czytać książki papierowe czy słuchać audiobooków?;Wolisz
+wol082;Wolisz oglądać filmy science fiction czy fantasy?;Wolisz
+wol083;Wolisz podróżować samolotem czy samochodem?;Wolisz
+wol084;Wolisz słuchać muzyki pop czy rock?;Wolisz
+wol085;Wolisz mieć dużo obowiązków czy dużo wolnego czasu?;Wolisz
+wol086;Wolisz nosić okulary czy soczewki kontaktowe?;Wolisz
+wol087;Wolisz oglądać mecze piłki nożnej czy siatkówki?;Wolisz
+wol088;Wolisz jeść owoce czy warzywa?;Wolisz
+wol089;Wolisz spędzać święta w domu czy na wyjeździe?;Wolisz
+wol090;Wolisz czytać książki kryminalne czy romanse?;Wolisz
+dyl001;Wolisz mieć zawsze dziwne przebłyski geniuszu czy nigdy nie zapominać niczego ważnego?;Dylematy
+dyl002;Wolisz mówić tylko w rymach czy tylko śpiewać?;Dylematy
+dyl003;Wolisz mieć w kieszeni zawsze 10 groszy czy 5 cukierków?;Dylematy
+dyl004;Wolisz codziennie jeść pizzę czy lody przez miesiąc?;Dylematy
+dyl005;Wolisz chodzić do pracy w piżamie czy na spotkania w stroju kąpielowym?;Dylematy
+dyl006;Wolisz mieć głos jak kaczka czy chodzić jak pingwin?;Dylematy
+dyl007;Wolisz, żeby każdy słyszał Twoje myśli czy żebyś Ty słyszał myśli wszystkich?;Dylematy
+dyl008;Wolisz mieć zawsze zakręcony kabel słuchawek czy nigdy nie móc znaleźć ładowarki?;Dylematy
+dyl009;Wolisz zostać bohaterem filmu akcji czy komedii romantycznej?;Dylematy
+dyl010;Wolisz, żeby Twój telefon miał zawsze 1% baterii czy był zawsze wyciszony?;Dylematy
+dyl011;Wolisz mieć super moc teleportacji, ale tylko do łazienki, czy umieć latać, ale tylko na 1 metr?;Dylematy
+dyl012;Wolisz jeść tylko słodkie przez tydzień czy tylko słone?;Dylematy
+dyl013;Wolisz mówić z akcentem każdego, kto do Ciebie mówi, czy powtarzać wszystko, co ktoś powie?;Dylematy
+dyl014;Wolisz mieć gigantyczne stopy czy malutkie ręce?;Dylematy
+dyl015;Wolisz zawsze spóźniać się 5 minut czy zawsze przychodzić 5 minut za wcześnie?;Dylematy
+dyl016;Wolisz żyć bez muzyki czy bez filmów?;Dylematy
+dyl017;Wolisz, żeby każdy znał Twoje hasło do telefonu czy wszystkie Twoje ulubione miejsca?;Dylematy
+dyl018;Wolisz nie móc kłamać czy nie móc mówić prawdy?;Dylematy
+dyl019;Wolisz mieć na stałe wąsy czy mieć włosy tylko na jednej stronie głowy?;Dylematy
+dyl020;Wolisz nigdy nie móc używać emotikonów czy nigdy nie móc używać memów?;Dylematy
+dyl021;Wolisz mieć super pamięć do liczb czy do twarzy?;Dylematy
+dyl022;Wolisz codziennie dostawać list od nieznajomego czy nigdy nie dostawać żadnej wiadomości?;Dylematy
+dyl023;Wolisz przez cały dzień mówić szeptem czy krzyczeć?;Dylematy
+dyl024;Wolisz być najzabawniejszą osobą w grupie czy najbardziej poważną?;Dylematy
+dyl025;Wolisz jeść tylko jedną potrawę przez resztę życia czy nigdy nie jeść swojego ulubionego dania?;Dylematy
+dyl026;Wolisz mieć zawsze idealnie ułożone włosy czy zawsze idealnie czyste buty?;Dylematy
+dyl027;Wolisz mieszkać na księżycu czy pod wodą?;Dylematy
+dyl028;Wolisz mieć zwierzę, które mówi czy lata jak ptak?;Dylematy
+dyl029;Wolisz mieć super siłę, ale być ślepy czy widzieć perfekcyjnie, ale być słaby?;Dylematy
+dyl030;Wolisz zawsze zapominać imiona czy twarze?;Dylematy
+dyl032;Wolisz móc zmieniać swój wygląd codziennie czy zmieniać głos na dowolny?;Dylematy
+dyl033;Wolisz mieć możliwość cofania czasu o 5 minut raz dziennie czy przewidywania przyszłości na 10 sekund?;Dylematy
+dyl034;Wolisz zawsze być o 10 minut spóźniony czy o 10 minut za wcześnie?;Dylematy
+dyl035;Wolisz jeść tylko potrawy o jednej barwie czy o jednej konsystencji?;Dylematy
+dyl036;Wolisz nigdy nie odczuwać głodu czy nigdy nie odczuwać zmęczenia?;Dylematy
+dyl042;Wolisz nigdy nie słyszeć muzyki czy nigdy nie widzieć filmów?;Dylematy
+dyl047;Wolisz mieć nieograniczony dostęp do książek czy do filmów?;Dylematy
+dyl048;Wolisz zawsze zapominać twarze znajomych czy ich imiona?;Dylematy
+dyl050;Wolisz mieć wszystkie swoje wspomnienia w kolorze sepii czy czarno-białe?;Dylematy
+dyl053;Wolisz móc rozmawiać tylko za pomocą rysunków czy tylko za pomocą muzyki?;Dylematy
+dyl054;Wolisz mieć dom na drzewie w lesie czy na plaży?;Dylematy
+dyl056;Wolisz mieszkać w przyszłości czy w przeszłości?;Dylematy
+dyl058;Wolisz żyć w świecie bez internetu czy bez książek?;Dylematy
+dyl059;Wolisz mieć talent do śpiewania czy do tańca?;Dylematy
+dyl061;Wolisz mieć zdolność rozmawiania z roślinami czy z przedmiotami?;Dylematy
+dyl062;Wolisz codziennie budzić się w nowym mieście czy zawsze w tym samym miejscu?;Dylematy
+dyl063;Wolisz mieć super moc zmiany koloru włosów na życzenie czy zmiany koloru oczu?;Dylematy
+dyl064;Wolisz być bohaterem książki czy filmu?;Dylematy
+dyl065;Wolisz jeść tylko słodycze przez miesiąc czy tylko warzywa?;Dylematy
+dyl066;Wolisz nigdy nie zapomnieć dat urodzin czy imion osób?;Dylematy
+dyl067;Wolisz mieć zawsze idealnie posprzątany pokój czy idealnie ułożoną garderobę?;Dylematy
+dyl068;Wolisz móc cofnąć jedną rozmowę z przeszłości czy przewidzieć wynik jednej przyszłej rozmowy?;Dylematy
+dyl069;Wolisz mieć nieskończony dostęp do swojej ulubionej muzyki czy ulubionych filmów?;Dylematy
+dyl070;Wolisz zawsze trafiać do celu podczas rzutu czy mieć niesamowitą pamięć do twarzy?;Dylematy
+dyl071;Wolisz móc rozwiązać każdy problem matematyczny czy znać odpowiedź na każde pytanie dotyczące historii?;Dylematy
+dyl072;Wolisz mieć możliwość zmiany pogody na jeden dzień czy zmiany swojego wyglądu na ten dzień?;Dylematy
+dyl074;Wolisz nigdy nie mieć kaca czy nigdy nie odczuwać zmęczenia?;Dylematy
+dyl077;Wolisz codziennie spotykać nowe osoby czy spędzać czas tylko z bliskimi?;Dylematy
+dyl078;Wolisz mieć zawsze idealnie dopasowane ubrania czy zawsze modną fryzurę?;Dylematy
+dyl079;Wolisz móc jeździć na rowerze po wodzie czy latać na rowerze?;Dylematy
+dyl080;Wolisz mieć talent do gotowania czy do majsterkowania?;Dylematy
+dyl082;Wolisz mieć umiejętność czytania książek w sekundę czy nauki nowych języków w godzinę?;Dylematy
+dyl084;Wolisz codziennie jeść tylko jedną ulubioną potrawę czy każdego dnia próbować coś zupełnie nowego?;Dylematy
+dyl086;Wolisz być mistrzem gier komputerowych czy sportów drużynowych?;Dylematy
+dyl088;Wolisz żyć w świecie bez kolorów czy bez dźwięków?;Dylematy
+dyl089;Wolisz mieć nieskończoną ilość baterii w telefonie czy darmowy dostęp do internetu gdziekolwiek?;Dylematy
+dyl090;Wolisz spędzić tydzień w całkowitej ciszy czy w ciągłym hałasie?;Dylematy
