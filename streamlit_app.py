@@ -120,20 +120,34 @@ def draw_question():
 # ------------------------------
 # INTERFEJS
 # ------------------------------
-st.title("🎲 Gra towarzyska – Spectrum")
+if st.session_state.step in ["setup", "categories", "end"]:
+    st.title("🎲 Spectrum")
+
 
 if st.session_state.step == "setup":
     st.header("🎭 Wprowadź imiona graczy (tylko 3)")
+
+    player_names = []
     for i in range(3):
-        st.session_state.players[i] = st.text_input(f"Gracz {i + 1}", st.session_state.players[i])
-    if all(st.session_state.players):
-        st.session_state.scores = {name: 0 for name in st.session_state.players}
+        name = st.text_input(f"Gracz {i + 1}", value=st.session_state.players[i])
+        player_names.append(name.strip())
+
+    if all(player_names):
         if st.button("Dalej"):
+            # Zapisz graczy do sesji
+            st.session_state.players = player_names
+            st.session_state.all_players = player_names.copy()
+            st.session_state.scores = {name: 0 for name in player_names}
+
+            # Utwórz plik wyników
             filename = find_new_results_filename()
-            create_results_file(filename, st.session_state.players)
+            create_results_file(filename, player_names)
             st.session_state.results_filename = filename
+
+            # Przejdź dalej
             st.session_state.step = "categories"
             st.rerun()
+
 
 elif st.session_state.step == "categories":
     st.header("📚 Wybierz kategorie pytań")
@@ -147,9 +161,11 @@ elif st.session_state.step == "categories":
         if cat in st.session_state.category_selection:
             if col.button(f"✅ {cat}", key=f"cat_{cat}"):
                 st.session_state.category_selection.remove(cat)
+                st.rerun()  # <--- tutaj odświeżenie po kliknięciu odznaczenia
         else:
             if col.button(cat, key=f"cat_{cat}"):
                 st.session_state.category_selection.add(cat)
+                st.rerun()  # <--- tutaj odświeżenie po kliknięciu zaznaczenia
 
     st.markdown(f"**Wybrane kategorie:** {', '.join(st.session_state.category_selection) or 'Brak'}")
 
@@ -159,7 +175,41 @@ elif st.session_state.step == "categories":
             st.session_state.step = "game"
             st.rerun()
 
+
 elif st.session_state.step == "game":
+
+    # Upewnij się, że wszyscy gracze mają wpisy w scores
+    if "scores" not in st.session_state:
+        st.session_state.scores = {}
+
+    if "all_players" not in st.session_state:
+        st.session_state.all_players = st.session_state.players.copy()
+
+    for player in st.session_state.all_players:
+        if player not in st.session_state.scores:
+            st.session_state.scores[player] = 0
+
+    # Sekwencja ról na kolejne rundy
+    round_sequence = [
+        (0, 2, 1),
+        (1, 2, 0),
+        (2, 1, 0),
+        (0, 1, 2),
+        (1, 0, 2),
+        (2, 0, 1),
+    ]
+
+    # Zapisz pierwotną listę graczy tylko raz
+    if "all_players" not in st.session_state:
+        st.session_state.all_players = st.session_state.players.copy()
+
+    # Wyznacz rolę w aktualnej rundzie
+    round_index = st.session_state.questions_asked % len(round_sequence)
+    role_indices = round_sequence[round_index]
+    responder = st.session_state.all_players[role_indices[0]]
+    guesser = st.session_state.all_players[role_indices[1]]
+    direction_guesser = st.session_state.all_players[role_indices[2]]
+    players = [responder, guesser, direction_guesser]
 
     if st.session_state.ask_continue:
         st.header("🔄 Czy chcesz kontynuować grę?")
@@ -190,11 +240,10 @@ elif st.session_state.step == "game":
         st.subheader(f"🧠 Pytanie {current_question_number} – kategoria: *{q['categories'][0]}*")
         st.write(q["text"])
 
-        players = st.session_state.players
-        st.markdown(f"Odpowiada: **{players[0]}** &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Zgaduje: **{players[1]}**", unsafe_allow_html=True)
+        st.markdown(f"Odpowiada: **{responder}** &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Zgaduje: **{guesser}**", unsafe_allow_html=True)
 
         # --- GUESSER POINTS BUTTONS ---
-        st.markdown(f"**Ile punktów zdobywa {players[1]}?**")
+        st.markdown(f"**Ile punktów zdobywa {guesser}?**")
         if "guesser_points" not in st.session_state:
             st.session_state.guesser_points = None
 
@@ -206,7 +255,7 @@ elif st.session_state.step == "game":
                 st.rerun()
 
         # --- EXTRA POINT BUTTONS ---
-        st.markdown(f"**Czy {players[2]} zdobywa dodatkowy punkt?**")
+        st.markdown(f"**Czy {direction_guesser} zdobywa dodatkowy punkt?**")
         if "extra_point" not in st.session_state:
             st.session_state.extra_point = None
 
@@ -228,8 +277,8 @@ elif st.session_state.step == "game":
                 st.session_state.extra_point = None
 
                 # Liczenie punktów globalnych (sumy)
-                st.session_state.scores[players[1]] += guesser_points
-                st.session_state.scores[players[2]] += extra_point
+                st.session_state.scores[guesser] += guesser_points
+                st.session_state.scores[direction_guesser] += extra_point
                 bonus = 0
                 if guesser_points in [2, 3]:
                     bonus += 1
@@ -237,13 +286,13 @@ elif st.session_state.step == "game":
                     bonus += 2
                 if extra_point == 1:
                     bonus += 1
-                st.session_state.scores[players[0]] += bonus
+                st.session_state.scores[responder] += bonus
 
                 # Punkty zdobyte TYLKO W TEJ TURZE (do zapisu)
                 points_this_round = {
-                    players[0]: bonus,
-                    players[1]: guesser_points,
-                    players[2]: extra_point
+                    responder: bonus,
+                    guesser: guesser_points,
+                    direction_guesser: extra_point
                 }
 
                 # Zapis do pliku CSV
@@ -252,17 +301,16 @@ elif st.session_state.step == "game":
                         "r_pytania": current_question_number,
                         "kategoria": q['categories'][0],
                         "pytanie": q['text'],
-                        "odpowiada": players[0],
-                        "zgaduje": players[1],
-                        "dodatkowo": players[2],
-                        players[0]: points_this_round[players[0]],
-                        players[1]: points_this_round[players[1]],
-                        players[2]: points_this_round[players[2]],
+                        "odpowiada": responder,
+                        "zgaduje": guesser,
+                        "dodatkowo": direction_guesser,
+                        responder: points_this_round[responder],
+                        guesser: points_this_round[guesser],
+                        direction_guesser: points_this_round[direction_guesser],
                     }
                     append_result_to_file(st.session_state.results_filename, data_to_save)
 
-                # Kolejność graczy
-                st.session_state.players = [players[1], players[2], players[0]]
+                # Zwiększ licznik pytań
                 st.session_state.questions_asked += 1
 
                 # Co 6 pytań – pytaj o kontynuację
@@ -273,6 +321,7 @@ elif st.session_state.step == "game":
                     st.session_state.current_question = draw_question()
 
                 st.rerun()
+
 
 elif st.session_state.step == "end":
     total_questions = st.session_state.questions_asked
@@ -295,16 +344,22 @@ elif st.session_state.step == "end":
 
     with col2:
         if st.button("🎮 Zagraj ponownie"):
-            for key in defaults:
-                st.session_state[key] = defaults[key]
+            for key, value in defaults.items():
+                if isinstance(value, set):
+                    st.session_state[key] = value.copy()
+                elif isinstance(value, list):
+                    st.session_state[key] = value[:]
+                else:
+                    st.session_state[key] = value
+            if "all_players" in st.session_state:
+                del st.session_state["all_players"]
+            if "category_selection" in st.session_state:
+                del st.session_state["category_selection"]
             st.rerun()
 
     # --- Generowanie pliku Excel do pobrania ---
     if st.session_state.results_filename:
-        # Wczytaj CSV do DataFrame (z zachowaniem polskich znaków)
         df_results = pd.read_csv(st.session_state.results_filename, encoding='utf-8')
-
-        # Zapisz do pliku Excel w pamięci
         output = io.BytesIO()
         with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
             df_results.to_excel(writer, index=False, sheet_name='Wyniki')
