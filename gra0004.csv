@@ -1,0 +1,7 @@
+r_pytania,kategoria,pytanie,odpowiada,zgaduje,dodatkowo,sd,df,saas
+1,Wolisz,Wolisz chodzić wolno czy szybko?,sd,df,saas,2,2,1
+2,Przeszłość,"Czy miałeś ulubioną grę lub zabawkę, z którą nie rozstawałeś się nigdy?",df,saas,sd,1,3,0
+3,Wolisz,Wolisz gotować sam czy jeść na mieście?,saas,sd,df,0,0,0
+4,Śmieszne,"Czy potrafisz zgubić się w sklepie, który znasz od lat?",sd,df,saas,0,0,0
+5,Śmieszne,"Czy potrafisz zapomnieć, co robiłeś dosłownie kilka sekund temu?",df,saas,sd,0,0,0
+6,Wolisz,Wolisz wstać bardzo wcześnie czy zostać do późna?,saas,sd,df,0,0,0

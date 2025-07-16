@@ -2,7 +2,8 @@ import streamlit as st
 import random
 import pandas as pd
 import os
-
+import io
+#
 # ------------------------------
 # PYTANIA
 # ------------------------------
@@ -297,13 +298,21 @@ elif st.session_state.step == "end":
             for key in defaults:
                 st.session_state[key] = defaults[key]
             st.rerun()
-# 🔽 Pobieranie pliku z wynikami
+
+    # --- Generowanie pliku Excel do pobrania ---
     if st.session_state.results_filename:
-        with open(st.session_state.results_filename, "r", encoding="utf-8") as f:
-            csv_data = f.read()
+        # Wczytaj CSV do DataFrame (z zachowaniem polskich znaków)
+        df_results = pd.read_csv(st.session_state.results_filename, encoding='utf-8')
+
+        # Zapisz do pliku Excel w pamięci
+        output = io.BytesIO()
+        with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+            df_results.to_excel(writer, index=False, sheet_name='Wyniki')
+        data = output.getvalue()
+
         st.download_button(
-            label="⬇️ Pobierz wyniki gry (CSV)",
-            data=csv_data,
-            file_name=st.session_state.results_filename,
-            mime='text/csv'
+            label="⬇️ Pobierz wyniki gry (XLSX)",
+            data=data,
+            file_name=st.session_state.results_filename.replace('.csv', '.xlsx'),
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
