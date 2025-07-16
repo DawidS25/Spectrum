@@ -297,3 +297,13 @@ elif st.session_state.step == "end":
             for key in defaults:
                 st.session_state[key] = defaults[key]
             st.rerun()
+# 🔽 Pobieranie pliku z wynikami
+    if st.session_state.results_filename:
+        with open(st.session_state.results_filename, "r", encoding="utf-8") as f:
+            csv_data = f.read()
+        st.download_button(
+            label="⬇️ Pobierz wyniki gry (CSV)",
+            data=csv_data,
+            file_name=st.session_state.results_filename,
+            mime='text/csv'
+        )
