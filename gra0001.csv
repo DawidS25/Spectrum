@@ -1,0 +1,7 @@
+nr_pytania,kategoria,pytanie,odpowiada,zgaduje,dodatkowo,punkty_gracza_1,punkty_gracza_2,punkty_gracza_3
+1,Wolisz,Wolisz plażę czy góry?,Dawid,Wiktoria,Patrycja,2,2,1
+2,Śmieszne,Czy próbujesz otworzyć drzwi pilotem od auta?,Wiktoria,Patrycja,Dawid,3,4,2
+3,Śmieszne,"Czy Twoje zwierzęta czasem patrzą na Ciebie, jakbyś był dziwny?",Patrycja,Dawid,Wiktoria,6,4,4
+4,Wolisz,Wolisz słuchać muzyki głośno czy cicho?,Dawid,Wiktoria,Patrycja,6,7,7
+5,Wolisz,Wolisz mieć super pamięć czy super szybkość?,Wiktoria,Patrycja,Dawid,8,9,6
+6,Przeszłość,Czy miałeś kiedyś problem z wczesnym wstawaniem do szkoły?,Patrycja,Dawid,Wiktoria,10,6,9
