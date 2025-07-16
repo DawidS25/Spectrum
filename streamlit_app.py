@@ -36,6 +36,16 @@ CATEGORIES = {
     "Dylematy": dylema_questions
 }
 
+CATEGORY_EMOJIS = {
+    "Śmieszne": "😂",
+    "Światopoglądowe": "🌍",
+    "Związkowe": "❤️",
+    "Pikantne": "🌶️",
+    "Luźne": "😎",
+    "Przeszłość": "📜",
+    "Wolisz": "🤔",
+    "Dylematy": "⚖️"
+}
 
 # ------------------------------
 # SESJA
@@ -162,22 +172,25 @@ elif st.session_state.step == "categories":
     cols = st.columns(4)
     for i, cat in enumerate(CATEGORIES.keys()):
         col = cols[i % 4]
+        display_name = f"{CATEGORY_EMOJIS.get(cat, '')} {cat}"
         if cat in st.session_state.category_selection:
-            if col.button(f"✅ {cat}", key=f"cat_{cat}"):
+            if col.button(f"✅ {display_name}", key=f"cat_{cat}"):
                 st.session_state.category_selection.remove(cat)
-                st.rerun()  # <--- tutaj odświeżenie po kliknięciu odznaczenia
+                st.rerun()
         else:
-            if col.button(cat, key=f"cat_{cat}"):
+            if col.button(display_name, key=f"cat_{cat}"):
                 st.session_state.category_selection.add(cat)
-                st.rerun()  # <--- tutaj odświeżenie po kliknięciu zaznaczenia
+                st.rerun()
 
-    st.markdown(f"**Wybrane kategorie:** {', '.join(st.session_state.category_selection) or 'Brak'}")
+    selected_display = [f"{CATEGORY_EMOJIS.get(cat, '')} {cat}" for cat in st.session_state.category_selection]
+    st.markdown(f"**Wybrane kategorie:** {', '.join(selected_display) or 'Brak'}")
 
     if st.session_state.category_selection:
         if st.button("🎯 Rozpocznij grę"):
             st.session_state.chosen_categories = list(st.session_state.category_selection)
             st.session_state.step = "game"
             st.rerun()
+
 
 
 elif st.session_state.step == "game":
