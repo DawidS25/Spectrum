@@ -408,7 +408,7 @@ elif st.session_state.step == "end":
 
                 response = upload_to_github(temp_filename, repo, path_in_repo, token, commit_message)
                 if response.status_code == 201:
-                    st.success(f"✅ Wyniki zapisane online jako {file_name}")
+                    st.success(f"✅ Wyniki zapisane online.")
                     st.session_state.results_uploaded = True
                 else:
                     st.error(f"❌ Błąd zapisu: {response.status_code} – {response.json()}")
