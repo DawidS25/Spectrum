@@ -374,8 +374,8 @@ elif st.session_state.step == "end":
         if token:
             response = upload_to_github(temp_filename, repo, path_in_repo, token, commit_message)
             if response.status_code == 201:
-                st.success("✅ Wyniki gry zostały zapisane na GitHubie!")
+                st.success("✅ Wyniki zapisane online.")
             else:
                 st.error(f"❌ Błąd zapisu: {response.status_code} – {response.json()}")
         else:
-            st.warning("⚠️ Token GitHub nie został znaleziony – wyniki nie zostały zapisane online.")
+            st.warning("⚠️ Nie udało się zapisać wyników online.")
