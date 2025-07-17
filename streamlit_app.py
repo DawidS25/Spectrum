@@ -363,10 +363,16 @@ elif st.session_state.step == "end":
                 del st.session_state["all_players"]
             if "category_selection" in st.session_state:
                 del st.session_state["category_selection"]
+            if "results_uploaded" in st.session_state:
+                del st.session_state["results_uploaded"]
             st.rerun()
 
     # --- Generowanie pliku Excel z wyników w pamięci ---
     if "results_data" in st.session_state and st.session_state.results_data:
+
+        if "results_uploaded" not in st.session_state:
+            st.session_state.results_uploaded = False
+
         df_results = pd.DataFrame(st.session_state.results_data)
 
         output = io.BytesIO()
@@ -381,31 +387,34 @@ elif st.session_state.step == "end":
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
 
-        # --- Upload na GitHub ---
-        temp_filename = "wyniki_temp.xlsx"
-        with open(temp_filename, "wb") as f:
-            f.write(data)
+        # --- Upload na GitHub tylko raz ---
+        if not st.session_state.results_uploaded:
+            temp_filename = "wyniki_temp.xlsx"
+            with open(temp_filename, "wb") as f:
+                f.write(data)
 
-        repo = "DawidS25/Spectrum"
-        try:
-            token = st.secrets["GITHUB_TOKEN"]
-        except Exception:
-            token = None
+            repo = "DawidS25/Spectrum"
+            try:
+                token = st.secrets["GITHUB_TOKEN"]
+            except Exception:
+                token = None
 
-        if token:
-            next_num = get_next_game_number(repo, token)
-            today_str = datetime.today().strftime("%Y-%m-%d")
-            file_name = f"gra{next_num:03d}_{today_str}.xlsx"
-            path_in_repo = f"wyniki/{file_name}"
-            commit_message = f"🎉 Wyniki gry {file_name}"
+            if token:
+                next_num = get_next_game_number(repo, token)
+                today_str = datetime.today().strftime("%Y-%m-%d")
+                file_name = f"gra{next_num:03d}_{today_str}.xlsx"
+                path_in_repo = f"wyniki/{file_name}"
+                commit_message = f"🎉 Wyniki gry {file_name}"
 
-            response = upload_to_github(temp_filename, repo, path_in_repo, token, commit_message)
-            if response.status_code == 201:
-                st.success(f"✅ Wyniki zapisane online jako {file_name}")
+                response = upload_to_github(temp_filename, repo, path_in_repo, token, commit_message)
+                if response.status_code == 201:
+                    st.success(f"✅ Wyniki zapisane online jako {file_name}")
+                    st.session_state.results_uploaded = True
+                else:
+                    st.error(f"❌ Błąd zapisu: {response.status_code} – {response.json()}")
             else:
-                st.error(f"❌ Błąd zapisu: {response.status_code} – {response.json()}")
-        else:
-            st.warning("⚠️ Nie udało się zapisać wyników online.")
+                st.warning("⚠️ Nie udało się zapisać wyników online.")
+
 
 # git pull origin main --rebase
 # git add .
