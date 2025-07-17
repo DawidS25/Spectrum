@@ -379,3 +379,8 @@ elif st.session_state.step == "end":
                 st.error(f"❌ Błąd zapisu: {response.status_code} – {response.json()}")
         else:
             st.warning("⚠️ Nie udało się zapisać wyników online.")
+
+# git pull origin main --rebase
+# git add . 
+# git git commit -m ""
+# git push
