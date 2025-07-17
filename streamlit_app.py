@@ -65,7 +65,6 @@ defaults = {
 
 for key, value in defaults.items():
     if key not in st.session_state:
-        # Jeśli jest set/list to skopiuj, żeby nie była wspólna referencja
         if isinstance(value, set):
             st.session_state[key] = value.copy()
         elif isinstance(value, list):
@@ -88,8 +87,9 @@ def draw_question():
     return question
 
 # ------------------------------
-# UPLOAD DO GITHUB
+# UPLOAD DO GITHUB (zmieniony fragment)
 # ------------------------------
+
 def upload_to_github(file_path, repo, path_in_repo, token, commit_message):
     with open(file_path, "rb") as f:
         content = f.read()
@@ -110,6 +110,31 @@ def upload_to_github(file_path, repo, path_in_repo, token, commit_message):
     response = requests.put(url, headers=headers, json=data)
     return response
 
+def get_next_game_number(repo, token, folder="wyniki"):
+    url = f"https://api.github.com/repos/{repo}/contents/{folder}"
+    headers = {
+        "Authorization": f"token {token}",
+        "Accept": "application/vnd.github.v3+json"
+    }
+    response = requests.get(url, headers=headers)
+    if response.status_code != 200:
+        return 1
+
+    files = response.json()
+    today_str = datetime.today().strftime("%Y-%m-%d")
+    max_num = 0
+    for file in files:
+        name = file["name"]
+        if name.startswith("gra") and name.endswith(".xlsx") and today_str in name:
+            try:
+                num_part = name[3:6]
+                num = int(num_part)
+                if num > max_num:
+                    max_num = num
+            except:
+                pass
+    return max_num + 1
+
 # ------------------------------
 # INTERFEJS
 # ------------------------------
@@ -129,7 +154,7 @@ if st.session_state.step == "setup":
             st.session_state.players = player_names
             st.session_state.all_players = player_names.copy()
             st.session_state.scores = {name: 0 for name in player_names}
-            st.session_state.results_data = []  # <-- inicjalizacja listy wyników w pamięci
+            st.session_state.results_data = []
             st.session_state.step = "categories"
             st.rerun()
 
@@ -361,26 +386,28 @@ elif st.session_state.step == "end":
         with open(temp_filename, "wb") as f:
             f.write(data)
 
-        today = datetime.today().strftime('%Y-%m-%d_%H-%M')
         repo = "DawidS25/Spectrum"
-        path_in_repo = f"wyniki/wyniki_{today}.xlsx"
-        commit_message = f"🎉 Wyniki gry z dnia {today}"
-
         try:
             token = st.secrets["GITHUB_TOKEN"]
         except Exception:
             token = None
 
         if token:
+            next_num = get_next_game_number(repo, token)
+            today_str = datetime.today().strftime("%Y-%m-%d")
+            file_name = f"gra{next_num:03d}_{today_str}.xlsx"
+            path_in_repo = f"wyniki/{file_name}"
+            commit_message = f"🎉 Wyniki gry {file_name}"
+
             response = upload_to_github(temp_filename, repo, path_in_repo, token, commit_message)
             if response.status_code == 201:
-                st.success("✅ Wyniki zapisane online.")
+                st.success(f"✅ Wyniki zapisane online jako {file_name}")
             else:
                 st.error(f"❌ Błąd zapisu: {response.status_code} – {response.json()}")
         else:
             st.warning("⚠️ Nie udało się zapisać wyników online.")
 
 # git pull origin main --rebase
-# git add . 
-# git git commit -m ""
+# git add .
+# git commit -m ""
 # git push
