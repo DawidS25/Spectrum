@@ -3,16 +3,15 @@ import random
 import pandas as pd
 import os
 import io
-#
+import base64
+import requests
+from datetime import datetime
+
 # ------------------------------
 # PYTANIA
 # ------------------------------
-import pandas as pd
-
-# Uwaga: uwzględnij separator ';'
 df = pd.read_csv('questions.csv', sep=';')
 
-# Kategoria to pojedyncza wartość, więc nie trzeba splitować po przecinku
 def filter_by_category(cat):
     return df[df['categories'] == cat].to_dict(orient='records')
 
@@ -61,61 +60,18 @@ defaults = {
     "ask_continue": False,
     "guesser_points": None,
     "extra_point": None,
-    "results_filename": None
+    "results_data": []
 }
 
 for key, value in defaults.items():
     if key not in st.session_state:
-        st.session_state[key] = value
-
-# ------------------------------
-# FUNKCJE DO PLIKU Z WYNIKAMI
-# ------------------------------
-def find_new_results_filename():
-    base_name = "gra"
-    ext = ".csv"
-    num = 1
-    while True:
-        filename = f"{base_name}{num:04d}{ext}"
-        if not os.path.exists(filename):
-            return filename
-        num += 1
-
-def create_results_file(filename, players):
-    header = [
-        "r_pytania",
-        "kategoria",
-        "pytanie",
-        "odpowiada",
-        "zgaduje",
-        "dodatkowo",
-        players[0],
-        players[1],
-        players[2]
-    ]
-    with open(filename, "w", encoding="utf-8") as f:
-        f.write(",".join(header) + "\n")
-
-def append_result_to_file(filename, data_dict):
-    def escape_csv(val):
-        val = str(val)
-        if ',' in val or '"' in val:
-            val = val.replace('"', '""')
-            return f'"{val}"'
+        # Jeśli jest set/list to skopiuj, żeby nie była wspólna referencja
+        if isinstance(value, set):
+            st.session_state[key] = value.copy()
+        elif isinstance(value, list):
+            st.session_state[key] = value[:]
         else:
-            return val
-    # Zachowujemy kolejność wg nagłówka
-    columns = [
-        "r_pytania",
-        "kategoria",
-        "pytanie",
-        "odpowiada",
-        "zgaduje",
-        "dodatkowo",
-    ] + st.session_state.players
-    line = ",".join(escape_csv(data_dict.get(col, "")) for col in columns)
-    with open(filename, "a", encoding="utf-8") as f:
-        f.write(line + "\n")
+            st.session_state[key] = value
 
 # ------------------------------
 # FUNKCJA LOSUJĄCA PYTANIA
@@ -132,11 +88,33 @@ def draw_question():
     return question
 
 # ------------------------------
+# UPLOAD DO GITHUB
+# ------------------------------
+def upload_to_github(file_path, repo, path_in_repo, token, commit_message):
+    with open(file_path, "rb") as f:
+        content = f.read()
+    b64_content = base64.b64encode(content).decode("utf-8")
+
+    url = f"https://api.github.com/repos/{repo}/contents/{path_in_repo}"
+    headers = {
+        "Authorization": f"token {token}",
+        "Accept": "application/vnd.github.v3+json"
+    }
+
+    data = {
+        "message": commit_message,
+        "content": b64_content,
+        "branch": "main"
+    }
+
+    response = requests.put(url, headers=headers, json=data)
+    return response
+
+# ------------------------------
 # INTERFEJS
 # ------------------------------
 if st.session_state.step in ["setup", "categories", "end"]:
     st.title("🎲 Spectrum")
-
 
 if st.session_state.step == "setup":
     st.header("🎭 Wprowadź imiona graczy")
@@ -148,20 +126,12 @@ if st.session_state.step == "setup":
 
     if all(player_names):
         if st.button("✅ Dalej"):
-            # Zapisz graczy do sesji
             st.session_state.players = player_names
             st.session_state.all_players = player_names.copy()
             st.session_state.scores = {name: 0 for name in player_names}
-
-            # Utwórz plik wyników
-            filename = find_new_results_filename()
-            create_results_file(filename, player_names)
-            st.session_state.results_filename = filename
-
-            # Przejdź dalej
+            st.session_state.results_data = []  # <-- inicjalizacja listy wyników w pamięci
             st.session_state.step = "categories"
             st.rerun()
-
 
 elif st.session_state.step == "categories":
     st.header("📚 Wybierz kategorie pytań")
@@ -191,22 +161,16 @@ elif st.session_state.step == "categories":
             st.session_state.step = "game"
             st.rerun()
 
-
-
 elif st.session_state.step == "game":
-
-    # Upewnij się, że wszyscy gracze mają wpisy w scores
+    # Zapewnij domyślne wartości
     if "scores" not in st.session_state:
         st.session_state.scores = {}
-
     if "all_players" not in st.session_state:
         st.session_state.all_players = st.session_state.players.copy()
-
     for player in st.session_state.all_players:
         if player not in st.session_state.scores:
             st.session_state.scores[player] = 0
 
-    # Sekwencja ról na kolejne rundy
     round_sequence = [
         (0, 2, 1),
         (1, 2, 0),
@@ -216,11 +180,6 @@ elif st.session_state.step == "game":
         (2, 0, 1),
     ]
 
-    # Zapisz pierwotną listę graczy tylko raz
-    if "all_players" not in st.session_state:
-        st.session_state.all_players = st.session_state.players.copy()
-
-    # Wyznacz rolę w aktualnej rundzie
     round_index = st.session_state.questions_asked % len(round_sequence)
     role_indices = round_sequence[round_index]
     responder = st.session_state.all_players[role_indices[0]]
@@ -243,7 +202,6 @@ elif st.session_state.step == "game":
             if st.button("❌ Zakończ i pokaż wyniki"):
                 st.session_state.step = "end"
                 st.rerun()
-
     else:
         if not st.session_state.current_question:
             st.session_state.current_question = draw_question()
@@ -261,7 +219,6 @@ elif st.session_state.step == "game":
         st.write(q["text"])
         st.markdown(f"<small>id: {q['id']}</small>", unsafe_allow_html=True)
 
-        # 🔁 PRZYCISK ZMIANY PYTANIA
         if st.button("🔄 Zmień pytanie"):
             new_q = draw_question()
             if new_q:
@@ -270,7 +227,6 @@ elif st.session_state.step == "game":
 
         st.markdown(f"Odpowiada: **{responder}** &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Zgaduje: **{guesser}**", unsafe_allow_html=True)
 
-        # --- GUESSER POINTS BUTTONS ---
         st.markdown(f"**Ile punktów zdobywa {guesser}?**")
         if "guesser_points" not in st.session_state:
             st.session_state.guesser_points = None
@@ -282,7 +238,6 @@ elif st.session_state.step == "game":
                 st.session_state.guesser_points = val
                 st.rerun()
 
-        # --- EXTRA POINT BUTTONS ---
         st.markdown(f"**Czy {direction_guesser} zdobywa dodatkowy punkt?**")
         if "extra_point" not in st.session_state:
             st.session_state.extra_point = None
@@ -294,7 +249,6 @@ elif st.session_state.step == "game":
                 st.session_state.extra_point = val
                 st.rerun()
 
-        # --- ZAPISZ I DALEJ ---
         if st.session_state.guesser_points is not None and st.session_state.extra_point is not None:
             if st.button("💾 Zapisz i dalej"):
                 guesser_points = st.session_state.guesser_points
@@ -304,7 +258,7 @@ elif st.session_state.step == "game":
                 st.session_state.guesser_points = None
                 st.session_state.extra_point = None
 
-                # Liczenie punktów globalnych (sumy)
+                # Liczenie punktów globalnych
                 st.session_state.scores[guesser] += guesser_points
                 st.session_state.scores[direction_guesser] += extra_point
                 bonus = 0
@@ -316,32 +270,32 @@ elif st.session_state.step == "game":
                     bonus += 1
                 st.session_state.scores[responder] += bonus
 
-                # Punkty zdobyte TYLKO W TEJ TURZE (do zapisu)
                 points_this_round = {
                     responder: bonus,
                     guesser: guesser_points,
                     direction_guesser: extra_point
                 }
 
-                # Zapis do pliku CSV
-                if st.session_state.results_filename:
-                    data_to_save = {
-                        "r_pytania": current_question_number,
-                        "kategoria": q['categories'],
-                        "pytanie": q['text'],
-                        "odpowiada": responder,
-                        "zgaduje": guesser,
-                        "dodatkowo": direction_guesser,
-                        responder: points_this_round[responder],
-                        guesser: points_this_round[guesser],
-                        direction_guesser: points_this_round[direction_guesser],
-                    }
-                    append_result_to_file(st.session_state.results_filename, data_to_save)
+                # DOPISYWANIE WYNIKÓW DO LISTY W PAMIĘCI
+                if "results_data" not in st.session_state:
+                    st.session_state.results_data = []
 
-                # Zwiększ licznik pytań
+                data_to_save = {
+                    "r_pytania": current_question_number,
+                    "kategoria": q['categories'],
+                    "pytanie": q['text'],
+                    "odpowiada": responder,
+                    "zgaduje": guesser,
+                    "dodatkowo": direction_guesser,
+                    responder: points_this_round[responder],
+                    guesser: points_this_round[guesser],
+                    direction_guesser: points_this_round[direction_guesser],
+                }
+
+                st.session_state.results_data.append(data_to_save)
+
                 st.session_state.questions_asked += 1
 
-                # Co 6 pytań – pytaj o kontynuację
                 if st.session_state.questions_asked % 6 == 0:
                     st.session_state.ask_continue = True
                     st.session_state.current_question = None
@@ -349,7 +303,6 @@ elif st.session_state.step == "game":
                     st.session_state.current_question = draw_question()
 
                 st.rerun()
-
 
 elif st.session_state.step == "end":
     total_questions = st.session_state.questions_asked
@@ -387,9 +340,10 @@ elif st.session_state.step == "end":
                 del st.session_state["category_selection"]
             st.rerun()
 
-    # --- Generowanie pliku Excel do pobrania ---
-    if st.session_state.results_filename:
-        df_results = pd.read_csv(st.session_state.results_filename, encoding='utf-8')
+    # --- Generowanie pliku Excel z wyników w pamięci ---
+    if "results_data" in st.session_state and st.session_state.results_data:
+        df_results = pd.DataFrame(st.session_state.results_data)
+
         output = io.BytesIO()
         with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
             df_results.to_excel(writer, index=False, sheet_name='Wyniki')
@@ -398,9 +352,30 @@ elif st.session_state.step == "end":
         st.download_button(
             label="💾 Pobierz wyniki gry (XLSX)",
             data=data,
-            file_name=st.session_state.results_filename.replace('.csv', '.xlsx'),
+            file_name="wyniki_gry.xlsx",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
-#git add .
-#git commit -m "test"
-#git push
+
+        # --- Upload na GitHub ---
+        temp_filename = "wyniki_temp.xlsx"
+        with open(temp_filename, "wb") as f:
+            f.write(data)
+
+        today = datetime.today().strftime('%Y-%m-%d_%H-%M')
+        repo = "DawidS25/Spectrum"
+        path_in_repo = f"wyniki/wyniki_{today}.xlsx"
+        commit_message = f"🎉 Wyniki gry z dnia {today}"
+
+        try:
+            token = st.secrets["GITHUB_TOKEN"]
+        except Exception:
+            token = None
+
+        if token:
+            response = upload_to_github(temp_filename, repo, path_in_repo, token, commit_message)
+            if response.status_code == 201:
+                st.success("✅ Wyniki gry zostały zapisane na GitHubie!")
+            else:
+                st.error(f"❌ Błąd zapisu: {response.status_code} – {response.json()}")
+        else:
+            st.warning("⚠️ Token GitHub nie został znaleziony – wyniki nie zostały zapisane online.")
