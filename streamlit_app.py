@@ -1572,7 +1572,7 @@ def run_game():
     
 
     # Stałe
-    total_width = 25
+    total_width = 26  # 5 + 5 + 6 + 5 + 5
     half_width = total_width / 2
     center_base = 90
 
@@ -1628,12 +1628,20 @@ def run_game():
         y_bg = np.sin(np.deg2rad(theta_bg))
         ax.fill(np.append(x_bg, 0), np.append(y_bg, 0), color=colors["tlo"])
 
-        # Punktacja
-        segment_sequence = [("2", colors["2"]), ("3", colors["3"]), ("4", colors["4"]), ("3", colors["3"]), ("2", colors["2"])]
+        # Punktacja (z dynamiczną szerokością)
+        segment_sequence = [
+            ("2", colors["2"], 5),
+            ("3", colors["3"], 5),
+            ("4", colors["4"], 6),
+            ("3", colors["3"], 5),
+            ("2", colors["2"], 5)
+        ]
         start_angle = center_base - half_width + shift
-        for i, (label, color) in enumerate(segment_sequence):
-            angle = start_angle + i * 5
-            draw_sector(ax, angle, 5, color)
+        current_angle = start_angle
+        for label, color, width in segment_sequence:
+            center_angle = current_angle + width / 2
+            draw_sector(ax, center_angle, width, color)
+            current_angle += width
 
         # Promień
         rad = np.deg2rad(promien_angle)
@@ -1656,15 +1664,22 @@ def run_game():
         y_bg = np.sin(np.deg2rad(theta_bg))
         ax.fill(np.append(x_bg, 0), np.append(y_bg, 0), color=colors["tlo"])
 
-        segment_sequence = [("2", colors["2"]), ("3", colors["3"]), ("4", colors["4"]), ("3", colors["3"]), ("2", colors["2"])]
+        segment_sequence = [
+            ("2", colors["2"], 5),
+            ("3", colors["3"], 5),
+            ("4", colors["4"], 6),
+            ("3", colors["3"], 5),
+            ("2", colors["2"], 5)
+        ]
         start_angle = center_base - half_width + shift
-        for i, (label, color) in enumerate(segment_sequence):
-            angle = start_angle + i * 5
-            draw_sector(ax, angle, 5, color)
+        current_angle = start_angle
+        for label, color, width in segment_sequence:
+            center_angle = current_angle + width / 2
+            draw_sector(ax, center_angle, width, color)
+            current_angle += width
 
         st.pyplot(fig)
 
-        
         def przejdz_do_promienia():
             st.session_state.screen = "promien"
             st.session_state.promien_val = 0
@@ -1679,11 +1694,9 @@ def run_game():
         with col2:
             st.button("Zatwierdź", on_click=przejdz_do_promienia)
 
-
     elif st.session_state.screen == "promien":
         st.markdown("### Wskaż odpowiedź")
         st.session_state.promien_val = st.slider("Ustaw promień", -100, 100, st.session_state.promien_val, label_visibility="collapsed")
-        #shift_promien = 90 - st.session_state.promien_val / 100 * 90
         shift_promien = 177.5 - (st.session_state.promien_val + 100) / 200 * (177.5 - 2.5)
         st.pyplot(draw_circle_with_promien(shift_promien))
 
@@ -1717,7 +1730,6 @@ def run_game():
 
         st.markdown(f"**Zdobyto {zdobyte_punkty}**")
 
-
         def nowa_runda():
             st.session_state.screen = "tarcza"
             st.session_state.slider_val = 0
@@ -1731,14 +1743,6 @@ def run_game():
                 st.rerun()
         with col2:
             st.button("Kolejna runda", on_click=nowa_runda)
-
-
-
-    # git pull origin main --rebase
-    # git add .
-    # git commit -m ""
-    # git push
-
 
 
 if __name__ == "__main__":
