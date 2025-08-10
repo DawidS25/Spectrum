@@ -459,7 +459,7 @@ def direction_board():
             st.rerun()
     
 
-def score_board(responder, guesser, director):
+def score_board(responder, guesser, director = None):
     st.pyplot(draw_score(st.session_state.answer_slider_val, st.session_state.guess_slider_val))
     diff = st.session_state.answer_slider_val - st.session_state.guess_slider_val
     if abs(diff) <= 3:
@@ -479,9 +479,8 @@ def score_board(responder, guesser, director):
         responder_points = 2
     else:
         responder_points = 0
-    
+    extra_points = 0
     if st.session_state.mode != "2-osobowy":
-        extra_points = 0
         if diff <= -4 and st.session_state.director_choice == "left":
             extra_points = 1
         elif diff >= 4 and st.session_state.director_choice == "right":
@@ -493,7 +492,7 @@ def score_board(responder, guesser, director):
         responder_name = responder.split("_")[0]
         st.markdown(f"Punktacja: {guesser}: {guesser_points}; {director}: {extra_points}; {responder_name}: {responder_points}")
     else:
-        st.markdown(f"Punktacja: {guesser}: {guesser_points}; {director}: {extra_points}")
+        st.markdown(f"Punktacja: {guesser}: {guesser_points}; {responder}: {responder_points}")
     return guesser_points, responder_points, extra_points
 
 def virtual_scoreboard_2(q_per_r, responder, guesser, director = None):
@@ -534,7 +533,8 @@ def virtual_scoreboard_2(q_per_r, responder, guesser, director = None):
         if st.button("✅ Następne pytanie!"):
             # Reset planszy
             del st.session_state.virtual_board_step
-            del st.session_state.director_choice
+            if "director_choice" in st.session_state:
+                del st.session_state.director_choice
             st.session_state.answer_slider_val = 0
             st.session_state.guess_slider_val = 0
 
