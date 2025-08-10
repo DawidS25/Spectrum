@@ -7,6 +7,10 @@ import base64
 import requests
 from datetime import datetime
 
+# ----------------------------------------------------------------------------------------------------------------
+# Funkcje
+# ----------------------------------------------------------------------------------------------------------------
+
 # ------------------------------
 # Wczytywanie pytań z CSV
 # ------------------------------
@@ -197,7 +201,7 @@ def upload_results_once(data):
         with open(temp_filename, "wb") as f:
             f.write(data)
 
-        repo = "DawidS25/SpectrumBySzek"  # zmień na swoje repo
+        repo = "DawidS25/Spectrum"
         try:
             token = st.secrets["GITHUB_TOKEN"]
         except Exception:
@@ -628,13 +632,337 @@ def virtual_scoreboard_2(q_per_r, responder, guesser, director = None):
 
 
 
-# ------------------------------
+# ----------------------------------------------------------------------------------------------------------------
 # Tryby gry
-# ------------------------------
+# ----------------------------------------------------------------------------------------------------------------
 
-# ------------------------------
+# ----------------------------------------------------------------------------------------------------------------
+# Tryb 2-osobowy
+# ----------------------------------------------------------------------------------------------------------------
+
+def run_2osobowy():
+    init_session_state(get_default_session_state("2-osobowy"))
+    virtual_board_val = st.session_state.virtual_board
+    if st.session_state.step == "setup":
+        st.header("🎭 Wprowadź imiona graczy")
+        for i in range(2):
+            st.session_state.players[i] = st.text_input(
+                f"🙋‍♂️ Gracz {i + 1}", value=st.session_state.players[i]
+            ).strip()
+
+        setup_buttons()
+    
+    elif st.session_state.step == "categories":
+        category_selection_screen(CATEGORIES, CATEGORY_EMOJIS)
+
+    
+    elif st.session_state.step == "game":
+        if "scores" not in st.session_state:
+            st.session_state.scores = {}
+        if "all_players" not in st.session_state:
+            st.session_state.all_players = st.session_state.players.copy()
+        for player in st.session_state.all_players:
+            if player not in st.session_state.scores:
+                st.session_state.scores[player] = 0
+
+        turn = st.session_state.questions_asked % 2
+        if turn == 0:
+            responder = st.session_state.all_players[0]
+            guesser = st.session_state.all_players[1]
+        else:
+            responder = st.session_state.all_players[1]
+            guesser = st.session_state.all_players[0]
+
+        if st.session_state.ask_continue:
+            handle_continue_decision(2)
+        else:
+            prepare_next_question()
+            q = st.session_state.current_question
+            current_round = (st.session_state.questions_asked // 2) + 1
+            current_question_number = st.session_state.questions_asked + 1
+            round_info(q, current_round, current_question_number)
+
+
+            st.markdown(f"Odpowiada: **{responder}** &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Zgaduje: **{guesser}**", unsafe_allow_html=True)
+
+            if st.session_state.virtual_board:
+                virtual_scoreboard_2(2, responder, guesser)
+            else:
+                st.markdown(f"**Ile punktów zdobywa {guesser}?**")
+                if "guesser_points" not in st.session_state:
+                    st.session_state.guesser_points = None
+
+                cols = st.columns(4)
+                for i, val in enumerate([0, 2, 3, 4]):
+                    label = f"✅ {val}" if st.session_state.guesser_points == val else f"{val}"
+                    if cols[i].button(label, key=f"gp_{val}_{st.session_state.questions_asked}"):
+                        st.session_state.guesser_points = val
+                        st.rerun()
+
+                if st.session_state.guesser_points is not None:
+                    if st.button("💾 Zapisz i dalej"):
+                        guesser_points = st.session_state.guesser_points
+
+                        # Reset wyborów
+                        st.session_state.guesser_points = None
+
+                        # Liczenie punktów dla respondera według zasad:
+                        if guesser_points == 0:
+                            responder_points = 0
+                        elif guesser_points in [2, 3]:
+                            responder_points = 1
+                        elif guesser_points == 4:
+                            responder_points = 2
+                        else:
+                            responder_points = 0  # Bezpieczna wartość na wypadek błędu
+
+                        # Aktualizacja wyników
+                        st.session_state.scores[guesser] += guesser_points
+                        st.session_state.scores[responder] += responder_points
+
+                        points_this_round = {
+                            responder: responder_points,
+                            guesser: guesser_points,
+                        }
+
+                        # Dopisywanie wyników do pamięci
+                        if "results_data" not in st.session_state:
+                            st.session_state.results_data = []
+
+                        data_to_save = {
+                            "runda": current_round,
+                            "nr_pytania": current_question_number,
+                            "kategoria": q['categories'],
+                            "pytanie": q['text'],
+                            "odpowiada": responder,
+                            "zgaduje": guesser,
+                            responder: points_this_round[responder],
+                            guesser: points_this_round[guesser],
+                        }
+
+                        st.session_state.results_data.append(data_to_save)
+
+                        st.session_state.questions_asked += 1
+
+                        # Po 2 pytaniach pokazujemy pytanie czy kontynuować
+                        if st.session_state.questions_asked % 2 == 0:
+                            st.session_state.ask_continue = True
+                            st.session_state.current_question = None
+                        else:
+                            st.session_state.current_question = draw_question()
+
+                        st.rerun()
+
+    elif st.session_state.step == "end":
+        total_questions = st.session_state.questions_asked
+        total_rounds = total_questions // 2  # 2 pytania na rundę w trybie 2 graczy
+        st.success(f"🎉 Gra zakończona! Oto wyniki końcowe:\n\n🥊 Liczba rund: **{total_rounds}** → **{total_questions}** pytań 🧠")
+
+        sorted_scores = sorted(st.session_state.scores.items(), key=lambda x: x[1], reverse=True)
+        medale = ["🏆", "🥈", "🥉"]
+        for i, (name, score) in enumerate(sorted_scores):
+            medal = medale[i] if i < 3 else ""
+            st.write(f"{medal} **{name}:** {score} punktów")
+
+        st.markdown("---")
+        end_buttons()
+        
+        if "results_data" in st.session_state and st.session_state.results_data:
+
+            if "results_uploaded" not in st.session_state:
+                st.session_state.results_uploaded = False
+
+            df_results = pd.DataFrame(st.session_state.results_data)
+
+            output = io.BytesIO()
+            with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+                df_results.to_excel(writer, index=False, sheet_name='Wyniki')
+            data = output.getvalue()
+
+            st.download_button(
+                label="💾 Pobierz wyniki gry (XLSX)",
+                data=data,
+                file_name="wyniki_gry.xlsx",
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            )
+
+            upload_results_once(data)
+
+# ----------------------------------------------------------------------------------------------------------------
+# Tryb 3-osobowy
+# ----------------------------------------------------------------------------------------------------------------
+def run_3osobowy():
+    init_session_state(get_default_session_state("3-osobowy"))
+    if st.session_state.step == "setup":
+        st.header("🎭 Wprowadź imiona graczy")
+
+        for i in range(3):
+            st.session_state.players[i] = st.text_input(
+                f"🙋‍♂️ Gracz {i + 1}", value=st.session_state.players[i]
+            ).strip()
+
+        setup_buttons()
+    
+
+    elif st.session_state.step == "categories":
+        category_selection_screen(CATEGORIES, CATEGORY_EMOJIS)
+
+    elif st.session_state.step == "game":
+        if "scores" not in st.session_state:
+            st.session_state.scores = {}
+        if "all_players" not in st.session_state:
+            st.session_state.all_players = st.session_state.players.copy()
+        for player in st.session_state.all_players:
+            if player not in st.session_state.scores:
+                st.session_state.scores[player] = 0
+
+        round_sequence = [
+            (0, 2, 1),
+            (1, 2, 0),
+            (2, 1, 0),
+            (0, 1, 2),
+            (1, 0, 2),
+            (2, 0, 1),
+        ]
+
+        round_index = st.session_state.questions_asked % len(round_sequence)
+        role_indices = round_sequence[round_index]
+        responder = st.session_state.all_players[role_indices[0]]
+        guesser = st.session_state.all_players[role_indices[1]]
+        director = st.session_state.all_players[role_indices[2]]
+
+
+        if st.session_state.ask_continue:
+            handle_continue_decision(6)
+        else:
+            prepare_next_question()
+            q = st.session_state.current_question
+            current_round = (st.session_state.questions_asked // 6) + 1
+            current_question_number = st.session_state.questions_asked + 1
+            round_info(q, current_round, current_question_number)
+
+            st.markdown(f"Odpowiada: **{responder}** &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Zgaduje: **{guesser}** &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Kierunek: **{director}**", unsafe_allow_html=True)
+
+            if st.session_state.virtual_board:
+                virtual_scoreboard_2(6, responder, guesser, director)
+            else:
+                st.markdown(f"**Ile punktów zdobywa {guesser}?**")
+                if "guesser_points" not in st.session_state:
+                    st.session_state.guesser_points = None
+
+                cols = st.columns(4)
+                for i, val in enumerate([0, 2, 3, 4]):
+                    label = f"✅ {val}" if st.session_state.guesser_points == val else f"{val}"
+                    if cols[i].button(label, key=f"gp_{val}_{st.session_state.questions_asked}"):
+                        st.session_state.guesser_points = val
+                        st.rerun()
+
+                st.markdown(f"**Czy {director} zdobywa dodatkowy punkt?**")
+                if "extra_point" not in st.session_state:
+                    st.session_state.extra_point = None
+
+                cols2 = st.columns(2)
+                for i, val in enumerate([0, 1]):
+                    label = f"✅ {val}" if st.session_state.extra_point == val else f"{val}"
+                    if cols2[i].button(label, key=f"ep_{val}_{st.session_state.questions_asked}"):
+                        st.session_state.extra_point = val
+                        st.rerun()
+
+                if st.session_state.guesser_points is not None and st.session_state.extra_point is not None:
+                    if st.button("💾 Zapisz i dalej"):
+                        guesser_points = st.session_state.guesser_points
+                        extra_point = st.session_state.extra_point
+
+                        # Reset wyborów
+                        st.session_state.guesser_points = None
+                        st.session_state.extra_point = None
+
+                        # Liczenie punktów globalnych
+                        st.session_state.scores[guesser] += guesser_points
+                        st.session_state.scores[director] += extra_point
+                        responder_points = 0
+                        if guesser_points in [2, 3]:
+                            responder_points = 1
+                        elif guesser_points == 4:
+                            responder_points = 2
+                        if extra_point == 1:
+                            responder_points += 1
+                        st.session_state.scores[responder] += responder_points
+
+                        points_this_round = {
+                            responder: responder_points,
+                            guesser: guesser_points,
+                            director: extra_point
+                        }
+
+                        # DOPISYWANIE WYNIKÓW DO LISTY W PAMIĘCI
+                        if "results_data" not in st.session_state:
+                            st.session_state.results_data = []
+
+                        data_to_save = {
+                            "runda": current_round,
+                            "nr_pytania": current_question_number,
+                            "kategoria": q['categories'],
+                            "pytanie": q['text'],
+                            "odpowiada": responder,
+                            "zgaduje": guesser,
+                            "dodatkowo": director,
+                            responder: points_this_round[responder],
+                            guesser: points_this_round[guesser],
+                            director: points_this_round[director],
+                        }
+
+                        st.session_state.results_data.append(data_to_save)
+
+                        st.session_state.questions_asked += 1
+
+                        if st.session_state.questions_asked % 6 == 0:
+                            st.session_state.ask_continue = True
+                            st.session_state.current_question = None
+                        else:
+                            st.session_state.current_question = draw_question()
+
+                        st.rerun()
+
+    elif st.session_state.step == "end":
+        total_questions = st.session_state.questions_asked
+        total_rounds = total_questions // 6
+        st.success(f"🎉 Gra zakończona! Oto wyniki końcowe:\n\n🥊 Liczba rund: **{total_rounds}** → **{total_questions}** pytań 🧠")
+
+        sorted_scores = sorted(st.session_state.scores.items(), key=lambda x: x[1], reverse=True)
+        medale = ["🏆", "🥈", "🥉"]
+        for i, (name, score) in enumerate(sorted_scores):
+            medal = medale[i] if i < 3 else ""
+            st.write(f"{medal} **{name}:** {score} punktów")
+
+        st.markdown("---")
+        end_buttons()
+
+        # --- Generowanie pliku Excel z wyników w pamięci ---
+        if "results_data" in st.session_state and st.session_state.results_data:
+
+            if "results_uploaded" not in st.session_state:
+                st.session_state.results_uploaded = False
+
+            df_results = pd.DataFrame(st.session_state.results_data)
+
+            output = io.BytesIO()
+            with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+                df_results.to_excel(writer, index=False, sheet_name='Wyniki')
+            data = output.getvalue()
+
+            st.download_button(
+                label="💾 Pobierz wyniki gry (XLSX)",
+                data=data,
+                file_name="wyniki_gry.xlsx",
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            )
+
+            upload_results_once(data)
+
+# ----------------------------------------------------------------------------------------------------------------
 # Tryb drużynowy
-# ------------------------------
+# ----------------------------------------------------------------------------------------------------------------
 
 def run_druzynowy():
     init_session_state(get_default_session_state("Drużynowy"))
@@ -910,405 +1238,13 @@ def run_druzynowy():
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
             )
 
-            # --- Upload na GitHub tylko raz ---
-            if not st.session_state.results_uploaded:
-                temp_filename = "wyniki_temp.xlsx"
-                with open(temp_filename, "wb") as f:
-                    f.write(data)
-
-                repo = "DawidS25/SpectrumBySzek"
-                try:
-                    token = st.secrets["GITHUB_TOKEN"]
-                except Exception:
-                    token = None
-
-                if token:
-                    next_num = get_next_game_number(repo, token)
-                    today_str = datetime.today().strftime("%Y-%m-%d")
-                    file_name = f"gra{next_num:03d}_{today_str}.xlsx"
-                    path_in_repo = f"wyniki/{file_name}"
-                    commit_message = f"🎉 Wyniki gry {file_name}"
-
-                    response = upload_to_github(temp_filename, repo, path_in_repo, token, commit_message)
-                    if response.status_code == 201:
-                        st.success(f"✅ Wyniki zapisane online.")
-                        st.session_state.results_uploaded = True
-                    else:
-                        st.error(f"❌ Błąd zapisu: {response.status_code} – {response.json()}")
-                else:
-                    st.warning("⚠️ Nie udało się zapisać wyników online.")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# ------------------------------
-# Tryb 2-osobowy
-# ------------------------------
-
-def run_2osobowy():
-    init_session_state(get_default_session_state("2-osobowy"))
-    virtual_board_val = st.session_state.virtual_board
-    if st.session_state.step == "setup":
-        st.header("🎭 Wprowadź imiona graczy")
-        for i in range(2):
-            st.session_state.players[i] = st.text_input(
-                f"🙋‍♂️ Gracz {i + 1}", value=st.session_state.players[i]
-            ).strip()
-
-        setup_buttons()
-    
-    elif st.session_state.step == "categories":
-        category_selection_screen(CATEGORIES, CATEGORY_EMOJIS)
-
-    
-    elif st.session_state.step == "game":
-        if "scores" not in st.session_state:
-            st.session_state.scores = {}
-        if "all_players" not in st.session_state:
-            st.session_state.all_players = st.session_state.players.copy()
-        for player in st.session_state.all_players:
-            if player not in st.session_state.scores:
-                st.session_state.scores[player] = 0
-
-        turn = st.session_state.questions_asked % 2
-        if turn == 0:
-            responder = st.session_state.all_players[0]
-            guesser = st.session_state.all_players[1]
-        else:
-            responder = st.session_state.all_players[1]
-            guesser = st.session_state.all_players[0]
-
-        if st.session_state.ask_continue:
-            handle_continue_decision(2)
-        else:
-            prepare_next_question()
-            q = st.session_state.current_question
-            current_round = (st.session_state.questions_asked // 2) + 1
-            current_question_number = st.session_state.questions_asked + 1
-            round_info(q, current_round, current_question_number)
-
-
-            st.markdown(f"Odpowiada: **{responder}** &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Zgaduje: **{guesser}**", unsafe_allow_html=True)
-
-            if st.session_state.virtual_board:
-                virtual_scoreboard_2(2, responder, guesser)
-            else:
-                st.markdown(f"**Ile punktów zdobywa {guesser}?**")
-                if "guesser_points" not in st.session_state:
-                    st.session_state.guesser_points = None
-
-                cols = st.columns(4)
-                for i, val in enumerate([0, 2, 3, 4]):
-                    label = f"✅ {val}" if st.session_state.guesser_points == val else f"{val}"
-                    if cols[i].button(label, key=f"gp_{val}_{st.session_state.questions_asked}"):
-                        st.session_state.guesser_points = val
-                        st.rerun()
-
-                if st.session_state.guesser_points is not None:
-                    if st.button("💾 Zapisz i dalej"):
-                        guesser_points = st.session_state.guesser_points
-
-                        # Reset wyborów
-                        st.session_state.guesser_points = None
-
-                        # Liczenie punktów dla respondera według zasad:
-                        if guesser_points == 0:
-                            responder_points = 0
-                        elif guesser_points in [2, 3]:
-                            responder_points = 1
-                        elif guesser_points == 4:
-                            responder_points = 2
-                        else:
-                            responder_points = 0  # Bezpieczna wartość na wypadek błędu
-
-                        # Aktualizacja wyników
-                        st.session_state.scores[guesser] += guesser_points
-                        st.session_state.scores[responder] += responder_points
-
-                        points_this_round = {
-                            responder: responder_points,
-                            guesser: guesser_points,
-                        }
-
-                        # Dopisywanie wyników do pamięci
-                        if "results_data" not in st.session_state:
-                            st.session_state.results_data = []
-
-                        data_to_save = {
-                            "runda": current_round,
-                            "nr_pytania": current_question_number,
-                            "kategoria": q['categories'],
-                            "pytanie": q['text'],
-                            "odpowiada": responder,
-                            "zgaduje": guesser,
-                            responder: points_this_round[responder],
-                            guesser: points_this_round[guesser],
-                        }
-
-                        st.session_state.results_data.append(data_to_save)
-
-                        st.session_state.questions_asked += 1
-
-                        # Po 2 pytaniach pokazujemy pytanie czy kontynuować
-                        if st.session_state.questions_asked % 2 == 0:
-                            st.session_state.ask_continue = True
-                            st.session_state.current_question = None
-                        else:
-                            st.session_state.current_question = draw_question()
-
-                        st.rerun()
-
-    elif st.session_state.step == "end":
-        total_questions = st.session_state.questions_asked
-        total_rounds = total_questions // 2  # 2 pytania na rundę w trybie 2 graczy
-        st.success(f"🎉 Gra zakończona! Oto wyniki końcowe:\n\n🥊 Liczba rund: **{total_rounds}** → **{total_questions}** pytań 🧠")
-
-        sorted_scores = sorted(st.session_state.scores.items(), key=lambda x: x[1], reverse=True)
-        medale = ["🏆", "🥈", "🥉"]
-        for i, (name, score) in enumerate(sorted_scores):
-            medal = medale[i] if i < 3 else ""
-            st.write(f"{medal} **{name}:** {score} punktów")
-
-        st.markdown("---")
-        end_buttons()
-        
-        if "results_data" in st.session_state and st.session_state.results_data:
-
-            if "results_uploaded" not in st.session_state:
-                st.session_state.results_uploaded = False
-
-            df_results = pd.DataFrame(st.session_state.results_data)
-
-            output = io.BytesIO()
-            with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
-                df_results.to_excel(writer, index=False, sheet_name='Wyniki')
-            data = output.getvalue()
-
-            st.download_button(
-                label="💾 Pobierz wyniki gry (XLSX)",
-                data=data,
-                file_name="wyniki_gry.xlsx",
-                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            )
-
             upload_results_once(data)
 
-# ------------------------------
-# Tryb 3-osobowy
-# ------------------------------
-def run_3osobowy():
-    init_session_state(get_default_session_state("3-osobowy"))
-    if st.session_state.step == "setup":
-        st.header("🎭 Wprowadź imiona graczy")
-
-        for i in range(3):
-            st.session_state.players[i] = st.text_input(
-                f"🙋‍♂️ Gracz {i + 1}", value=st.session_state.players[i]
-            ).strip()
-
-        setup_buttons()
-    
-
-    elif st.session_state.step == "categories":
-        category_selection_screen(CATEGORIES, CATEGORY_EMOJIS)
-
-    elif st.session_state.step == "game":
-        if "scores" not in st.session_state:
-            st.session_state.scores = {}
-        if "all_players" not in st.session_state:
-            st.session_state.all_players = st.session_state.players.copy()
-        for player in st.session_state.all_players:
-            if player not in st.session_state.scores:
-                st.session_state.scores[player] = 0
-
-        round_sequence = [
-            (0, 2, 1),
-            (1, 2, 0),
-            (2, 1, 0),
-            (0, 1, 2),
-            (1, 0, 2),
-            (2, 0, 1),
-        ]
-
-        round_index = st.session_state.questions_asked % len(round_sequence)
-        role_indices = round_sequence[round_index]
-        responder = st.session_state.all_players[role_indices[0]]
-        guesser = st.session_state.all_players[role_indices[1]]
-        director = st.session_state.all_players[role_indices[2]]
 
 
-        if st.session_state.ask_continue:
-            handle_continue_decision(6)
-        else:
-            prepare_next_question()
-            q = st.session_state.current_question
-            current_round = (st.session_state.questions_asked // 6) + 1
-            current_question_number = st.session_state.questions_asked + 1
-            round_info(q, current_round, current_question_number)
-
-            st.markdown(f"Odpowiada: **{responder}** &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Zgaduje: **{guesser}** &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Kierunek: **{director}**", unsafe_allow_html=True)
-
-            if st.session_state.virtual_board:
-                virtual_scoreboard_2(6, responder, guesser, director)
-            else:
-                st.markdown(f"**Ile punktów zdobywa {guesser}?**")
-                if "guesser_points" not in st.session_state:
-                    st.session_state.guesser_points = None
-
-                cols = st.columns(4)
-                for i, val in enumerate([0, 2, 3, 4]):
-                    label = f"✅ {val}" if st.session_state.guesser_points == val else f"{val}"
-                    if cols[i].button(label, key=f"gp_{val}_{st.session_state.questions_asked}"):
-                        st.session_state.guesser_points = val
-                        st.rerun()
-
-                st.markdown(f"**Czy {director} zdobywa dodatkowy punkt?**")
-                if "extra_point" not in st.session_state:
-                    st.session_state.extra_point = None
-
-                cols2 = st.columns(2)
-                for i, val in enumerate([0, 1]):
-                    label = f"✅ {val}" if st.session_state.extra_point == val else f"{val}"
-                    if cols2[i].button(label, key=f"ep_{val}_{st.session_state.questions_asked}"):
-                        st.session_state.extra_point = val
-                        st.rerun()
-
-                if st.session_state.guesser_points is not None and st.session_state.extra_point is not None:
-                    if st.button("💾 Zapisz i dalej"):
-                        guesser_points = st.session_state.guesser_points
-                        extra_point = st.session_state.extra_point
-
-                        # Reset wyborów
-                        st.session_state.guesser_points = None
-                        st.session_state.extra_point = None
-
-                        # Liczenie punktów globalnych
-                        st.session_state.scores[guesser] += guesser_points
-                        st.session_state.scores[director] += extra_point
-                        responder_points = 0
-                        if guesser_points in [2, 3]:
-                            responder_points = 1
-                        elif guesser_points == 4:
-                            responder_points = 2
-                        if extra_point == 1:
-                            responder_points += 1
-                        st.session_state.scores[responder] += responder_points
-
-                        points_this_round = {
-                            responder: responder_points,
-                            guesser: guesser_points,
-                            director: extra_point
-                        }
-
-                        # DOPISYWANIE WYNIKÓW DO LISTY W PAMIĘCI
-                        if "results_data" not in st.session_state:
-                            st.session_state.results_data = []
-
-                        data_to_save = {
-                            "runda": current_round,
-                            "nr_pytania": current_question_number,
-                            "kategoria": q['categories'],
-                            "pytanie": q['text'],
-                            "odpowiada": responder,
-                            "zgaduje": guesser,
-                            "dodatkowo": director,
-                            responder: points_this_round[responder],
-                            guesser: points_this_round[guesser],
-                            director: points_this_round[director],
-                        }
-
-                        st.session_state.results_data.append(data_to_save)
-
-                        st.session_state.questions_asked += 1
-
-                        if st.session_state.questions_asked % 6 == 0:
-                            st.session_state.ask_continue = True
-                            st.session_state.current_question = None
-                        else:
-                            st.session_state.current_question = draw_question()
-
-                        st.rerun()
-
-    elif st.session_state.step == "end":
-        total_questions = st.session_state.questions_asked
-        total_rounds = total_questions // 6
-        st.success(f"🎉 Gra zakończona! Oto wyniki końcowe:\n\n🥊 Liczba rund: **{total_rounds}** → **{total_questions}** pytań 🧠")
-
-        sorted_scores = sorted(st.session_state.scores.items(), key=lambda x: x[1], reverse=True)
-        medale = ["🏆", "🥈", "🥉"]
-        for i, (name, score) in enumerate(sorted_scores):
-            medal = medale[i] if i < 3 else ""
-            st.write(f"{medal} **{name}:** {score} punktów")
-
-        st.markdown("---")
-        end_buttons()
-
-        # --- Generowanie pliku Excel z wyników w pamięci ---
-        if "results_data" in st.session_state and st.session_state.results_data:
-
-            if "results_uploaded" not in st.session_state:
-                st.session_state.results_uploaded = False
-
-            df_results = pd.DataFrame(st.session_state.results_data)
-
-            output = io.BytesIO()
-            with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
-                df_results.to_excel(writer, index=False, sheet_name='Wyniki')
-            data = output.getvalue()
-
-            st.download_button(
-                label="💾 Pobierz wyniki gry (XLSX)",
-                data=data,
-                file_name="wyniki_gry.xlsx",
-                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            )
-
-            # --- Upload na GitHub tylko raz ---
-            if not st.session_state.results_uploaded:
-                temp_filename = "wyniki_temp.xlsx"
-                with open(temp_filename, "wb") as f:
-                    f.write(data)
-
-                repo = "DawidS25/SpectrumBySzek"
-                try:
-                    token = st.secrets["GITHUB_TOKEN"]
-                except Exception:
-                    token = None
-
-                if token:
-                    next_num = get_next_game_number(repo, token)
-                    today_str = datetime.today().strftime("%Y-%m-%d")
-                    file_name = f"gra{next_num:03d}_{today_str}.xlsx"
-                    path_in_repo = f"wyniki/{file_name}"
-                    commit_message = f"🎉 Wyniki gry {file_name}"
-
-                    response = upload_to_github(temp_filename, repo, path_in_repo, token, commit_message)
-                    if response.status_code == 201:
-                        st.success(f"✅ Wyniki zapisane online.")
-                        st.session_state.results_uploaded = True
-                    else:
-                        st.error(f"❌ Błąd zapisu: {response.status_code} – {response.json()}")
-                else:
-                    st.warning("⚠️ Nie udało się zapisać wyników online.")
-
-
-# ------------------------------
+# ----------------------------------------------------------------------------------------------------------------
 # Ekran głowny - wybór trybu
-# ------------------------------
+# ----------------------------------------------------------------------------------------------------------------
 
 if "step" not in st.session_state:
     st.session_state.step = "mode_select"
