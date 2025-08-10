@@ -471,9 +471,7 @@ def score_board(responder, guesser, director = None):
     else:
         guesser_points = 0
     
-    if guesser_points == 0:
-        responder_points = 0
-    elif guesser_points in [2, 3]:
+    if guesser_points in [2, 3]:
         responder_points = 1
     elif guesser_points == 4:
         responder_points = 2
@@ -543,7 +541,7 @@ def virtual_scoreboard_2(q_per_r, responder, guesser, director = None):
                 st.session_state.scores[responder] += points[1]
             else: 
                 st.session_state.scores[guesser] += points[0]
-                st.session_state.scores[responder] += points[1] + points[2]
+                st.session_state.scores[responder] += points[1]
                 st.session_state.scores[director] += points[2]
 
             # Zapis do results_data
@@ -1201,17 +1199,17 @@ def run_3osobowy():
                         # Liczenie punktów globalnych
                         st.session_state.scores[guesser] += guesser_points
                         st.session_state.scores[director] += extra_point
-                        bonus = 0
+                        responder_points = 0
                         if guesser_points in [2, 3]:
-                            bonus += 1
+                            responder_points = 1
                         elif guesser_points == 4:
-                            bonus += 2
+                            responder_points = 2
                         if extra_point == 1:
-                            bonus += 1
-                        st.session_state.scores[responder] += bonus
+                            responder_points += 1
+                        st.session_state.scores[responder] += responder_points
 
                         points_this_round = {
-                            responder: bonus,
+                            responder: responder_points,
                             guesser: guesser_points,
                             director: extra_point
                         }
