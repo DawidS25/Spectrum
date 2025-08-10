@@ -1051,6 +1051,7 @@ def run_2osobowy():
                             st.session_state.results_data = []
 
                         data_to_save = {
+                            "runda": current_round,
                             "nr_pytania": current_question_number,
                             "kategoria": q['categories'],
                             "pytanie": q['text'],
@@ -1220,6 +1221,7 @@ def run_3osobowy():
                             st.session_state.results_data = []
 
                         data_to_save = {
+                            "runda": current_round,
                             "nr_pytania": current_question_number,
                             "kategoria": q['categories'],
                             "pytanie": q['text'],
