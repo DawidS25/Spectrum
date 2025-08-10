@@ -549,17 +549,17 @@ def virtual_scoreboard_2(q_per_r, responder, guesser, director = None):
             # Zapis do results_data
             q = st.session_state.current_question
             current_question_number = st.session_state.questions_asked + 1
-            current_round = current_question_number // q_per_r
+            current_round = (st.session_state.questions_asked // q_per_r) + 1
 
             if st.session_state.mode == "Drużynowy":
                 points_this_round = {
-                    responder: points[1] + points[2],
+                    responder: points[1],
                     guesser: points[0],
                     director: points[2],
                 }
             elif st.session_state.mode == "3-osobowy":
                 points_this_round = {
-                    responder: points[1] + points[2],
+                    responder: points[1],
                     guesser: points[0],
                     director: points[2],
                 }
@@ -741,8 +741,6 @@ def run_druzynowy():
         max_players = max(len(team1_players), len(team2_players))
         questions_per_round = max_players * 2
 
-        #current_question_number = st.session_state.questions_asked
-        #current_round = (current_question_number // questions_per_round) + 1
 
         if st.session_state.ask_continue:
             handle_continue_decision(questions_per_round)
