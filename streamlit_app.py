@@ -210,7 +210,7 @@ def upload_results_once(data):
         if token:
             next_num = get_next_game_number(repo, token)
             today_str = datetime.today().strftime("%Y-%m-%d")
-            file_name = f"gra{next_num:03d}_{today_str}.xlsx"
+            file_name = f"{today_str}_gra{next_num:03d}.xlsx"
             path_in_repo = f"wyniki/{file_name}"
             commit_message = f"🎉 Wyniki gry {file_name}"
 
