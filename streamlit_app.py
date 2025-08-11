@@ -436,7 +436,7 @@ def answer_board():
 
 def guess_board():
     guess_slider = st.slider("Ustaw promień", -100, 100, st.session_state.guess_slider_val, label_visibility="collapsed")
-    guess_deg = 177.5 - (guess_slider + 100) / 200 * (177.5 - 2.5)
+    guess_deg = 177 - (guess_slider + 100) / 200 * (177 - 3)
     st.pyplot(draw_guess(guess_deg))
     return guess_slider
 
