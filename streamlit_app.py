@@ -337,7 +337,7 @@ if "guess_slider_val" not in st.session_state:
 
 total_width = 26
 half_width = total_width / 2
-center_base = 90
+center_base = 3
 
 colors = {
     "2": "#FFDAB5",
@@ -384,7 +384,7 @@ def draw_guess(guess_angle_deg):
     ax.plot([0, x_end], [0, y_end], color=colors["promien"], linewidth=3)
     return fig
 def draw_score(answer_slider, guess_slider):
-    answer_deg = 90 + (answer_slider + 100) * (-175) / 200
+    answer_deg = 174 - (answer_slider + 100) * 174 / 200
     guess_deg = 177.5 - (guess_slider + 100) / 200 * (177.5 - 2.5)
 
     fig, ax = plt.subplots(figsize=(8, 4))
@@ -414,7 +414,7 @@ def draw_score(answer_slider, guess_slider):
 
 def answer_board():
     answer_slider = st.slider("Przesuń tarczę", -100, 100, st.session_state.answer_slider_val, label_visibility="collapsed")
-    answer_deg = 90 + (answer_slider + 100) * (-175) / 200 
+    answer_deg = 174 - (answer_slider + 100) * 174 / 200 # -100 => 174 ;  100 => 0
 
     fig, ax = plt.subplots(figsize=(8, 4))
     ax.set_aspect('equal')
