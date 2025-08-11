@@ -629,6 +629,72 @@ def virtual_scoreboard_2(q_per_r, responder, guesser, director = None):
             st.rerun()
 
 
+# ------------------------------
+# Generator pytań
+# ------------------------------
+from huggingface_hub import InferenceClient
+
+try:
+    HF_TOKEN = st.secrets["HF_TOKEN"]
+except Exception:
+    HF_TOKEN = None
+
+if HF_TOKEN is None:
+    st.error("Brak tokena Huggingface. Dodaj go do secrets.toml lub w Streamlit Cloud.")
+else:
+    client = InferenceClient(token=HF_TOKEN)
+
+def zapisz_pytanie(plik, pytanie):
+    if os.path.exists(plik):
+        df = pd.read_csv(plik)
+    else:
+        df = pd.DataFrame(columns=["pytanie"])
+    df = pd.concat([df, pd.DataFrame({"pytanie": [pytanie]})], ignore_index=True)
+    df.to_csv(plik, index=False)
+
+def load_random_examples(file_path, n):
+    if os.path.exists(file_path):
+        df = pd.read_csv(file_path)
+        examples = df["pytanie"].dropna().tolist()
+        return random.sample(examples, min(n, len(examples)))
+    return []
+
+def build_prompt(category, dobre_pytania, zle_pytania):
+    prompt = f"Wymyśl pytanie, na które można odpowiedzieć na skali od -100 do 100, z kategorii '{category}'.\n\n"
+    prompt += "Przykłady dobrych pytań z różnych kategorii:\n"
+    for q in dobre_pytania:
+        prompt += f"- {q}\n"
+    prompt += "\nPrzykłady złych pytań:\n"
+    for q in zle_pytania:
+        prompt += f"- {q}\n"
+    prompt += "\nTeraz wygeneruj jedno nowe pytanie:"
+    return prompt
+
+def generate_question_t5(category: str) -> str:
+    dobre_pytania = load_random_examples("dobre.csv", 10)
+    zle_pytania = load_random_examples("zle.csv", 5)
+    prompt = build_prompt(category, dobre_pytania, zle_pytania)
+
+    response = client.text_generation(
+        model="valhalla/t5-base-qg-hl",
+        inputs=prompt,
+        parameters={
+            "max_new_tokens": 64,
+            "do_sample": True,
+            "top_p": 0.9,
+            "temperature": 0.8,
+        },
+    )
+    generated_text = response[0]['generated_text']
+
+    if generated_text.startswith(prompt):
+        question = generated_text[len(prompt):].strip()
+    else:
+        question = generated_text.strip()
+
+    return question
+
+
 
 
 
@@ -1245,6 +1311,96 @@ def run_druzynowy():
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def run_generator():
+    if "step" not in st.session_state:
+        st.session_state.step = "kategoria"
+
+    if st.session_state.step == "kategoria":
+        category = st.text_input("Podaj kategorię pytania:")
+
+        if category.strip() == "":
+                st.warning("Nie podano tematu")
+        else:
+            if st.button("Dalej"):
+                st.session_state.category = category
+                st.session_state.step = "generator"
+                st.rerun()
+
+    if st.session_state.step == "generator":
+        category = st.session_state.category
+        col1, col2 = st.columns([1, 2])
+        with col1:
+            st.markdown(f"Wybrana kategoria: **{category}**")
+        with col2:
+            if st.button("Zmień kategorię"):
+                st.session_state.step = "kategoria"
+                st.rerun()
+
+
+        if st.button("Wygeneruj pytanie"):
+            st.markdown(f"Pytanie z kategorii {category}:")
+            pytanie = generate_question_t5(category)
+            st.session_state["pytanie"] = pytanie
+
+        if "pytanie" in st.session_state:
+            st.markdown(f"### Wygenerowane pytanie:")
+            st.write(st.session_state["pytanie"])
+            
+            col1, col2 = st.columns(2)
+            with col1:
+                if st.button("✅ Zachowaj pytanie"):
+                    zapisz_pytanie("dobre.csv", st.session_state["pytanie"])
+                    st.success("Pytanie zapisane do dobre.csv")
+                    del st.session_state["pytanie"]
+                    st.rerun()
+
+            with col2:
+                if st.button("❌ Odrzuć pytanie"):
+                    zapisz_pytanie("zle.csv", st.session_state["pytanie"])
+                    st.info("Pytanie zapisane do zle.csv")
+                    del st.session_state["pytanie"]
+                    st.rerun()
+            if st.button("Generuj następne pytanie"):
+                st.rerun()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # ----------------------------------------------------------------------------------------------------------------
 # Ekran głowny - wybór trybu
 # ----------------------------------------------------------------------------------------------------------------
@@ -1271,7 +1427,7 @@ def select_mode_and_step(mode, step):
 
 if st.session_state.step == "mode_select":
     st.title("🎮 Wybierz tryb gry")
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3, col4 = st.columns(4)
     with col1:
         if st.button("2-osobowy"):
             select_mode_and_step_later("2-osobowy", "setup")
@@ -1281,6 +1437,9 @@ if st.session_state.step == "mode_select":
     with col3:
         if st.button("Drużynowy"):
             select_mode_and_step_later("Drużynowy", "setup")
+    with col4:
+        if st.button("Generator"):
+            select_mode_and_step_later("Generator", "kategoria")
     virtual_board_val = st.checkbox("🖥️ Użyj wirtualnej planszy")
     st.session_state.virtual_board = virtual_board_val
 
@@ -1297,7 +1456,8 @@ elif st.session_state.mode == "3-osobowy":
     run_3osobowy()
 elif st.session_state.mode == "Drużynowy":
     run_druzynowy()
-
+elif st.session_state.mode == "Generator":
+    run_generator()
 
 # git pull origin main --rebase
 # git add .
