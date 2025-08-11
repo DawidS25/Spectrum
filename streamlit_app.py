@@ -385,7 +385,7 @@ def draw_guess(guess_angle_deg):
     return fig
 def draw_score(answer_slider, guess_slider):
     answer_deg = 174 - (answer_slider + 100) * 174 / 200
-    guess_deg = 177.5 - (guess_slider + 100) / 200 * (177.5 - 2.5)
+    guess_deg = 177 - (guess_slider + 100) / 200 * (177 - 3)
 
     fig, ax = plt.subplots(figsize=(8, 4))
     ax.set_aspect('equal')
