@@ -184,14 +184,15 @@ def get_next_game_number(repo, token, folder="wyniki"):
     max_num = 0
     for file in files:
         name = file["name"]
-        if name.startswith("gra") and name.endswith(".xlsx") and today_str in name:
+        if name.startswith(today_str) and name.endswith(".xlsx"):
             try:
-                num_part = name[3:6]
+                num_part = name.split("_gra")[1].split(".xlsx")[0]
                 num = int(num_part)
                 if num > max_num:
                     max_num = num
-            except:
-                pass
+            except (IndexError, ValueError):
+                pass            
+        
     return max_num + 1
 
 def upload_results_once(data):
@@ -212,7 +213,7 @@ def upload_results_once(data):
             today_str = datetime.today().strftime("%Y-%m-%d")
             file_name = f"{today_str}_gra{next_num:03d}.xlsx"
             path_in_repo = f"wyniki/{file_name}"
-            commit_message = f"🎉 Wyniki gry {file_name}"
+            commit_message = f"🎉 Wyniki gry: {file_name}"
 
             response = upload_to_github(temp_filename, repo, path_in_repo, token, commit_message)
             if response.status_code == 201:
