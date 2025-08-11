@@ -301,7 +301,8 @@ def prepare_next_question():
 def round_info(q, current_round, current_question_number):
     st.markdown(f"##### 🥊 Runda {current_round}")
     branding_szek()
-    st.markdown(f"#### 🧠 Pytanie {current_question_number} – kategoria: *{q['categories']}*")
+    emoji = CATEGORY_EMOJIS.get(q['categories'], '')
+    st.markdown(f"#### 🧠 Pytanie {current_question_number} – kategoria: *{q['categories']}* {emoji}")
     st.write(q["text"])
     col1, col2 = st.columns([1, 3])
     with col1:
@@ -482,6 +483,7 @@ def score_board(responder, guesser, director = None):
         responder_points = 2
     else:
         responder_points = 0
+    responder_points_from_guesser = responder_points
     extra_points = 0
     if st.session_state.mode != "2-osobowy":
         if diff <= -4 and st.session_state.director_choice == "left":
@@ -493,9 +495,9 @@ def score_board(responder, guesser, director = None):
         if extra_points == 1:
             responder_points += extra_points
         responder_name = responder.split("_")[0]
-        st.markdown(f"Punktacja: {guesser}: {guesser_points}; {director}: {extra_points}; {responder_name}: {responder_points}")
+        st.markdown(f"Punktacja: **{guesser}**: {guesser_points} | **{director}**: {extra_points} | **{responder_name}**: {responder_points} ({responder_points_from_guesser} + {extra_points})")
     else:
-        st.markdown(f"Punktacja: {guesser}: {guesser_points}; {responder}: {responder_points}")
+        st.markdown(f"Punktacja: **{guesser}**: {guesser_points} | **{responder}**: {responder_points}")
     return guesser_points, responder_points, extra_points
 
 def virtual_scoreboard_2(q_per_r, responder, guesser, director = None):
