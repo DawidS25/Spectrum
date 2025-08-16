@@ -1,5 +1,8 @@
 TEST
+
 git pull origin main --rebase
 git add .
 git commit -m "test"
 git push
+
+python -m streamlit run streamlit_app.py
