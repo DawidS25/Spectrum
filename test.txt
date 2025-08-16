@@ -1,0 +1,5 @@
+TEST
+git pull origin main --rebase
+git add .
+git commit -m "test"
+git push
