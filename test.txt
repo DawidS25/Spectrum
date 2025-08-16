@@ -1,8 +1,13 @@
 TEST
 
+# UPLOAD NA GITHUB - najpierw trzeba zapisać lokalnie
 git pull origin main --rebase
 git add .
 git commit -m "test"
 git push
 
+# ODPALENIE APLIKACJI LOKALNIE - do testowania
 python -m streamlit run streamlit_app.py
+
+# SPRAWDZENIE AKTUALNEGO REPO - dla pewności
+git remote -v
