@@ -6,6 +6,8 @@ import io
 import base64
 import requests
 from datetime import datetime
+import matplotlib.pyplot as plt
+import numpy as np
 
 # ----------------------------------------------------------------------------------------------------------------
 # Funkcje
@@ -325,10 +327,6 @@ def round_info(q, current_round, current_question_number):
 # ------------------------------
 # Wirtualna plansza
 # ------------------------------
-
-import streamlit as st
-import matplotlib.pyplot as plt
-import numpy as np
 
 # Ustawienie stanu strony
 if "answer_slider_val" not in st.session_state:
