@@ -1,3 +1,4 @@
+
 import streamlit as st
 import random
 import pandas as pd
@@ -20,7 +21,7 @@ import numpy as np
 df = pd.read_csv('questions.csv', sep=';')
 
 def filter_by_category(cat):
-    return df[df['categories'] == cat].to_dict(orient='records')
+    return df[df['category'] == cat].to_dict(orient='records')
 
 category_names = [
     "Śmieszne", "Światopoglądowe", "Związkowe", "Pikantne",
@@ -303,8 +304,8 @@ def prepare_next_question():
 def round_info(q, current_round, current_question_number):
     st.markdown(f"##### 🥊 Runda {current_round}")
     branding_szek()
-    emoji = CATEGORY_EMOJIS.get(q['categories'], '')
-    st.markdown(f"#### 🧠 Pytanie {current_question_number} – kategoria: *{q['categories']}* {emoji}")
+    emoji = CATEGORY_EMOJIS.get(q['category'], '')
+    st.markdown(f"#### 🧠 Pytanie {current_question_number} – kategoria: *{q['category']}* {emoji}")
     st.write(q["text"])
     col1, col2 = st.columns([1, 3])
     with col1:
@@ -316,6 +317,8 @@ def round_info(q, current_round, current_question_number):
                 if new_q:
                     st.session_state.current_question = new_q
                 st.rerun()
+    if not st.session_state.virtual_board:
+        st.markdown(f"⬅️ {q['left']} | {q['right']} ➡️")
 
 
 
@@ -462,9 +465,18 @@ def direction_board():
             st.session_state.director_choice = "right"
             st.rerun()
     
+def left_right():
+    q = st.session_state.current_question
+    st.markdown(f"""
+    <div style="display: flex; justify-content: space-between; width: 100%; margin-top:-30px; padding: 0 20px;">
+        <p style="font-size:14px; margin:0; padding:0;">⬅️ {q['left']}</p>
+        <p style="font-size:14px; margin:0; padding:0;">{q['right']} ➡️</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 def score_board(responder, guesser, director = None):
     st.pyplot(draw_score(st.session_state.answer_slider_val, st.session_state.guess_slider_val))
+    left_right()
     diff = st.session_state.answer_slider_val - st.session_state.guess_slider_val
     if abs(diff) <= 3:
         guesser_points = 4
@@ -501,9 +513,9 @@ def score_board(responder, guesser, director = None):
 def virtual_scoreboard_2(q_per_r, responder, guesser, director = None):
     if "virtual_board_step" not in st.session_state:
         st.session_state.virtual_board_step = "answer"
-
     if st.session_state.virtual_board_step == "answer":
         answer_slider = answer_board()
+        left_right()
         if st.button("Zatwierdź odpowiedź"):
             st.session_state.answer_slider_val = answer_slider
             st.session_state.virtual_board_step = "guess"
@@ -511,6 +523,7 @@ def virtual_scoreboard_2(q_per_r, responder, guesser, director = None):
 
     elif st.session_state.virtual_board_step == "guess":
         guess_slider = guess_board()
+        left_right()
         if director is None:
             if st.button("Zatwierdź punktację"):
                 st.session_state.guess_slider_val = guess_slider
@@ -524,6 +537,7 @@ def virtual_scoreboard_2(q_per_r, responder, guesser, director = None):
     
     elif st.session_state.virtual_board_step == "direction":
         direction = direction_board()
+        left_right()
         if st.session_state.director_choice is not None:
             if st.button("Zatwierdź kierunek"):
                 st.session_state.direction = direction
@@ -531,7 +545,6 @@ def virtual_scoreboard_2(q_per_r, responder, guesser, director = None):
                 st.rerun()
     
     elif st.session_state.virtual_board_step == "score":
-
         points = score_board(responder, guesser, director)
         if st.button("✅ Następne pytanie!"):
             # Reset planszy
@@ -580,7 +593,7 @@ def virtual_scoreboard_2(q_per_r, responder, guesser, director = None):
                 data_to_save = {
                 "runda": current_round,
                 "pytanie_nr": current_question_number,
-                "kategoria": q['categories'],
+                "kategoria": q['category'],
                 "pytanie": q['text'],
                 "odpowiada": responder,
                 "zgaduje_drużyna": guesser,
@@ -593,7 +606,7 @@ def virtual_scoreboard_2(q_per_r, responder, guesser, director = None):
                 data_to_save = {
                     "runda": current_round,
                     "nr_pytania": current_question_number,
-                    "kategoria": q['categories'],
+                    "kategoria": q['category'],
                     "pytanie": q['text'],
                     "odpowiada": responder,
                     "zgaduje": guesser,
@@ -605,7 +618,7 @@ def virtual_scoreboard_2(q_per_r, responder, guesser, director = None):
             elif st.session_state.mode == "2-osobowy":
                 data_to_save = {
                     "nr_pytania": current_question_number,
-                    "kategoria": q['categories'],
+                    "kategoria": q['category'],
                     "pytanie": q['text'],
                     "odpowiada": responder,
                     "zgaduje": guesser,
@@ -733,7 +746,7 @@ def run_2osobowy():
                         data_to_save = {
                             "runda": current_round,
                             "nr_pytania": current_question_number,
-                            "kategoria": q['categories'],
+                            "kategoria": q['category'],
                             "pytanie": q['text'],
                             "odpowiada": responder,
                             "zgaduje": guesser,
@@ -903,7 +916,7 @@ def run_3osobowy():
                         data_to_save = {
                             "runda": current_round,
                             "nr_pytania": current_question_number,
-                            "kategoria": q['categories'],
+                            "kategoria": q['category'],
                             "pytanie": q['text'],
                             "odpowiada": responder,
                             "zgaduje": guesser,
@@ -1149,7 +1162,7 @@ def run_druzynowy():
                         data_to_save = {
                             "runda": current_round,
                             "pytanie_nr": current_question_number,
-                            "kategoria": q['categories'],
+                            "kategoria": q['category'],
                             "pytanie": q['text'],
                             "odpowiada": responder,
                             "zgaduje_drużyna": guessing_team,
@@ -1288,16 +1301,9 @@ if st.session_state.step == "mode_select":
         st.session_state.pending_mode = None
         st.rerun()
 
-#virtual_board_val = st.session_state.get("virtual_board", False)
 if st.session_state.mode == "2-osobowy":
     run_2osobowy()
 elif st.session_state.mode == "3-osobowy":
     run_3osobowy()
 elif st.session_state.mode == "Drużynowy":
     run_druzynowy()
-
-
-# git pull origin main --rebase
-# git add .
-# git commit -m ""
-# git push
