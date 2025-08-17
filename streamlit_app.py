@@ -468,7 +468,7 @@ def direction_board():
 def left_right():
     q = st.session_state.current_question
     st.markdown(f"""
-    <div style="display: flex; justify-content: space-between; width: 100%; margin-top:-30px; padding: 0 20px;">
+    <div style="display: flex; justify-content: space-between; width: 100%; margin-top:-10px; padding: 0 20px;">
         <p style="font-size:14px; margin:0; padding:0;">⬅️ {q['left']}</p>
         <p style="font-size:14px; margin:0; padding:0;">{q['right']} ➡️</p>
     </div>
