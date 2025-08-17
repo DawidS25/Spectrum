@@ -307,6 +307,8 @@ def round_info(q, current_round, current_question_number):
     emoji = CATEGORY_EMOJIS.get(q['category'], '')
     st.markdown(f"#### 🧠 Pytanie {current_question_number} – kategoria: *{q['category']}* {emoji}")
     st.write(q["text"])
+    if not st.session_state.virtual_board:
+        st.markdown(f"⬅️ {q['left']} | {q['right']} ➡️")
     col1, col2 = st.columns([1, 3])
     with col1:
         st.markdown(f"<small>id: {q['id']}</small>", unsafe_allow_html=True)
@@ -317,8 +319,6 @@ def round_info(q, current_round, current_question_number):
                 if new_q:
                     st.session_state.current_question = new_q
                 st.rerun()
-    if not st.session_state.virtual_board:
-        st.markdown(f"⬅️ {q['left']} | {q['right']} ➡️")
 
 
 
