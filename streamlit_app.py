@@ -340,8 +340,8 @@ def round_info(q, current_round, current_question_number):
                 commit_message=f"Zgłoszono pytanie {q['id']}"
                 file_exists = os.path.isfile(file_path)
                 with open(file_path, mode="a", newline="", encoding="utf-8") as f:
-                    writer = csv.DictWriter(f, fieldnames=["id", "text", "category", "left", "right"])
-                    if not file_exists:  # jeśli plik nie istnieje – zapisz nagłówki
+                    writer = csv.DictWriter(f, fieldnames=["id", "text", "category", "left", "right"], delimiter=";")
+                    if not file_exists:
                         writer.writeheader()
                     writer.writerow(q)
                 try:
