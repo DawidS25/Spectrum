@@ -211,19 +211,11 @@ def get_next_game_number(repo, token, folder="wyniki"):
         
     return max_num + 1
 
-def upload_results_once(data_xlsx, df_results):
+def upload_results_once(data):
     # --- Upload na GitHub tylko raz ---
     if not st.session_state.results_uploaded:
 
-        # 1️⃣ Zapis XLSX tymczasowo
-        temp_xlsx = "wyniki_temp.xlsx"
-        with open(temp_xlsx, "wb") as f:
-            f.write(data_xlsx)
-
-        # 2️⃣ Zapis CSV tymczasowo
-        temp_csv = "wyniki_temp.csv"
-        df_results.to_csv(temp_csv, index=False, sep=";")  # separator średnik
-
+        # --- Repo i token ---
         repo = "DawidS25/Spectrum"
         try:
             token = st.secrets["GITHUB_TOKEN"]
@@ -233,25 +225,49 @@ def upload_results_once(data_xlsx, df_results):
         if token:
             next_num = get_next_game_number(repo, token)
             today_str = datetime.today().strftime("%Y-%m-%d")
-            
-            # --- XLSX ---
+
+            # --- Nazwy plików ---
             file_name_xlsx = f"{today_str}_gra{next_num:03d}.xlsx"
-            path_in_repo_xlsx = f"wyniki/{file_name_xlsx}"
-            commit_message_xlsx = f"🎉 Wyniki gry (XLSX): {file_name_xlsx}"
-            response_xlsx = upload_to_github(temp_xlsx, repo, path_in_repo_xlsx, token, commit_message_xlsx)
-
-            # --- CSV ---
             file_name_csv = f"{today_str}_gra{next_num:03d}.csv"
-            path_in_repo_csv = f"wyniki/{file_name_csv}"
-            commit_message_csv = f"🎉 Wyniki gry (CSV): {file_name_csv}"
-            response_csv = upload_to_github(temp_csv, repo, path_in_repo_csv, token, commit_message_csv)
 
-            # --- Sprawdzenie odpowiedzi ---
+            path_in_repo_xlsx = f"wyniki/{file_name_xlsx}"
+            path_in_repo_csv = f"wyniki/{file_name_csv}"
+
+            # --- Commit messages ---
+            commit_message_xlsx = f"🎉 Wyniki gry (XLSX): {file_name_xlsx}"
+            commit_message_csv = f"🎉 Wyniki gry (CSV): {file_name_csv}"
+
+            # --- Upload XLSX z pamięci ---
+            response_xlsx = upload_to_github_bytes(
+                content_bytes=data,
+                repo=repo,
+                path_in_repo=path_in_repo_xlsx,
+                token=token,
+                commit_message=commit_message_xlsx
+            )
+
+            # --- Konwersja XLSX do CSV w pamięci ---
+            import io
+            xlsx_io = io.BytesIO(data)
+            df_results = pd.read_excel(xlsx_io)
+            csv_str = df_results.to_csv(index=False, sep=";")
+
+            # --- Upload CSV z pamięci ---
+            response_csv = upload_to_github_bytes(
+                content_bytes=csv_str,
+                repo=repo,
+                path_in_repo=path_in_repo_csv,
+                token=token,
+                commit_message=commit_message_csv
+            )
+
+            # --- Sprawdzenie statusów ---
             if response_xlsx.status_code in [200, 201] and response_csv.status_code in [200, 201]:
-                st.success(f"✅ Zakończono grę!")
+                st.success(f"✅ Zakończono grę! Pliki XLSX i CSV zapisane na GitHubie.")
                 st.session_state.results_uploaded = True
             else:
                 st.error(f"❌ Błąd zapisu: XLSX {response_xlsx.status_code}, CSV {response_csv.status_code}")
+
         else:
             st.warning("⚠️ Nie udało się zapisać wyników online.")
 
