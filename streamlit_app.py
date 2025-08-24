@@ -337,7 +337,7 @@ def round_info(q, current_round, current_question_number):
                 file_path = "reported_questions.csv"
                 repo="DawidS25/SpectrumDruzynowe"
                 path_in_repo="reported_questions.csv"
-                commit_message=f"Zgłoszono pytanie {q['id']"}
+                commit_message=f"Zgłoszono pytanie {q['id']}"
                 file_exists = os.path.isfile(file_path)
                 with open(file_path, mode="a", newline="", encoding="utf-8") as f:
                     writer = csv.DictWriter(f, fieldnames=["id", "text", "category", "left", "right"])
