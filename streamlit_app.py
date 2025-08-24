@@ -335,6 +335,9 @@ def round_info(q, current_round, current_question_number):
         if "virtual_board_step" not in st.session_state or st.session_state.virtual_board_step not in ["guess", "score"]:
             if st.button("⚠️"):
                 file_path = "reported_questions.csv"
+                repo="DawidS25/SpectrumDruzynowe"
+                path_in_repo="reported_questions.csv"
+                commit_message=f"Zgłoszono pytanie {q['id']}
                 file_exists = os.path.isfile(file_path)
                 with open(file_path, mode="a", newline="", encoding="utf-8") as f:
                     writer = csv.DictWriter(f, fieldnames=["id", "text", "category", "left", "right"])
@@ -347,14 +350,7 @@ def round_info(q, current_round, current_question_number):
                     token = None
 
                 if token:
-                    response = upload_to_github(
-                        "reported_questions.csv",
-                        repo="DawidS25/SpectrumDruzynowe",
-                        path_in_repo="reported_questions.csv",
-                        token=st.secrets["github_token"],
-                        commit_message=f"Zgłoszono pytanie {q['id']}"
-                    )
-
+                    response = upload_to_github(path_in_repo, repo, path_in_repo, token, commit_message)
                     if response.status_code in [200, 201]:
                         st.success("✅ Zgłoszono pytanie.")
                     else:
