@@ -315,7 +315,7 @@ def prepare_next_question():
 # ------------------------------
 def report_question(q, file_path, commit_message, commit_to_player = None):
     repo="DawidS25/Spectrum"
-    path_in_repo = file_path
+    path_in_repo = f"questions/{file_path}"
     file_exists = os.path.isfile(file_path)
     with open(file_path, mode="a", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=["id", "text", "category", "left", "right"], delimiter=";")
