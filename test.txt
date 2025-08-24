@@ -6,6 +6,10 @@ git add .
 git commit -m "test"
 git push
 
+# WYPCHNIĘCIE SIŁĄ
+git rebase --abort
+git push origin main --force
+
 # ODPALENIE APLIKACJI LOKALNIE - do testowania
 python -m streamlit run streamlit_app.py
 
