@@ -313,6 +313,30 @@ def prepare_next_question():
 # ------------------------------
 # branding i interfejs
 # ------------------------------
+def report_question(q, file_path, commit_message, commit_to_player = None):
+    repo="DawidS25/Spectrum"
+    path_in_repo = file_path
+    file_exists = os.path.isfile(file_path)
+    with open(file_path, mode="a", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=["id", "text", "category", "left", "right"], delimiter=";")
+        if not file_exists:
+            writer.writeheader()
+        writer.writerow(q)
+    try:
+        token = st.secrets["GITHUB_TOKEN"]
+    except Exception:
+        token = None
+
+    if token:
+        response = upload_to_github(path_in_repo, repo, path_in_repo, token, commit_message)
+        if response.status_code in [200, 201]:
+            if commit_to_player:
+                st.success(f"{commit_to_player}")
+        else:
+            st.error(f"❌ Błąd: {response.text}")
+    else:
+        st.warning("⚠️ Brak tokena.")
+
 
 def round_info(q, current_round, current_question_number):
     st.markdown(f"##### 🥊 Runda {current_round}")
@@ -334,32 +358,7 @@ def round_info(q, current_round, current_question_number):
     with col3:
         if "virtual_board_step" not in st.session_state or st.session_state.virtual_board_step not in ["guess", "score"]:
             if st.button("⚠️"):
-                file_path = "reported_questions.csv"
-                repo="DawidS25/Spectrum"
-                path_in_repo="reported_questions.csv"
-                commit_message=f"Zgłoszono pytanie {q['id']}"
-                file_exists = os.path.isfile(file_path)
-                with open(file_path, mode="a", newline="", encoding="utf-8") as f:
-                    writer = csv.DictWriter(f, fieldnames=["id", "text", "category", "left", "right"], delimiter=";")
-                    if not file_exists:
-                        writer.writeheader()
-                    writer.writerow(q)
-                try:
-                    token = st.secrets["GITHUB_TOKEN"]
-                except Exception:
-                    token = None
-
-                if token:
-                    response = upload_to_github(path_in_repo, repo, path_in_repo, token, commit_message)
-                    if response.status_code in [200, 201]:
-                        st.success("✅ Zgłoszono pytanie.")
-                    else:
-                        st.error(f"❌ Błąd zapisu na GitHub: {response.text}")
-                else:
-                    st.warning("⚠️ Brak tokena do zgłoszenia.")
-
-
-
+                report_question(q, "reported_questions.csv", f"Zgłoszono pytanie {q['id']}", "Zgłoszono pytanie.")
 
     if not st.session_state.virtual_board:
         st.markdown(f"⬅️ {q['left']} | {q['right']} ➡️")
