@@ -26,14 +26,14 @@ def filter_by_category(cat):
 
 category_names = [
     "Śmieszne", "Światopoglądowe", "Związkowe", "Pikantne",
-    "Luźne", "Przeszłość", "Wolisz", "Dylematy"
+    "Luźne", "Przeszłość", "Wolisz", "Dylematy", "Imprezowe"
 ]
 
 CATEGORIES = {cat: filter_by_category(cat) for cat in category_names}
 
 CATEGORY_EMOJIS = {
     "Śmieszne": "😂", "Światopoglądowe": "🌍", "Związkowe": "❤️", "Pikantne": "🌶️",
-    "Luźne": "😎", "Przeszłość": "📜", "Wolisz": "🤔", "Dylematy": "⚖️"
+    "Luźne": "😎", "Przeszłość": "📜", "Wolisz": "🤔", "Dylematy": "⚖️", "Imprezowe": "🍻"
 }
 
 # ------------------------------
