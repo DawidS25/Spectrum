@@ -247,6 +247,18 @@ def upload_results_once(data):
 def category_selection_screen(CATEGORIES, CATEGORY_EMOJIS):
     st.header("📚 Wybierz kategorie pytań")
 
+    all_cats = set(CATEGORIES.keys())
+    select_all = st.checkbox("✅ Zaznacz wszystkie kategorie", value=len(st.session_state.get("category_selection", set())) == len(all_cats))
+    if "category_selection" not in st.session_state:
+        st.session_state.category_selection = set()
+    # Obsługa checkboxa
+    if select_all and st.session_state.category_selection != all_cats:
+        st.session_state.category_selection = all_cats.copy()
+        st.rerun()
+    elif not select_all and st.session_state.category_selection == all_cats:
+        st.session_state.category_selection = set()
+        st.rerun()
+
     if "category_selection" not in st.session_state:
         st.session_state.category_selection = set()
 
