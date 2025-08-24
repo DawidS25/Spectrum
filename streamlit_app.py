@@ -2,6 +2,7 @@
 import streamlit as st
 import random
 import pandas as pd
+import csv
 import os
 import io
 import base64
@@ -152,25 +153,37 @@ def branding_szek():
 # Upload na github
 # ------------------------------
 
-def upload_to_github(file_path, repo, path_in_repo, token, commit_message):
-    with open(file_path, "rb") as f:
-        content = f.read()
-    b64_content = base64.b64encode(content).decode("utf-8")
+import requests, base64
 
+def upload_to_github(file_path, repo, path_in_repo, token, commit_message):
     url = f"https://api.github.com/repos/{repo}/contents/{path_in_repo}"
     headers = {
         "Authorization": f"token {token}",
         "Accept": "application/vnd.github.v3+json"
     }
 
+    # Pobierz SHA pliku
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        sha = response.json()["sha"]
+    else:
+        sha = None  # plik nie istnieje, będzie tworzony
+
+    with open(file_path, "rb") as f:
+        content = f.read()
+    b64_content = base64.b64encode(content).decode("utf-8")
+
     data = {
         "message": commit_message,
         "content": b64_content,
         "branch": "main"
     }
+    if sha:
+        data["sha"] = sha  # potrzebne do nadpisania
 
     response = requests.put(url, headers=headers, json=data)
     return response
+
 
 def get_next_game_number(repo, token, folder="wyniki"):
     url = f"https://api.github.com/repos/{repo}/contents/{folder}"
@@ -306,10 +319,9 @@ def round_info(q, current_round, current_question_number):
     branding_szek()
     emoji = CATEGORY_EMOJIS.get(q['category'], '')
     st.markdown(f"#### 🧠 Pytanie {current_question_number} – kategoria: *{q['category']}* {emoji}")
-    st.write(q["text"])
-    if not st.session_state.virtual_board:
-        st.markdown(f"⬅️ {q['left']} | {q['right']} ➡️")
-    col1, col2 = st.columns([1, 3])
+    st.markdown(f"##### **{q['text']}**")
+
+    col1, col2, col3 = st.columns([1, 2, 5])
     with col1:
         st.markdown(f"<small>id: {q['id']}</small>", unsafe_allow_html=True)
     with col2:
@@ -319,8 +331,42 @@ def round_info(q, current_round, current_question_number):
                 if new_q:
                     st.session_state.current_question = new_q
                 st.rerun()
+    with col3:
+        if "virtual_board_step" not in st.session_state or st.session_state.virtual_board_step not in ["guess", "score"]:
+            if st.button("⚠️"):
+                file_path = "reported_questions.csv"
+                file_exists = os.path.isfile(file_path)
+                with open(file_path, mode="a", newline="", encoding="utf-8") as f:
+                    writer = csv.DictWriter(f, fieldnames=["id", "text", "category", "left", "right"])
+                    if not file_exists:  # jeśli plik nie istnieje – zapisz nagłówki
+                        writer.writeheader()
+                    writer.writerow(q)
+                try:
+                    token = st.secrets["GITHUB_TOKEN"]
+                except Exception:
+                    token = None
+
+                if token:
+                    response = upload_to_github(
+                        "reported_questions.csv",
+                        repo="DawidS25/SpectrumDruzynowe",
+                        path_in_repo="reported_questions.csv",
+                        token=st.secrets["github_token"],
+                        commit_message=f"Zgłoszono pytanie {q['id']}"
+                    )
+
+                    if response.status_code in [200, 201]:
+                        st.success("✅ Zgłoszono pytanie.")
+                    else:
+                        st.error(f"❌ Błąd zapisu na GitHub: {response.text}")
+                else:
+                    st.warning("⚠️ Brak tokena do zgłoszenia.")
 
 
+
+
+    if not st.session_state.virtual_board:
+        st.markdown(f"⬅️ {q['left']} | {q['right']} ➡️")
 
 
 
