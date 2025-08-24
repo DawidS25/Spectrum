@@ -19,7 +19,7 @@ import numpy as np
 # Wczytywanie pytań z CSV
 # ------------------------------
 
-df = pd.read_csv('questions.csv', sep=';')
+df = pd.read_csv('questions/questions.csv', sep=';')
 
 def filter_by_category(cat):
     return df[df['category'] == cat].to_dict(orient='records')
