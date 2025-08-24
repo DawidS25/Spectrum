@@ -184,7 +184,6 @@ def upload_to_github(file_path, repo, path_in_repo, token, commit_message):
     response = requests.put(url, headers=headers, json=data)
     return response
 
-
 def get_next_game_number(repo, token, folder="wyniki"):
     url = f"https://api.github.com/repos/{repo}/contents/{folder}"
     headers = {
@@ -375,11 +374,6 @@ def round_info(q, current_round, current_question_number):
 
     if not st.session_state.virtual_board:
         st.markdown(f"⬅️ {q['left']} | {q['right']} ➡️")
-
-
-
-
-
 
 # ------------------------------
 # Wirtualna plansza
@@ -693,13 +687,6 @@ def virtual_scoreboard_2(q_per_r, responder, guesser, director = None):
 
             st.rerun()
 
-
-
-
-
-
-
-
 # ----------------------------------------------------------------------------------------------------------------
 # Tryby gry
 # ----------------------------------------------------------------------------------------------------------------
@@ -859,6 +846,7 @@ def run_2osobowy():
 # ----------------------------------------------------------------------------------------------------------------
 # Tryb 3-osobowy
 # ----------------------------------------------------------------------------------------------------------------
+
 def run_3osobowy():
     init_session_state(get_default_session_state("3-osobowy"))
     if st.session_state.step == "setup":
@@ -1239,7 +1227,6 @@ def run_druzynowy():
 
                         st.rerun()
 
-
     if st.session_state.step == "end":
         total_questions = st.session_state.questions_asked
         max_players = max(len(st.session_state.team_players[st.session_state.team_names[0]]),
@@ -1308,7 +1295,83 @@ def run_druzynowy():
 
             upload_results_once(data)
 
+# ----------------------------------------------------------------------------------------------------------------
+# INSTRUKCJA
+# ----------------------------------------------------------------------------------------------------------------
 
+def run_instructions():
+    st.markdown(f"### 📖 Instrukcja gry: **Spectrum by Szek**")
+
+    with st.expander("Wprowadzenie"):
+        st.write("""
+        **Spectrum By Szek** to zabawa, w której gracze zdobywają punkty poprzez zgadywanie odpowiedzi innych graczy.
+        Dostępne są trzy tryby gry:
+        - Tryb 2-osobowy
+        - Tryb 3-osobowy
+        - Tryb drużynowy (do 14 graczy)  \n
+        Celem każdego gracza (oraz drużyny w trybie Drużynowym) jest zdobycie jak największej liczby punktów poprzez trafne zgadywanie odpowiedzi innych graczy.
+        """)
+
+    with st.expander("Przygotowanie do gry"):
+        st.write("""
+        1. Wybierz tryb gry w zależności od liczby graczy.
+        2. Uzupełnij imiona graczy oraz nazwy drużyn.
+        3. Wybierz kategorie pytań (można zaznaczyć kilka jednocześnie).
+        4. Zacznijcie grę i bawcie się dobrze!
+        """)
+
+    with st.expander("Kategorie pytań"):
+        st.write("""
+        Aktualnie w grze jest dostępne 9 kategorii pytań. Każda różni się treścią i stylem pytań, ale zasady punktacji są takie same.
+        Kategorie mogą obejmować: humor, opinie, lifestyle, relacje, światopogląd itp.
+        Gracze mogą wybrać jedną lub więcej kategorii przed rozpoczęciem gry.
+        """)
+
+    with st.expander("Przebieg rundy"):
+        st.write("""
+        Każda runda składa się z kilku kroków:
+        1. **Gracz 1 - odpowiadający** odpowiada na pytanie w skali od -100 do 100 (kierunki odpowiedzi są wyświetlane pod treścią pytania).
+        2. **Gracz 2 - zgadujący** zgaduje, gdzie znajduje się odpowiedź *Gracza 1* (odpowiadającego).
+        3. Jeśli graczy jest więcej niż dwóch, **Gracz 3** zgaduje, czy odpowiedź *Gracza 1* (odpowiadającego) znajduje się **na lewo**, **idealnie**, czy **na prawo** od odpowiedzi *Gracza 2* (zgadującego).
+
+        W trybie drużynowym **Gracz 2** i **Gracz 3** odpowiadają drużynie gracza odpowiadającego oraz drużynie przeciwnej.
+        Przykład wizualny:
+        ```
+        Pytanie: Wolisz morze czy góry?
+        Gracz 1: 60 - czyli bardziej góry, ale nie ekstremalnie
+        Gracz 2: 55 - czyli poniżej odpowiedzi Gracza 1
+        Gracz 3: w prawo (czyli poprawnie zgadł - 60 jest w prawo od 55)
+        ```
+        """)
+
+    with st.expander("Punktacja"):
+        st.write("""
+        Punkty przyznawane są następująco:
+        - **Gracz 1**: otrzymuje punkty zależnie od wyników innych graczy. Jeśli *Gracz 2* zdobywa 2 lub 3 punkty - *Gracz 1* otrzymuje 1 punkt, jeśli *Gracz 2* zdobywa 4 punkty - *Gracz 1* otrzymuje 2 punkty. Jeśli *Gracz 3* zgadnie poprawnie kierunek, *Gracz 1* otrzymuje dodatkowy punkt.
+        - **Gracz 2**: 0, 2, 3, 4 punkty w zależności od trafienia: różnica powyżej 15 (0 punktów), różnica 10-15 (2 punkty), różnica 4-9 (3 punkty), róznica 0-3 (4 punkty).
+        - **Gracz 3**: 1 punkt za wskazanie poprawnego kierunku.
+        
+        W trybie drużynowym punkty *"Gracza 2"* i *"Gracza 3"* są sumowane jako punkty drużyny. Jednak Gracz odpowiadający ma osobną pulę punktów indywidualnych liczonych do osobnego rankingu.
+        Przykład punktacji:
+        | Gracz  | Odpowiedź | Punkty |
+        |--------|-----------|--------|
+        | 1      | 60        | 2 (1+1)|
+        | 2      | 55        | 3      |
+        | 3      | w prawo   | 1      |
+        """)
+
+    with st.expander("Koniec gry i podsumowanie"):
+        st.write("""
+        Grę można zatrzymać na koniec każdej rundy (liczba pytań w jednej rundzie zależy od liczby graczy.). 
+        Na koniec wyświetlana jest całkowita punktacja wszystkich graczy (oraz drużyn w trybie Drużynowym).
+        Po wyświetleniu wyników dalej istnieje możliwość kontynuacji gry.
+        Pod wynikami dostępna jest także opcja pobrania raportu gry - wylosowanych pytań, kolejności odpowiadania oraz zdobytych punktów.
+        """)
+
+    if st.button("🔙 Powrót"):
+        st.session_state.step = "mode_select"
+        st.session_state.mode = "None"
+        st.rerun()
 
 # ----------------------------------------------------------------------------------------------------------------
 # Ekran głowny - wybór trybu
@@ -1322,7 +1385,7 @@ if "virtual_board" not in st.session_state:
     st.session_state.virtual_board = False
 
 if "pending_mode" not in st.session_state:
-    st.session_state.pending_mode = None  # <-- użyj do przechowania klikniętego przycisku
+    st.session_state.pending_mode = None
 
 def select_mode_and_step_later(mode, step):
     st.session_state.pending_mode = mode
@@ -1348,6 +1411,10 @@ if st.session_state.step == "mode_select":
             select_mode_and_step_later("Drużynowy", "setup")
     virtual_board_val = st.checkbox("🖥️ Użyj wirtualnej planszy")
     st.session_state.virtual_board = virtual_board_val
+    if st.button("ℹ️ Instrukcja"):
+        st.session_state.mode = "Instrukcja"
+        st.session_state.step = "instructions"
+        st.rerun()
 
     if st.session_state.pending_mode is not None:
         st.session_state.mode = st.session_state.pending_mode
@@ -1361,3 +1428,5 @@ elif st.session_state.mode == "3-osobowy":
     run_3osobowy()
 elif st.session_state.mode == "Drużynowy":
     run_druzynowy()
+elif st.session_state.mode == "Instrukcja":
+    run_instructions()
