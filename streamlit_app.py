@@ -1,7 +1,7 @@
-
 import streamlit as st
 import random
 import pandas as pd
+import csv
 import os
 import io
 import base64
@@ -78,6 +78,9 @@ def get_default_session_state(mode):
             "use_players": True,
             "extra_point": None
         }
+def new_state(state, value = None):
+    if state not in st.session_state:
+        st.session_state[state] = value
 
 # ------------------------------
 # Losowanie pytania
@@ -129,24 +132,6 @@ def end_buttons():
             st.session_state.step = "mode_select"
             st.session_state.mode = "None"
             st.rerun()
-
-# ------------------------------
-# Branding
-# ------------------------------
-
-if "step" in st.session_state and st.session_state.step in ["mode_select", "setup", "categories", "end"]:
-    st.title("🎲 Spectrum")
-    st.markdown(
-        "<div style='margin-top: -20px; font-size: 10px; color: gray;'>made by Szek</div>",
-        unsafe_allow_html=True
-    )
-def branding_szek():
-    st.markdown(
-        """
-        <div style='margin-top: -20px; font-size: 10px; color: gray;'>Spectrum - made by Szek</div>
-        """,
-        unsafe_allow_html=True
-        )
 
 # ------------------------------
 # Upload na github
@@ -234,8 +219,7 @@ def upload_results_once(data):
 def category_selection_screen(CATEGORIES, CATEGORY_EMOJIS):
     st.header("📚 Wybierz kategorie pytań")
 
-    if "category_selection" not in st.session_state:
-        st.session_state.category_selection = set()
+    new_state("category_selection", set())
 
     cols = st.columns(4)
     for i, cat in enumerate(CATEGORIES.keys()):
@@ -269,7 +253,40 @@ def category_selection_screen(CATEGORIES, CATEGORY_EMOJIS):
                 st.rerun()
 
 # ------------------------------
-# Kontynuacja gry
+# Ekran setup
+# ------------------------------
+
+def setup_screen(mode):
+    st.header("🎭 Wprowadź imiona graczy")
+    for i in range(mode):
+        st.session_state.players[i] = st.text_input(
+            f"🙋‍♂️ Gracz {i + 1}", value=st.session_state.players[i]
+        ).strip()
+
+def player_points():
+    for player in st.session_state.all_players:
+        if player not in st.session_state.scores:
+            st.session_state.scores[player] = 0
+
+def question_and_round_info(q_per_r):
+    q = st.session_state.current_question
+    current_round = (st.session_state.questions_asked // 2) + 1
+    current_question_number = st.session_state.questions_asked + 1
+    return q, current_round, current_question_number
+
+def guesser_points_buttons(guesser):
+    st.markdown(f"**Ile punktów zdobywa {guesser}?**")
+    new_state("guesser_points", None)
+
+    cols = st.columns(4)
+    for i, val in enumerate([0, 2, 3, 4]):
+        label = f"✅ {val}" if st.session_state.guesser_points == val else f"{val}"
+        if cols[i].button(label, key=f"gp_{val}_{st.session_state.questions_asked}"):
+            st.session_state.guesser_points = val
+            st.rerun()
+
+# ------------------------------
+# Ekran kontynuacji gry
 # ------------------------------
 
 def handle_continue_decision(questions_per_round):
@@ -301,15 +318,26 @@ def prepare_next_question():
 # branding i interfejs
 # ------------------------------
 
+if "step" in st.session_state and st.session_state.step in ["mode_select", "setup", "categories", "end"]:
+    st.title("🎲 Spectrum")
+    st.markdown(
+        "<div style='margin-top: -20px; font-size: 10px; color: gray;'>made by Szek</div>",
+        unsafe_allow_html=True
+    )
+
+
 def round_info(q, current_round, current_question_number):
     st.markdown(f"##### 🥊 Runda {current_round}")
-    branding_szek()
+    st.markdown(
+    """
+    <div style='margin-top: -20px; font-size: 10px; color: gray;'>Spectrum - made by Szek</div>
+    """,
+    unsafe_allow_html=True
+    )
     emoji = CATEGORY_EMOJIS.get(q['category'], '')
     st.markdown(f"#### 🧠 Pytanie {current_question_number} – kategoria: *{q['category']}* {emoji}")
     st.write(q["text"])
-    if not st.session_state.virtual_board:
-        st.markdown(f"⬅️ {q['left']} | {q['right']} ➡️")
-    col1, col2 = st.columns([1, 3])
+    col1, col2, col3 = st.columns([1, 2, 5])
     with col1:
         st.markdown(f"<small>id: {q['id']}</small>", unsafe_allow_html=True)
     with col2:
@@ -319,6 +347,35 @@ def round_info(q, current_round, current_question_number):
                 if new_q:
                     st.session_state.current_question = new_q
                 st.rerun()
+    with col3:
+        if "virtual_board_step" not in st.session_state or st.session_state.virtual_board_step not in ["guess", "score"]:
+            if st.button("⚠️"):
+                file_path = "reported_questions.csv"
+                repo = "DawidS25/Spectrum"
+                commit_message = "🚨 Zgłoszono pytanie"
+                file_exists = os.path.isfile(file_path)
+                with open(file_path, "a", newline="", encoding="utf-8") as f:
+                    writer = csv.DictWriter(f, fieldnames=q.keys(), delimiter=";")
+                    if not file_exists:
+                        writer.writeheader()
+                    writer.writerow(q)
+                try:
+                    token = st.secrets["GITHUB_TOKEN"]
+                except Exception:
+                    token = None
+                                
+                if token:
+                    response = upload_to_github(file_path, repo, file_path, token, commit_message)
+                    if response.status_code == 201:
+                        st.success(f"🚨 Pytanie zostało zgłoszone")
+                        st.session_state.results_uploaded = True
+                    else:
+                        st.error(f"❌ Błąd zapisu: {response.status_code} – {response.json()}")
+                else:
+                    st.warning("⚠️ Nie udało się zgłosić pytania.")
+            
+    if not st.session_state.virtual_board:
+        st.markdown(f"⬅️ {q['left']} | {q['right']} ➡️")
 
 
 
@@ -332,10 +389,8 @@ def round_info(q, current_round, current_question_number):
 # ------------------------------
 
 # Ustawienie stanu strony
-if "answer_slider_val" not in st.session_state:
-    st.session_state.answer_slider_val = 0
-if "guess_slider_val" not in st.session_state:
-    st.session_state.guess_slider_val = 0
+new_state("answer_slider_val", 0)
+new_state("guess_slider_val", 0)
 
 total_width = 26
 half_width = total_width / 2
@@ -446,8 +501,7 @@ def direction_board():
     guess_deg = 177.5 - (st.session_state.guess_slider_val + 100) / 200 * (177.5 - 2.5)
     st.pyplot(draw_guess(guess_deg))
     
-    if "director_choice" not in st.session_state:
-        st.session_state.director_choice = None
+    new_state("director_choice", None)
 
     col1, col2, col3 = st.columns(3)
     with col1:
@@ -468,7 +522,7 @@ def direction_board():
 def left_right():
     q = st.session_state.current_question
     st.markdown(f"""
-    <div style="display: flex; justify-content: space-between; width: 100%; margin-top:-10px; padding: 0 20px;">
+    <div style="display: flex; justify-content: space-between; width: 100%; margin-top:-30px; padding: 0 20px;">
         <p style="font-size:14px; margin:0; padding:0;">⬅️ {q['left']}</p>
         <p style="font-size:14px; margin:0; padding:0;">{q['right']} ➡️</p>
     </div>
@@ -510,9 +564,8 @@ def score_board(responder, guesser, director = None):
         st.markdown(f"Punktacja: **{guesser}**: {guesser_points} | **{responder}**: {responder_points}")
     return guesser_points, responder_points, extra_points
 
-def virtual_scoreboard_2(q_per_r, responder, guesser, director = None):
-    if "virtual_board_step" not in st.session_state:
-        st.session_state.virtual_board_step = "answer"
+def virtual_scoreboard(q_per_r, responder, guesser, director = None):
+    new_state("virtual_board_step", "answer")
     if st.session_state.virtual_board_step == "answer":
         answer_slider = answer_board()
         left_right()
@@ -563,9 +616,7 @@ def virtual_scoreboard_2(q_per_r, responder, guesser, director = None):
                 st.session_state.scores[director] += points[2]
 
             # Zapis do results_data
-            q = st.session_state.current_question
-            current_question_number = st.session_state.questions_asked + 1
-            current_round = (st.session_state.questions_asked // q_per_r) + 1
+            q, current_round, current_question_number = question_and_round_info(q_per_r)
 
             if st.session_state.mode == "Drużynowy":
                 points_this_round = {
@@ -586,8 +637,7 @@ def virtual_scoreboard_2(q_per_r, responder, guesser, director = None):
                 }
 
             # Dopisywanie wyników do pamięci
-            if "results_data" not in st.session_state:
-                st.session_state.results_data = []
+            new_state("results_data", [])
 
             if st.session_state.mode == "Drużynowy":
                 data_to_save = {
@@ -658,12 +708,7 @@ def run_2osobowy():
     init_session_state(get_default_session_state("2-osobowy"))
     virtual_board_val = st.session_state.virtual_board
     if st.session_state.step == "setup":
-        st.header("🎭 Wprowadź imiona graczy")
-        for i in range(2):
-            st.session_state.players[i] = st.text_input(
-                f"🙋‍♂️ Gracz {i + 1}", value=st.session_state.players[i]
-            ).strip()
-
+        setup_screen(2)
         setup_buttons()
     
     elif st.session_state.step == "categories":
@@ -671,13 +716,9 @@ def run_2osobowy():
 
     
     elif st.session_state.step == "game":
-        if "scores" not in st.session_state:
-            st.session_state.scores = {}
-        if "all_players" not in st.session_state:
-            st.session_state.all_players = st.session_state.players.copy()
-        for player in st.session_state.all_players:
-            if player not in st.session_state.scores:
-                st.session_state.scores[player] = 0
+        new_state("scores", {})
+        new_state("all_players", st.session_state.players.copy())
+        player_points()
 
         turn = st.session_state.questions_asked % 2
         if turn == 0:
@@ -691,27 +732,16 @@ def run_2osobowy():
             handle_continue_decision(2)
         else:
             prepare_next_question()
-            q = st.session_state.current_question
-            current_round = (st.session_state.questions_asked // 2) + 1
-            current_question_number = st.session_state.questions_asked + 1
+            q, current_round, current_question_number = question_and_round_info(2)
             round_info(q, current_round, current_question_number)
 
 
             st.markdown(f"Odpowiada: **{responder}** &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Zgaduje: **{guesser}**", unsafe_allow_html=True)
 
             if st.session_state.virtual_board:
-                virtual_scoreboard_2(2, responder, guesser)
+                virtual_scoreboard(2, responder, guesser)
             else:
-                st.markdown(f"**Ile punktów zdobywa {guesser}?**")
-                if "guesser_points" not in st.session_state:
-                    st.session_state.guesser_points = None
-
-                cols = st.columns(4)
-                for i, val in enumerate([0, 2, 3, 4]):
-                    label = f"✅ {val}" if st.session_state.guesser_points == val else f"{val}"
-                    if cols[i].button(label, key=f"gp_{val}_{st.session_state.questions_asked}"):
-                        st.session_state.guesser_points = val
-                        st.rerun()
+                guesser_points_buttons(guesser)
 
                 if st.session_state.guesser_points is not None:
                     if st.button("💾 Zapisz i dalej"):
@@ -728,8 +758,8 @@ def run_2osobowy():
                         elif guesser_points == 4:
                             responder_points = 2
                         else:
-                            responder_points = 0  # Bezpieczna wartość na wypadek błędu
-
+                            responder_points = 0
+                            
                         # Aktualizacja wyników
                         st.session_state.scores[guesser] += guesser_points
                         st.session_state.scores[responder] += responder_points
@@ -740,8 +770,7 @@ def run_2osobowy():
                         }
 
                         # Dopisywanie wyników do pamięci
-                        if "results_data" not in st.session_state:
-                            st.session_state.results_data = []
+                        new_state("results_data", [])
 
                         data_to_save = {
                             "runda": current_round,
@@ -782,9 +811,8 @@ def run_2osobowy():
         end_buttons()
         
         if "results_data" in st.session_state and st.session_state.results_data:
-
-            if "results_uploaded" not in st.session_state:
-                st.session_state.results_uploaded = False
+            
+            new_state("results_uploaded", False)
 
             df_results = pd.DataFrame(st.session_state.results_data)
 
@@ -808,13 +836,7 @@ def run_2osobowy():
 def run_3osobowy():
     init_session_state(get_default_session_state("3-osobowy"))
     if st.session_state.step == "setup":
-        st.header("🎭 Wprowadź imiona graczy")
-
-        for i in range(3):
-            st.session_state.players[i] = st.text_input(
-                f"🙋‍♂️ Gracz {i + 1}", value=st.session_state.players[i]
-            ).strip()
-
+        setup_screen(3)
         setup_buttons()
     
 
@@ -822,13 +844,9 @@ def run_3osobowy():
         category_selection_screen(CATEGORIES, CATEGORY_EMOJIS)
 
     elif st.session_state.step == "game":
-        if "scores" not in st.session_state:
-            st.session_state.scores = {}
-        if "all_players" not in st.session_state:
-            st.session_state.all_players = st.session_state.players.copy()
-        for player in st.session_state.all_players:
-            if player not in st.session_state.scores:
-                st.session_state.scores[player] = 0
+        new_state("scores", {})
+        new_state("all_players", st.session_state.players.copy())
+        player_points()
 
         round_sequence = [
             (0, 2, 1),
@@ -839,7 +857,7 @@ def run_3osobowy():
             (2, 0, 1),
         ]
 
-        round_index = st.session_state.questions_asked % len(round_sequence)
+        round_index = st.session_state.questions_asked % 6
         role_indices = round_sequence[round_index]
         responder = st.session_state.all_players[role_indices[0]]
         guesser = st.session_state.all_players[role_indices[1]]
@@ -850,30 +868,18 @@ def run_3osobowy():
             handle_continue_decision(6)
         else:
             prepare_next_question()
-            q = st.session_state.current_question
-            current_round = (st.session_state.questions_asked // 6) + 1
-            current_question_number = st.session_state.questions_asked + 1
+            q, current_round, current_question_number = question_and_round_info(6)
             round_info(q, current_round, current_question_number)
 
             st.markdown(f"Odpowiada: **{responder}** &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Zgaduje: **{guesser}** &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Kierunek: **{director}**", unsafe_allow_html=True)
 
             if st.session_state.virtual_board:
-                virtual_scoreboard_2(6, responder, guesser, director)
+                virtual_scoreboard(6, responder, guesser, director)
             else:
-                st.markdown(f"**Ile punktów zdobywa {guesser}?**")
-                if "guesser_points" not in st.session_state:
-                    st.session_state.guesser_points = None
-
-                cols = st.columns(4)
-                for i, val in enumerate([0, 2, 3, 4]):
-                    label = f"✅ {val}" if st.session_state.guesser_points == val else f"{val}"
-                    if cols[i].button(label, key=f"gp_{val}_{st.session_state.questions_asked}"):
-                        st.session_state.guesser_points = val
-                        st.rerun()
+                guesser_points_buttons(guesser)
 
                 st.markdown(f"**Czy {director} zdobywa dodatkowy punkt?**")
-                if "extra_point" not in st.session_state:
-                    st.session_state.extra_point = None
+                new_state("extra_point", None)
 
                 cols2 = st.columns(2)
                 for i, val in enumerate([0, 1]):
@@ -910,8 +916,7 @@ def run_3osobowy():
                         }
 
                         # DOPISYWANIE WYNIKÓW DO LISTY W PAMIĘCI
-                        if "results_data" not in st.session_state:
-                            st.session_state.results_data = []
+                        new_state("results_data", [])
 
                         data_to_save = {
                             "runda": current_round,
@@ -954,9 +959,7 @@ def run_3osobowy():
 
         # --- Generowanie pliku Excel z wyników w pamięci ---
         if "results_data" in st.session_state and st.session_state.results_data:
-
-            if "results_uploaded" not in st.session_state:
-                st.session_state.results_uploaded = False
+            new_state("results_uploaded", False)
 
             df_results = pd.DataFrame(st.session_state.results_data)
 
@@ -1086,9 +1089,7 @@ def run_druzynowy():
             handle_continue_decision(questions_per_round)
         else:
             prepare_next_question()
-            q = st.session_state.current_question
-            current_round = (st.session_state.questions_asked // questions_per_round) + 1
-            current_question_number = st.session_state.questions_asked + 1
+            q, current_round, current_question_number = question_and_round_info(questions_per_round)
             round_info(q, current_round, current_question_number)
 
             if current_question_number % 2 == 0:
@@ -1109,11 +1110,10 @@ def run_druzynowy():
             st.markdown(f"Odpowiada: **{responder_name}** &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Zgadują: **{guessing_team}** &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Kierunek: **{other_team}**", unsafe_allow_html=True)
 
             if st.session_state.virtual_board:
-                virtual_scoreboard_2(questions_per_round, responder, guessing_team, other_team)
+                virtual_scoreboard(questions_per_round, responder, guessing_team, other_team)
             else:
                 st.markdown(f"**Ile punktów zdobywają {guessing_team}?**")
-                if "guesser_points" not in st.session_state:
-                    st.session_state.guesser_points = None
+                new_state("guesser_points", None)
 
                 cols = st.columns(4)
                 for i, val in enumerate([0, 2, 3, 4]):
@@ -1124,9 +1124,7 @@ def run_druzynowy():
 
                 st.markdown(f"**Dodatkowe punkty dla drużyny {other_team}?**")
                 extra_points_options = [0, 1]
-
-                if "extra_point" not in st.session_state:
-                    st.session_state.extra_point = None
+                new_state("extra_point", None)
 
                 cols2 = st.columns(len(extra_points_options))
                 for i, val in enumerate(extra_points_options):
@@ -1171,8 +1169,7 @@ def run_druzynowy():
                             guessing_team: guesser_points,
                             other_team: extra_point,
                             }
-                        if "results_data" not in st.session_state:
-                            st.session_state.results_data = []
+                        new_state("results_data", [])
                         st.session_state.results_data.append(data_to_save)
 
                         st.session_state.questions_asked += 1
@@ -1234,9 +1231,7 @@ def run_druzynowy():
 
         # --- Generowanie pliku Excel z wyników w pamięci ---
         if "results_data" in st.session_state and st.session_state.results_data:
-
-            if "results_uploaded" not in st.session_state:
-                st.session_state.results_uploaded = False
+            new_state("results_uploaded", False)
 
             df_results = pd.DataFrame(st.session_state.results_data)
 
@@ -1260,15 +1255,10 @@ def run_druzynowy():
 # Ekran głowny - wybór trybu
 # ----------------------------------------------------------------------------------------------------------------
 
-if "step" not in st.session_state:
-    st.session_state.step = "mode_select"
-if "mode" not in st.session_state:
-    st.session_state.mode = "None"
-if "virtual_board" not in st.session_state:
-    st.session_state.virtual_board = False
-
-if "pending_mode" not in st.session_state:
-    st.session_state.pending_mode = None  # <-- użyj do przechowania klikniętego przycisku
+new_state("step", "mode_select")
+new_state("mode", "None")
+new_state("virtual_board", False)
+new_state("pending_mode", None)
 
 def select_mode_and_step_later(mode, step):
     st.session_state.pending_mode = mode
@@ -1301,6 +1291,7 @@ if st.session_state.step == "mode_select":
         st.session_state.pending_mode = None
         st.rerun()
 
+#virtual_board_val = st.session_state.get("virtual_board", False)
 if st.session_state.mode == "2-osobowy":
     run_2osobowy()
 elif st.session_state.mode == "3-osobowy":
