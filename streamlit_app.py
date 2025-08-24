@@ -351,7 +351,7 @@ def round_info(q, current_round, current_question_number):
     with col2:
         if "virtual_board_step" not in st.session_state or st.session_state.virtual_board_step not in ["guess", "score"]:
             if st.button("🔄 Zmień pytanie"):
-                report_question(q, "questions_changed.csv", f"Zmieniono pytanie {q['id']}")
+                report_question(q, "questions/questions_changed.csv", f"Zmieniono pytanie {q['id']}")
                 new_q = draw_question()
                 if new_q:
                     st.session_state.current_question = new_q
