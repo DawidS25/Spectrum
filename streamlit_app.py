@@ -335,7 +335,7 @@ def round_info(q, current_round, current_question_number):
         if "virtual_board_step" not in st.session_state or st.session_state.virtual_board_step not in ["guess", "score"]:
             if st.button("⚠️"):
                 file_path = "reported_questions.csv"
-                repo="DawidS25/SpectrumDruzynowe"
+                repo="DawidS25/Spectrum"
                 path_in_repo="reported_questions.csv"
                 commit_message=f"Zgłoszono pytanie {q['id']}"
                 file_exists = os.path.isfile(file_path)
