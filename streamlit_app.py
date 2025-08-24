@@ -1300,7 +1300,7 @@ def run_druzynowy():
 # ----------------------------------------------------------------------------------------------------------------
 
 def run_instructions():
-    st.markdown(f"### 📖 Instrukcja gry: **Spectrum by Szek**")
+    st.markdown(f"### 📖 Instrukcja **Spectrum by Szek**")
 
     with st.expander("Wprowadzenie"):
         st.write("""
