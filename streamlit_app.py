@@ -250,9 +250,9 @@ def category_selection_screen(CATEGORIES, CATEGORY_EMOJIS):
     if "category_selection" not in st.session_state:
         st.session_state.category_selection = set()
 
-    cols = st.columns(5)
+    cols = st.columns(3)
     for i, cat in enumerate(CATEGORIES.keys()):
-        col = cols[i % 5]
+        col = cols[i % 3]
         display_name = f"{CATEGORY_EMOJIS.get(cat, '')} {cat}"
         if cat in st.session_state.category_selection:
             if col.button(f"✅ {display_name}", key=f"cat_{cat}"):
