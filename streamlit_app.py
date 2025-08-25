@@ -324,12 +324,15 @@ def prepare_next_question():
 # ------------------------------
 # branding i interfejs
 # ------------------------------
-def report_question(q, file_path, commit_message, commit_to_player = None):
+
+def report_question(q, file_path, commit_message, commit_to_player = None, fieldnames = None):
     repo="DawidS25/Spectrum"
     path_in_repo = file_path
     file_exists = os.path.isfile(file_path)
+    if not fieldnames:
+        fieldnames=["id", "text", "category", "left", "right"]
     with open(file_path, mode="a", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["id", "text", "category", "left", "right"], delimiter=";")
+        writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter=";")
         if not file_exists:
             writer.writeheader()
         writer.writerow(q)
@@ -1373,6 +1376,60 @@ def run_instructions():
         st.session_state.mode = "None"
         st.rerun()
 
+def run_feedback():
+    st.markdown("### 🐞 Zgłoś błąd lub sugestię")
+    
+    if st.session_state.get("feedback_submitted"):
+        st.warning(f"Czy chcesz wysłać to zgłoszenie?  \n"
+                f"Tytuł: **{st.session_state.feedback_title}**  \n"
+                f"Opis: **{st.session_state.feedback_text}**  \n"
+                f"Kontakt: **{st.session_state.feedback_contact or 'Brak'}**")
+        if st.button("Wyślij zgłoszenie"):
+            # Przygotowanie słownika feedbacku
+            import uuid, datetime
+            feedback = {
+                "id": str(uuid.uuid4()),
+                "title": st.session_state.feedback_title,
+                "description": st.session_state.feedback_text,
+                "contact": st.session_state.feedback_contact or "",
+                "timestamp": datetime.datetime.now().isoformat()
+            }
+
+            report_question(
+                q=feedback,
+                file_path="reports/feedback.csv",
+                commit_message=f"New feedback: {feedback['title']}",
+                commit_to_player="Dziękujemy za Twoje zgłoszenie! Postaramy się jak najszybciej je rozpatrzyć.",
+                fieldnames=["id", "title", "description", "contact", "timestamp"]
+            )
+    else:
+        st.write("Jeśli zauważyłeś błąd lub masz pomysł na ulepszenie aplikacji, podziel się nim!")
+        st.write("Możesz zgłosić błąd lub sugestię poniżej:")
+
+        with st.form("feedback_form"):
+            feedback_title = st.text_input("Tytuł zgłoszenia:")
+            feedback_text = st.text_area("Opisz swój problem lub sugestię:", height=200)
+            feedback_contact = st.text_input("Twój email (opcjonalnie, jeśli chcesz otrzymać odpowiedź):")
+            submitted = st.form_submit_button("Zgłoś")
+
+            if submitted:
+                if not feedback_title.strip() or not feedback_text.strip():
+                    st.warning("Proszę wypełnić zarówno tytuł, jak i opis zgłoszenia.")
+                else:
+                    st.session_state.feedback_title = feedback_title.strip()
+                    st.session_state.feedback_text = feedback_text.strip()
+                    st.session_state.feedback_contact = feedback_contact.strip()
+                    st.session_state.feedback_submitted = True
+                    st.rerun()
+
+    if st.button("🔙 Powrót"):
+        st.session_state.step = "mode_select"
+        st.session_state.mode = "None"
+        for key in ["feedback_title", "feedback_text", "feedback_contact", "feedback_submitted"]:
+            st.session_state.pop(key, None)
+        st.rerun()
+
+
 # ----------------------------------------------------------------------------------------------------------------
 # Ekran głowny - wybór trybu
 # ----------------------------------------------------------------------------------------------------------------
@@ -1415,6 +1472,10 @@ if st.session_state.step == "mode_select":
         st.session_state.mode = "Instrukcja"
         st.session_state.step = "instructions"
         st.rerun()
+    if st.button("Zgłoś błąd lub sugestię"):
+        st.session_state.mode = "Feedback"
+        st.session_state.step = "feedback"
+        st.rerun()
 
     if st.session_state.pending_mode is not None:
         st.session_state.mode = st.session_state.pending_mode
@@ -1430,3 +1491,6 @@ elif st.session_state.mode == "Drużynowy":
     run_druzynowy()
 elif st.session_state.mode == "Instrukcja":
     run_instructions()
+elif st.session_state.mode == "Feedback":
+    st.session_state.step = "feedback"
+    run_feedback()
