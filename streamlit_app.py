@@ -1472,7 +1472,7 @@ if st.session_state.step == "mode_select":
         st.session_state.mode = "Instrukcja"
         st.session_state.step = "instructions"
         st.rerun()
-    if st.button("Zgłoś błąd lub sugestię"):
+    if st.button("🐞Zgłoś błąd lub sugestię"):
         st.session_state.mode = "Feedback"
         st.session_state.step = "feedback"
         st.rerun()
